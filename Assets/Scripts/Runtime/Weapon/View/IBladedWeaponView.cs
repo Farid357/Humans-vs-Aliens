@@ -1,11 +1,12 @@
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace HumansVsAliens.View
 {
     public interface IBladedWeaponView : IBladedWeaponActivityView
     {
-        Task Hit();
+        void Hit();
+        
+        bool IsHitting { get; }
      
         Vector3 Position { get; }
     }

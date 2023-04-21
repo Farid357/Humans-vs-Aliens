@@ -8,6 +8,12 @@ namespace HumansVsAliens.View
     {
         private Animator _animator;
 
+        private readonly string[] _hits = new string[]
+        {
+            "Attack_01",
+            "Attack_02"
+        };
+
         private void OnEnable()
         {
             _animator = GetComponent<Animator>();
@@ -15,7 +21,8 @@ namespace HumansVsAliens.View
 
         public async Task PlayHit()
         {
-            //TODO ANimation
+            _animator.Play("Attack_02");
+            
         }
     }
 }

@@ -5,16 +5,16 @@ namespace HumansVsAliens.Model
 {
     public sealed class Character : MonoBehaviour, ICharacter
     {
-        [SerializeField] private PhysicsHealth _physicsHealth;
+        [SerializeField] private PhysicsHealth _health;
         private IBladedWeapon _weapon;
 
         public void Init(IHealth health, IBladedWeapon weapon)
         {
             _weapon = weapon ?? throw new ArgumentNullException(nameof(weapon));
-            _physicsHealth.Init(health);
+            _health.Init(health);
         }
 
-        public bool IsAlive => _physicsHealth.IsAlive;
+        public bool IsAlive => _health.IsAlive;
 
         public bool CanAttack => _weapon.CanHit;
         
@@ -27,6 +27,8 @@ namespace HumansVsAliens.Model
             
             if(!CanAttack)
                 throw new InvalidOperationException($"Character can't attack!");
+            
+            _weapon.Hit();
         }
 
         public void SwitchWeapon(IBladedWeapon weapon)

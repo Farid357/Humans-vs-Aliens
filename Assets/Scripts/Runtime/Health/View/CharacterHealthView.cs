@@ -7,6 +7,7 @@ namespace HumansVsAliens.View
     {
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Window _loseWindow;
+        [SerializeField] private CharacterAnimations _characterAnimations;
         
         public void Visualize(int health)
         {
@@ -16,6 +17,7 @@ namespace HumansVsAliens.View
         public void Die()
         {
             _loseWindow.Open();
+            _characterAnimations.PlayDeath();
         }
     }
 }

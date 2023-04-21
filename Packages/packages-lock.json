@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.bananaparty.behaviortree": {
+      "version": "https://github.com/forcepusher/com.bananaparty.behaviortree.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "13d5df1b8eac0cc59c86cb794b0f39ed7ba1930e"
+    },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73d86259ce31ce7f4dfe1d028ea1c3edf96c23e4"
+    },
     "com.unity.burst": {
       "version": "1.8.2",
       "depth": 1,

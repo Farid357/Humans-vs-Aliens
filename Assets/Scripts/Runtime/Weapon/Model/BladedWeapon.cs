@@ -18,17 +18,15 @@ namespace HumansVsAliens.Model
             _maxHitDistance = maxHitDistance.ThrowIfLessOrEqualsToZeroException();
         }
 
-        public bool CanHit => _view.IsActive;
+        public bool CanHit => _view.IsActive && !_view.IsHitting;
         
         public IBladedWeaponActivityView View => _view;
 
-        public async void Hit()
+        public void Hit()
         {
             if (CanHit == false)
                 throw new InvalidOperationException($"View is not active! You can't hit!");
             
-            await _view.Hit();
-
             if (Physics.Raycast(_view.Position, Vector3.forward, out RaycastHit hitInfo, _maxHitDistance))
             {
                 if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out IHealth health))
@@ -36,6 +34,8 @@ namespace HumansVsAliens.Model
                     health.TakeDamage(_damage);
                 }
             }
+
+            _view.Hit();
         }
     }
 }
