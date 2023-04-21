@@ -1,28 +1,33 @@
 using System;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace HumansVsAliens.View
 {
     public sealed class BladedWeaponView : MonoBehaviour, IBladedWeaponView
     {
-        [SerializeField] private BladedWeaponAnimations _animations;
-        private Task _hitTask = Task.CompletedTask;
+        private IAttackAnimation _animations;
+        private UniTask _hitTask = UniTask.CompletedTask;
 
+        public bool IsHitting => !_hitTask.AsTask().IsCompleted;
+        
+        public Vector3 Position => transform.position;
+      
+        public bool IsActive => gameObject.activeInHierarchy;
+
+        public void Init(IAttackAnimation animations)
+        {
+            _animations = animations ?? throw new ArgumentNullException(nameof(animations));
+        }
+        
         public void Hit()
         {
             if (IsHitting)
                 throw new Exception($"View is already hitting!");
             
-            _hitTask = _animations.PlayHit();
+            _hitTask = _animations.PlayAttack();
         }
 
-        public bool IsHitting => !_hitTask.IsCompleted;
-        
-        public Vector3 Position => transform.position;
-      
-        public bool IsActive => gameObject.activeInHierarchy;
-        
         public void Enable()
         {
             gameObject.SetActive(true);

@@ -1,0 +1,24 @@
+using System;
+using BananaParty.BehaviorTree;
+using HumansVsAliens.Tools;
+
+namespace HumansVsAliens.Model
+{
+    public sealed class AttackNode : BehaviorNode
+    {
+        private readonly IHealth _health;
+        private readonly int _damage;
+
+        public AttackNode(IHealth health, int damage)
+        {
+            _health = health ?? throw new ArgumentNullException(nameof(health));
+            _damage = damage.ThrowIfLessThanOrEqualsToZeroException();
+        }
+
+        public override BehaviorNodeStatus OnExecute(long time)
+        {
+            _health.TakeDamage(_damage);
+            return BehaviorNodeStatus.Success;
+        }
+    }
+}

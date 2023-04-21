@@ -16,6 +16,9 @@ namespace HumansVsAliens.Factory
             IHealth health = new Health(_healthView, 100);
             IBladedWeapon weapon = _weaponFactory.Create();
             character.Init(health, weapon);
+            
+            //TODO Replace when add photon
+            _healthView.Init(character.GetComponent<ICharacterAnimations>());
             return character;
         }
     }

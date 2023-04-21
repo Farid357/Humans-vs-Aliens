@@ -20,9 +20,11 @@ namespace HumansVsAliens.Model
         {
             Vector2 moveDirection = _input.Movement.Move.ReadValue<Vector2>();
             _character.Movement.Move(moveDirection);
-            
-            if(_input.Movement.Jump.IsPressed() && _character.Movement.OnGround)
+
+            if (_input.Movement.Jump.IsPressed() && _character.Movement.OnGround)
+            {
                 _character.Movement.Jump();
+            }
         }
     }
 }
