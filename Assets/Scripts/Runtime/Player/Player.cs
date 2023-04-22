@@ -19,7 +19,7 @@ namespace HumansVsAliens.Model
         public void Update(float deltaTime)
         {
             Vector2 moveDirection = _input.Movement.Move.ReadValue<Vector2>();
-            _character.Movement.Move(moveDirection);
+            _character.Movement.Move(new Vector3(moveDirection.x, 0, moveDirection.y));
 
             if (_input.Movement.Jump.IsPressed() && _character.Movement.OnGround)
             {

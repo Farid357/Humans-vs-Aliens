@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 2647802411063135865}
+  _animations: {fileID: 5464037499788597226}
 --- !u!114 &5464037499788597226
 MonoBehaviour:
   m_ObjectHideFlags: 0

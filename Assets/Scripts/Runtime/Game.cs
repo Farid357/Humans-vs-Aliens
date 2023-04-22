@@ -4,12 +4,14 @@ using HumansVsAliens.Factory;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Model;
 using UnityEngine;
+using Player = HumansVsAliens.Model.Player;
 
 namespace HumansVsAliens
 {
     public sealed class Game : MonoBehaviour
     {
         [SerializeField] private CharacterFactory _characterFactory;
+        
         private IGameLoop _gameLoop;
 
         private void Awake()
@@ -18,7 +20,7 @@ namespace HumansVsAliens
             ICharacter character = _characterFactory.Create();
             IGameLoopObject player = new Player(character);
             InitLoots(character);
-            
+
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>
             {
                 player
