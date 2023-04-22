@@ -9,9 +9,9 @@ namespace HumansVsAliens.View
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Window _loseWindow;
         
-        private ICharacterAnimations _characterAnimations;
+        private IHealthAnimations _characterAnimations;
 
-        public void Init(ICharacterAnimations characterAnimations)
+        public void Init(IHealthAnimations characterAnimations)
         {
             _characterAnimations = characterAnimations ?? throw new ArgumentNullException(nameof(characterAnimations));
         }

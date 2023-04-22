@@ -9,6 +9,9 @@ namespace HumansVsAliens.View
     public sealed class CharacterAnimations : MonoBehaviour, ICharacterAnimations
     {
         private Animator _animator;
+        private UniTask _attackTask = UniTask.CompletedTask;
+
+        public bool IsPlayingAttack => !_attackTask.AsTask().IsCompleted;
 
         private readonly string[] _attacks = new string[]
         {
@@ -31,11 +34,14 @@ namespace HumansVsAliens.View
             _animator.Play("Get Hit");
         }
 
-        public async UniTask PlayAttack()
+        public void PlayAttack()
         {
+            if (IsPlayingAttack)
+                throw new InvalidOperationException($"Attack is already playing!");
+            
             _animator.Play(_attacks.GetRandom());
             double playSeconds = _animator.GetCurrentAnimatorStateInfo(0).length;
-            await UniTask.Delay(TimeSpan.FromSeconds(playSeconds));
+            _attackTask = UniTask.Delay(TimeSpan.FromSeconds(playSeconds));
         }
     }
 }

@@ -1,0 +1,24 @@
+using System;
+using HumansVsAliens.Tools;
+using HumansVsAliens.View;
+
+namespace HumansVsAliens.Model
+{
+    public sealed class Score : IScore
+    {
+        private readonly IScoreView _view;
+
+        public Score(IScoreView view)
+        {
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+        }
+
+        public int Count { get; private set; }
+
+        public void Add(int count)
+        {
+            Count += count.ThrowIfLessThanZeroException();
+            _view.Visualize(Count);
+        }
+    }
+}

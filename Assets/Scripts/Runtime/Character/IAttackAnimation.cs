@@ -1,9 +1,9 @@
-using Cysharp.Threading.Tasks;
-
 namespace HumansVsAliens.View
 {
     public interface IAttackAnimation
     {
-        UniTask PlayAttack();
+        bool IsPlayingAttack { get; }
+        
+        void PlayAttack();
     }
 }

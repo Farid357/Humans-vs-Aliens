@@ -4,13 +4,6 @@ using HumansVsAliens.View;
 
 namespace HumansVsAliens.Model
 {
-    public interface IReadOnlyWallet
-    {
-        int Money { get; }
-        
-        bool CanTake(int money);
-    }
-
     public sealed class Wallet : IWallet
     {
         private readonly IWalletView _view;

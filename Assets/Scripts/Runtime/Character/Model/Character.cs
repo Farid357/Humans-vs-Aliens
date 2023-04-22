@@ -1,4 +1,5 @@
 using System;
+using HumansVsAliens.View;
 using UnityEngine;
 
 namespace HumansVsAliens.Model
@@ -6,6 +7,7 @@ namespace HumansVsAliens.Model
     public sealed class Character : MonoBehaviour, ICharacter
     {
         [SerializeField] private CharacterMovement _movement;
+        [SerializeField] private CharacterAnimations _animations;
         
         private IBladedWeapon _weapon;
 
@@ -22,6 +24,8 @@ namespace HumansVsAliens.Model
         public bool CanAttack => _weapon.CanHit;
 
         public ICharacterMovement Movement => _movement;
+
+        public ICharacterAnimations Animations => _animations;
         
         public void Attack()
         {
@@ -32,6 +36,7 @@ namespace HumansVsAliens.Model
                 throw new InvalidOperationException($"Character can't attack!");
             
             _weapon.Hit();
+            _animations.PlayAttack();
         }
 
         public void SwitchWeapon(IBladedWeapon weapon)

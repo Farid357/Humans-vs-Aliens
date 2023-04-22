@@ -14,11 +14,9 @@ namespace HumansVsAliens.Factory
         {
             Character character = Instantiate(_prefab, Vector3.zero, Quaternion.identity);
             IHealth health = new Health(_healthView, 100);
-            IBladedWeapon weapon = _weaponFactory.Create();
+            IBladedWeapon weapon = _weaponFactory.Create(character.transform);
             character.Init(health, weapon);
-            
-            //TODO Replace when add photon
-            _healthView.Init(character.GetComponent<ICharacterAnimations>());
+            _healthView.Init(character.Animations);
             return character;
         }
     }

@@ -6,7 +6,7 @@ namespace HumansVsAliens.Model
     {
         bool CanHit { get; }
 
-        IBladedWeaponActivityView View { get; }
+        IBladedWeaponView View { get; }
         
         void Hit();
     }
