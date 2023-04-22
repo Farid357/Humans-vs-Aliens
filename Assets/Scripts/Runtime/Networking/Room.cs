@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
-    public class Room : IRoom, IMatchmakingCallbacks
+    public class Room : IRoom, IMatchmakingCallbacks, IDisposable
     {
         private readonly IScene _scene;
 
@@ -47,7 +47,7 @@ namespace HumansVsAliens.Networking
         {
         }
 
-        public void Create()
+        public void EnterInNew()
         {
             RoomOptions roomOptions = new RoomOptions
             {
@@ -56,6 +56,16 @@ namespace HumansVsAliens.Networking
             };
 
             PhotonNetwork.CreateRoom("Arena", roomOptions);
+        }
+
+        public void JoinRandom()
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+
+        public void Dispose()
+        {
+            PhotonNetwork.RemoveCallbackTarget(this);
         }
     }
 }

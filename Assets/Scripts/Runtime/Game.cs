@@ -3,6 +3,7 @@ using System.Linq;
 using HumansVsAliens.Factory;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Model;
+using Photon.Pun;
 using UnityEngine;
 using Player = HumansVsAliens.Model.Player;
 
@@ -11,8 +12,9 @@ namespace HumansVsAliens
     public sealed class Game : MonoBehaviour
     {
         [SerializeField] private CharacterFactory _characterFactory;
-        
+
         private IGameLoop _gameLoop;
+        [SerializeField] private IBladedWeapon _weaponsCollectionView;
 
         private void Awake()
         {
@@ -35,6 +37,7 @@ namespace HumansVsAliens
         private void Update()
         {
             _gameLoop.Update(Time.deltaTime);
+            Debug.Log(PhotonNetwork.PlayerList.Length);
         }
     }
 }

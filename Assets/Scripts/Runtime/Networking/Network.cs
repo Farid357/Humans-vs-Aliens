@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
-    public class Network : INetwork, IConnectionCallbacks, ILobbyCallbacks
+    public class Network : INetwork, IConnectionCallbacks, IDisposable
     {
         public void Connect()
         {
@@ -41,20 +42,9 @@ namespace HumansVsAliens.Networking
         {
         }
 
-        public void OnJoinedLobby()
+        public void Dispose()
         {
-        }
-
-        public void OnLeftLobby()
-        {
-        }
-
-        public void OnRoomListUpdate(List<RoomInfo> roomList)
-        {
-        }
-
-        public void OnLobbyStatisticsUpdate(List<TypedLobbyInfo> lobbyStatistics)
-        {
+            PhotonNetwork.RemoveCallbackTarget(this);
         }
     }
 }

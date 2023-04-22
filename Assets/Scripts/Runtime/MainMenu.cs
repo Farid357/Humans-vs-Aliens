@@ -1,6 +1,6 @@
+using System;
 using HumansVsAliens.LoadSystem;
 using HumansVsAliens.Networking;
-using Photon.Pun;
 using UnityEngine;
 using Network = HumansVsAliens.Networking.Network;
 
@@ -14,19 +14,19 @@ namespace HumansVsAliens
         private void Awake()
         {
             INetwork network = new Network();
+            _room = new Room(_game);
             network.Connect();
         }
         
         public void JoinRoom()
         {
             Debug.Log("try Joined");
-            PhotonNetwork.JoinRandomRoom();
+            _room.JoinRandom();
         }
 
         public void CreateRoom()
         {
-            _room = new Room(_game);
-            _room.Create();
+            _room.EnterInNew();
         }
     }
 }

@@ -8,20 +8,20 @@ namespace HumansVsAliens.Model
     {
         [SerializeField] private CharacterMovement _movement;
         [SerializeField] private CharacterAnimations _animations;
-        
-        private IBladedWeapon _weapon;
+      
+        private IBladedWeaponsCollection _weaponsCollection;
 
-        public void Init(IHealth health, IBladedWeapon weapon)
+        public void Init(IHealth health, IBladedWeaponsCollection weaponsCollection)
         {
             Health = health ?? throw new ArgumentNullException(nameof(health));
-            _weapon = weapon ?? throw new ArgumentNullException(nameof(weapon));
+            _weaponsCollection = weaponsCollection ?? throw new ArgumentNullException(nameof(weaponsCollection));
         }
 
         public IHealth Health { get; private set; }
-       
+        
         public bool IsAlive => Health.IsAlive;
-
-        public bool CanAttack => _weapon.CanHit;
+        
+        public bool CanAttack => _weaponsCollection.Weapon.CanHit;
 
         public ICharacterMovement Movement => _movement;
 
@@ -35,13 +35,13 @@ namespace HumansVsAliens.Model
             if(!CanAttack)
                 throw new InvalidOperationException($"Character can't attack!");
             
-            _weapon.Hit();
+            _weaponsCollection.Weapon.Hit();
             _animations.PlayAttack();
         }
 
         public void SwitchWeapon(IBladedWeapon weapon)
         {
-            _weapon = weapon ?? throw new ArgumentNullException(nameof(weapon));
+            _weaponsCollection.SwitchWeapon(weapon);
         }
     }
 }

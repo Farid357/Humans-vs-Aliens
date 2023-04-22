@@ -6,6 +6,8 @@ namespace HumansVsAliens.View
     {
         Vector3 Position { get; }
 
+        IBladedWeaponViewData Data { get; }
+        
         bool IsActive { get; }
 
         void Enable();
