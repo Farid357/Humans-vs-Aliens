@@ -1,15 +1,16 @@
 using System.Collections.Generic;
+using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
-    public class PhotonNetwork : INetwork, IConnectionCallbacks, ILobbyCallbacks
+    public class Network : INetwork, IConnectionCallbacks, ILobbyCallbacks
     {
         public void Connect()
         {
-            Photon.Pun.PhotonNetwork.AddCallbackTarget(this);
-            Photon.Pun.PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.AddCallbackTarget(this);
+            PhotonNetwork.ConnectUsingSettings();
         }
 
         public void OnConnected()
@@ -20,7 +21,7 @@ namespace HumansVsAliens.Networking
         public void OnConnectedToMaster()
         {
             Debug.Log("Connected to master!");
-            Photon.Pun.PhotonNetwork.JoinLobby();
+            PhotonNetwork.JoinLobby();
         }
 
         public void OnDisconnected(DisconnectCause cause)
@@ -30,7 +31,6 @@ namespace HumansVsAliens.Networking
 
         public void OnRegionListReceived(RegionHandler regionHandler)
         {
-            
         }
 
         public void OnCustomAuthenticationResponse(Dictionary<string, object> data)
@@ -43,7 +43,6 @@ namespace HumansVsAliens.Networking
 
         public void OnJoinedLobby()
         {
-
         }
 
         public void OnLeftLobby()

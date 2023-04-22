@@ -1,29 +1,32 @@
+using HumansVsAliens.LoadSystem;
 using HumansVsAliens.Networking;
+using Photon.Pun;
 using UnityEngine;
+using Network = HumansVsAliens.Networking.Network;
 
 namespace HumansVsAliens
 {
     public sealed class MainMenu : MonoBehaviour
     {
+        [SerializeField] private Scene _game;
+        private IRoom _room;
+        
         private void Awake()
         {
-            INetwork network = new PhotonNetwork();
+            INetwork network = new Network();
             network.Connect();
         }
         
         public void JoinRoom()
         {
-            Photon.Pun.PhotonNetwork.JoinRandomRoom();
-            foreach (var VARIABLE in Photon.Pun.PhotonNetwork.CurrentRoom.Players.Values)
-            {
-                Debug.Log(VARIABLE.NickName);
-                
-            }
+            Debug.Log("try Joined");
+            PhotonNetwork.JoinRandomRoom();
         }
 
         public void CreateRoom()
         {
-            IRoom room = new Room();
+            _room = new Room(_game);
+            _room.Create();
         }
     }
 }

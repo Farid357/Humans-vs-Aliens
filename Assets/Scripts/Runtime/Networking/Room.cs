@@ -1,27 +1,24 @@
+using System;
 using System.Collections.Generic;
+using HumansVsAliens.LoadSystem;
+using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
     public class Room : IRoom, IMatchmakingCallbacks
     {
-        public Room(byte maxPlayers = 4)
-        {
-            Photon.Pun.PhotonNetwork.AddCallbackTarget(this);
-            
-            RoomOptions roomOptions = new RoomOptions
-            {
-                IsOpen = true,
-                MaxPlayers = maxPlayers
-            };
+        private readonly IScene _scene;
 
-            Photon.Pun.PhotonNetwork.CreateRoom("Arena", roomOptions);
+        public Room(IScene scene)
+        {
+            _scene = scene ?? throw new ArgumentNullException(nameof(scene));
+            PhotonNetwork.AddCallbackTarget(this);
         }
 
         public void OnFriendListUpdate(List<FriendInfo> friendList)
         {
-            
         }
 
         public void OnCreatedRoom()
@@ -34,7 +31,8 @@ namespace HumansVsAliens.Networking
 
         public void OnJoinedRoom()
         {
-            SceneManager.LoadScene(1);
+            Debug.Log("Joined");
+            _scene.Load();
         }
 
         public void OnJoinRoomFailed(short returnCode, string message)
@@ -47,6 +45,17 @@ namespace HumansVsAliens.Networking
 
         public void OnLeftRoom()
         {
+        }
+
+        public void Create()
+        {
+            RoomOptions roomOptions = new RoomOptions
+            {
+                IsOpen = true,
+                MaxPlayers = 4
+            };
+
+            PhotonNetwork.CreateRoom("Arena", roomOptions);
         }
     }
 }
