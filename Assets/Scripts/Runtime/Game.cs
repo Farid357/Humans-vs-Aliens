@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HumansVsAliens.Factory;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Model;
@@ -16,11 +17,17 @@ namespace HumansVsAliens
             _gameLoop = new GameLoop.GameLoop();
             ICharacter character = _characterFactory.Create();
             IGameLoopObject player = new Player(character);
+            InitLoots(character);
             
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>
             {
                 player
             }));
+        }
+
+        private void InitLoots(ICharacter character)
+        {
+            FindObjectsOfType<WeaponLoot>().ToList().ForEach(loot => loot.Init(character));
         }
 
         private void Update()
