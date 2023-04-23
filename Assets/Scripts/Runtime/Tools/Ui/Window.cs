@@ -4,6 +4,8 @@ namespace HumansVsAliens
 {
     public class Window : MonoBehaviour
     {
+        public bool IsActive => gameObject.activeInHierarchy;
+        
         public void Open()
         {
             gameObject.SetActive(true);
@@ -13,5 +15,6 @@ namespace HumansVsAliens
         {
             gameObject.SetActive(false);
         }
+
     }
 }

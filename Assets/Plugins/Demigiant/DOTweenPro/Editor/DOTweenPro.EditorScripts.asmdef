@@ -1,6 +1,7 @@
 {
 	"name": "DOTweenPro.EditorScripts",
 	"references": [
+		"Unity.TextMeshPro",
 		"DOTween.Modules",
 		"DOTweenPro.Scripts"
 	],

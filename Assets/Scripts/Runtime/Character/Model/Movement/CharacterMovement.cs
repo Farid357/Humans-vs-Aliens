@@ -15,7 +15,7 @@ namespace HumansVsAliens.Model
 
         public Transform Transform => transform;
         
-        public bool OnGround => Physics.Raycast(transform.position, Vector3.down, 0.6f);
+        public bool OnGround => Physics.Raycast(transform.position, Vector3.down, 0.9f);
 
         private void OnEnable() => _controller = GetComponent<CharacterController>();
 

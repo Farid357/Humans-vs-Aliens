@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 namespace HumansVsAliens.LoadSystem
 {
     [CreateAssetMenu(fileName = "Scene", menuName = "Create/Scene Data")]
-    public class Scene : ScriptableObject, IScene, ISerializationCallbackReceiver
+    public class Scene : ScriptableObject, IScene, ISceneData, ISerializationCallbackReceiver
     {
 #if UNITY_EDITOR
         [SerializeField] private SceneAsset _scene;
 #endif
         [field: SerializeField] public string Name { get; private set; }
-       
+
         public void Load()
         {
             SceneManager.LoadScene(Name);

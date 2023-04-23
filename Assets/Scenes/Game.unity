@@ -469,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -830,7 +830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &951073662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463441309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42, y: -1.12, z: 7.01}
+  m_LocalPosition: {x: -0.42, y: -0.45, z: 7.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22211e4beb6244f8920b64c4e0663a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1408943672}
+  _bar: {fileID: 0}
   _loseWindow: {fileID: 1669834147}
 --- !u!114 &1669834143
 MonoBehaviour:
@@ -1618,7 +1618,6 @@ MonoBehaviour:
   _prefab: {fileID: 7177022205412232007, guid: 149759320526cec4c998c0a9e6e1d5f8, type: 3}
   _weaponFactory: {fileID: 1669834143}
   _spawnPoint: {fileID: 495104435}
-  _camera: {fileID: 951073664}
   _bladedWeaponsCollectionView: {fileID: 1669834148}
 --- !u!114 &1669834145
 MonoBehaviour:

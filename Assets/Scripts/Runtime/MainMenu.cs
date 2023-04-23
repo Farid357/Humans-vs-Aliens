@@ -1,4 +1,3 @@
-using System;
 using HumansVsAliens.LoadSystem;
 using HumansVsAliens.Networking;
 using UnityEngine;
@@ -9,12 +8,15 @@ namespace HumansVsAliens
     public sealed class MainMenu : MonoBehaviour
     {
         [SerializeField] private Scene _game;
-        private IRoom _room;
+        [SerializeField] private SceneLoadingView _sceneLoadingView;
         
+        private IRoom _room;
+
         private void Awake()
         {
             INetwork network = new Network();
-            _room = new Room(_game);
+            IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
+            _room = new Room(gameScene);
             network.Connect();
         }
         

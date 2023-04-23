@@ -1,5 +1,6 @@
 using HumansVsAliens.Model;
 using HumansVsAliens.View;
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Factory
@@ -10,19 +11,17 @@ namespace HumansVsAliens.Factory
         [SerializeField] private Character _prefab;
         [SerializeField] private BladedWeaponFactory _weaponFactory;
         [SerializeField] private Transform _spawnPoint;
-        [SerializeField] private Camera _camera;
         [SerializeField] private BladedWeaponsCollectionView _bladedWeaponsCollectionView;
 
         public ICharacter Create()
         {
-            Character character = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity);
+            Character character = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<Character>();
             IHealth health = new Health(_healthView, 100);
             IBladedWeapon weapon = _weaponFactory.Create(character.transform);
             IBladedWeaponsCollection weaponsCollection = new BladedWeaponsCollection(weapon, _bladedWeaponsCollectionView);
             _bladedWeaponsCollectionView.SwitchWeapon(weapon);
             character.Init(health, weaponsCollection);
             _healthView.Init(character.Animations);
-            _camera.transform.SetParent(character.transform);
             return character;
         }
     }

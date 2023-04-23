@@ -1,12 +1,12 @@
 using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HumansVsAliens.View
 {
     public sealed class CharacterHealthView : MonoBehaviour, IHealthView
     {
-        [SerializeField] private TMP_Text _text;
+        [SerializeField] private Scrollbar _bar;
         [SerializeField] private Window _loseWindow;
         
         private IHealthAnimations _characterAnimations;
@@ -18,7 +18,7 @@ namespace HumansVsAliens.View
         
         public void Visualize(int health)
         {
-            _text.text = $"{health}/100";
+            _bar.size = health / 100f;
             _characterAnimations.PlayGetHit();
         }
 
