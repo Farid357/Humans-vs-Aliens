@@ -12,9 +12,8 @@ namespace HumansVsAliens
     public sealed class Game : MonoBehaviour
     {
         [SerializeField] private CharacterFactory _characterFactory;
-
+        
         private IGameLoop _gameLoop;
-        [SerializeField] private IBladedWeapon _weaponsCollectionView;
 
         private void Awake()
         {

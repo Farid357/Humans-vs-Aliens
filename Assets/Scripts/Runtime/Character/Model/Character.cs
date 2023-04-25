@@ -8,7 +8,8 @@ namespace HumansVsAliens.Model
     {
         [SerializeField] private CharacterMovement _movement;
         [SerializeField] private CharacterAnimations _animations;
-      
+        [SerializeField] private CharacterCamera _camera;
+        
         private IBladedWeaponsCollection _weaponsCollection;
 
         public void Init(IHealth health, IBladedWeaponsCollection weaponsCollection)
@@ -18,14 +19,16 @@ namespace HumansVsAliens.Model
         }
 
         public IHealth Health { get; private set; }
-        
+
         public bool IsAlive => Health.IsAlive;
-        
+
         public bool CanAttack => _weaponsCollection.Weapon.CanHit;
 
         public ICharacterMovement Movement => _movement;
+        
+        public ICharacterCamera Camera => _camera;
 
-        public ICharacterAnimations Animations => _animations;
+        public IHealthAnimations Animations => _animations;
         
         public void Attack()
         {
@@ -41,6 +44,9 @@ namespace HumansVsAliens.Model
 
         public void SwitchWeapon(IBladedWeapon weapon)
         {
+            if(!IsAlive)
+                throw new InvalidOperationException($"Character is not alive!");
+
             _weaponsCollection.SwitchWeapon(weapon);
         }
     }

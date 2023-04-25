@@ -47,22 +47,6 @@ namespace HumansVsAliens.Networking
         {
         }
 
-        public void EnterInNew()
-        {
-            RoomOptions roomOptions = new RoomOptions
-            {
-                IsOpen = true,
-                MaxPlayers = 4
-            };
-
-            PhotonNetwork.CreateRoom("Arena", roomOptions);
-        }
-
-        public void JoinRandom()
-        {
-            PhotonNetwork.JoinRandomRoom();
-        }
-
         public void Dispose()
         {
             PhotonNetwork.RemoveCallbackTarget(this);

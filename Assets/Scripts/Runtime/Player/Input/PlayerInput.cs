@@ -191,6 +191,56 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Fighting"",
+            ""id"": ""abb6981f-0f69-485b-80f0-9643ceb7ba5c"",
+            ""actions"": [
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""dddd69f9-09d9-4665-9d96-cbdaba12f322"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9298aa80-313a-4901-8aad-b21a7087dc70"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""789b3d09-4a4a-4a82-a789-b262af91442a"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""395bd225-f33e-44ad-b5da-ed1ad119658b"",
+                    ""path"": ""<DualShockGamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -205,6 +255,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
+        // Fighting
+        m_Fighting = asset.FindActionMap("Fighting", throwIfNotFound: true);
+        m_Fighting_Attack = m_Fighting.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,6 +354,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // Fighting
+    private readonly InputActionMap m_Fighting;
+    private IFightingActions m_FightingActionsCallbackInterface;
+    private readonly InputAction m_Fighting_Attack;
+    public struct FightingActions
+    {
+        private @PlayerInput m_Wrapper;
+        public FightingActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Attack => m_Wrapper.m_Fighting_Attack;
+        public InputActionMap Get() { return m_Wrapper.m_Fighting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FightingActions set) { return set.Get(); }
+        public void SetCallbacks(IFightingActions instance)
+        {
+            if (m_Wrapper.m_FightingActionsCallbackInterface != null)
+            {
+                @Attack.started -= m_Wrapper.m_FightingActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_FightingActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_FightingActionsCallbackInterface.OnAttack;
+            }
+            m_Wrapper.m_FightingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+            }
+        }
+    }
+    public FightingActions @Fighting => new FightingActions(this);
     private int m_CharacterSchemeIndex = -1;
     public InputControlScheme CharacterScheme
     {
@@ -314,5 +400,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IFightingActions
+    {
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

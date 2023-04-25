@@ -10,6 +10,7 @@ namespace HumansVsAliens.Factory
         [SerializeField] private BladedWeaponView _prefab;
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private int _damage = 10;
+        [SerializeField] private float _hitDistance = 10f;
 
         public IBladedWeapon Create(Transform parent)
         {
@@ -18,7 +19,7 @@ namespace HumansVsAliens.Factory
             
             BladedWeaponView view = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity, parent);
             view.Enable();
-            return new BladedWeapon(view, _damage);
+            return new BladedWeapon(view, _damage, _hitDistance);
         }
     }
 }

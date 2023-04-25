@@ -9,5 +9,7 @@ namespace HumansVsAliens.Model
         IHealth Health { get; }
         
         ICharacterMovement Movement { get; }
+        
+        ICharacterCamera Camera { get; }
     }
 }

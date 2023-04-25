@@ -28,9 +28,9 @@ namespace HumansVsAliens.Model
             
             if (Physics.Raycast(View.Position, Vector3.forward, out RaycastHit hitInfo, _maxHitDistance))
             {
-                if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out IHealth health))
+                if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out IEnemy enemy))
                 {
-                    health.TakeDamage(_damage);
+                    enemy.Health.TakeDamage(_damage);
                 }
             }
         }

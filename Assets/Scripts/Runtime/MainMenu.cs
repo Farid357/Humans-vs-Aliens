@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HumansVsAliens.LoadSystem;
 using HumansVsAliens.Networking;
 using UnityEngine;
@@ -9,26 +10,30 @@ namespace HumansVsAliens
     {
         [SerializeField] private Scene _game;
         [SerializeField] private SceneLoadingView _sceneLoadingView;
-        
-        private IRoom _room;
+        [SerializeField] private CreateRoomButton _createRoomButton;
+        [SerializeField] private JoinRandomRoomButton _joinRoomButton;
+
+        private List<Button> _buttons;
 
         private void Awake()
         {
             INetwork network = new Network();
             IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
-            _room = new Room(gameScene);
+            IRoom gameRoom = new Room(gameScene);
+
+            _buttons = new List<Button>
+            {
+                _createRoomButton,
+                _joinRoomButton
+            };
+
+            _buttons.ForEach(button => button.Init());
             network.Connect();
         }
-        
-        public void JoinRoom()
-        {
-            Debug.Log("try Joined");
-            _room.JoinRandom();
-        }
 
-        public void CreateRoom()
+        private void OnDestroy()
         {
-            _room.EnterInNew();
+            _buttons.ForEach(button => button.Dispose());
         }
     }
 }
