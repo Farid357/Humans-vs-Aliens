@@ -36,7 +36,7 @@ namespace HumansVsAliens
         private void Update()
         {
             _gameLoop.Update(Time.deltaTime);
-            Debug.Log(PhotonNetwork.PlayerList.Length);
+            Debug.Log($"Player: {PhotonNetwork.PlayerList.Length}");
         }
     }
 }

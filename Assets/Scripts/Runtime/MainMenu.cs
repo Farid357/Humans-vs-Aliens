@@ -12,7 +12,7 @@ namespace HumansVsAliens
         [SerializeField] private SceneLoadingView _sceneLoadingView;
         [SerializeField] private CreateRoomButton _createRoomButton;
         [SerializeField] private JoinRandomRoomButton _joinRoomButton;
-
+        
         private List<Button> _buttons;
 
         private void Awake()

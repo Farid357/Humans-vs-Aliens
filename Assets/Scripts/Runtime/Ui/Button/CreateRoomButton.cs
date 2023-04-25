@@ -36,7 +36,7 @@ namespace HumansVsAliens
             };
 
             Debug.Log($"Created Room (players: {roomOptions.MaxPlayers}");
-            bool createdRoom = PhotonNetwork.CreateRoom(_nameField.Text, roomOptions);
+            bool createdRoom = PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
 
             if (!createdRoom)
                 await SetErrorText("Can't create room!");
