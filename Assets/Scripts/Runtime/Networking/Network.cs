@@ -8,9 +8,18 @@ namespace HumansVsAliens.Networking
 {
     public class Network : INetwork, IConnectionCallbacks, IDisposable
     {
-        public void Connect()
+        public bool IsConnected => PhotonNetwork.IsConnected;
+
+        public Network()
         {
             PhotonNetwork.AddCallbackTarget(this);
+        }
+        
+        public void Connect()
+        {
+            if (IsConnected)
+                throw new InvalidOperationException($"Network is already connected!");
+            
             PhotonNetwork.ConnectUsingSettings();
         }
 

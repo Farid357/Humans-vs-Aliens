@@ -13,9 +13,10 @@ namespace HumansVsAliens.Factory
 
         public IScore Create()
         {
-            ISaveStorage<int> scoreStorage = new BinaryStorage<int>(new Path(nameof(IScore)));
-            IScore score = new Score(_scoreView);
-            score.Add(scoreStorage.LoadOrDefault());
+            ISaveStorage<int> scoreStorage = new BinaryStorage<int>(new Path(nameof(IScore) + "SaveCount"));
+            int scoreCount = scoreStorage.LoadOrDefault();
+            IScore score = new Score(scoreCount, _scoreView);
+            _scoreView.Visualize(scoreCount);
             return new ScoreWithSave(score, scoreStorage);
         }
     }
