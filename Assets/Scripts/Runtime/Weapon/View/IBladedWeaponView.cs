@@ -1,15 +1,7 @@
-using UnityEngine;
-
 namespace HumansVsAliens.View
 {
-    public interface IBladedWeaponView
+    public interface IBladedWeaponView : IReadOnlyBladedWeaponView
     {
-        Vector3 Position { get; }
-
-        IBladedWeaponViewData Data { get; }
-        
-        bool IsActive { get; }
-
         void Enable();
 
         void Disable();

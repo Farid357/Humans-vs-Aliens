@@ -17,8 +17,13 @@ namespace HumansVsAliens.Model
 
         public override BehaviorNodeStatus OnExecute(long time)
         {
-            _health.TakeDamage(_damage);
-            return BehaviorNodeStatus.Success;
+            if (_health.IsAlive)
+            {
+                _health.TakeDamage(_damage);
+                return BehaviorNodeStatus.Success;
+            }
+
+            return BehaviorNodeStatus.Failure;
         }
     }
 }

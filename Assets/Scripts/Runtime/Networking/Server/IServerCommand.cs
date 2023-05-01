@@ -1,6 +1,6 @@
 namespace HumansVsAliens.Networking
 {
-    public interface IServerCommand<in TModel>
+    public interface IServerCommand
     {
         void Execute();
     }

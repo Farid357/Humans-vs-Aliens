@@ -1,5 +1,7 @@
+using System;
 using HumansVsAliens.Model;
 using HumansVsAliens.View;
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Factory
@@ -7,12 +9,18 @@ namespace HumansVsAliens.Factory
     public class AlienFactory : MonoBehaviour, IEnemyFactory
     {
         [SerializeField] private Alien _alienPrefab;
-        [SerializeField] private Character _character;
         [SerializeField] private int _health = 80;
+        
+        private IReadOnlyCharacter _character;
 
+        public void Init(IReadOnlyCharacter character)
+        {
+            _character = character ?? throw new ArgumentNullException(nameof(character));
+        }
+        
         public IEnemy Create(Vector3 position)
         {
-            Alien alien = Instantiate(_alienPrefab, position, Quaternion.identity);
+            Alien alien = PhotonNetwork.Instantiate(_alienPrefab.name, position, Quaternion.identity).GetComponent<Alien>();
             IHealth health = new Health(new AlienHealthView(), _health);
             alien.Init(_character, health);
             return alien;

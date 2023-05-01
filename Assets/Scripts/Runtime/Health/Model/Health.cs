@@ -24,6 +24,7 @@ namespace HumansVsAliens.Model
                 throw new InvalidOperationException($"Health isn't alive!");
             
             Value = Math.Max(0, Value - damage);
+            _view.Visualize(Value);
             
             if(!IsAlive)
                 _view.Die();

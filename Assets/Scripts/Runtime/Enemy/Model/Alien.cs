@@ -8,7 +8,8 @@ namespace HumansVsAliens.Model
     {
         [SerializeField] private MovementWithNavmesh _movement;
         [SerializeField] private int _attackDamage = 10;
-
+        [SerializeField] private float _distanceToAttack = 5f;
+        
         private BehaviorNode _behaviorTree;
 
         public IHealth Health { get; private set; }
@@ -16,11 +17,21 @@ namespace HumansVsAliens.Model
         public void Init(IReadOnlyCharacter character, IHealth health)
         {
             Health = health ?? throw new ArgumentNullException(nameof(health));
-            
+            Transform characterTransform = character.Movement.Transform;
+
             _behaviorTree = new RepeatNode(new SequenceNode(new IBehaviorNode[]
             {
-                new MoveNode(_movement, character.Movement.Transform, 1.2f),
-                new AttackNode(character.Health, _attackDamage)
+                new ParallelSequenceNode(new IBehaviorNode[]
+                {
+                    new MoveNode(_movement, characterTransform, 1.2f),
+                }),
+                
+                new ParallelSequenceNode(new IBehaviorNode[]
+                {
+                    new IsNearNode(_movement.Transform, characterTransform, _distanceToAttack),
+                    new WaitNode(2.2f),
+                    new AttackNode(character.Health, _attackDamage)
+                })
             }));
         }
 
@@ -29,7 +40,7 @@ namespace HumansVsAliens.Model
             if (_behaviorTree.Finished)
                 _behaviorTree.Reset();
 
-            _behaviorTree.Execute((long)(Time.time * 100));
+            _behaviorTree.Execute((long)(Time.time * 1000));
         }
     }
 }

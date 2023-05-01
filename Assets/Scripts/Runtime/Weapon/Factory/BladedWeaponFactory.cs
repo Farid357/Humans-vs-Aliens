@@ -1,6 +1,7 @@
 using System;
 using HumansVsAliens.Model;
 using HumansVsAliens.View;
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Factory
@@ -17,7 +18,8 @@ namespace HumansVsAliens.Factory
             if (parent == null)
                 throw new ArgumentNullException(nameof(parent));
             
-            BladedWeaponView view = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity, parent);
+            BladedWeaponView view = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<BladedWeaponView>();
+            view.transform.SetParent(parent);
             view.Enable();
             return new BladedWeapon(view, _damage, _hitDistance);
         }

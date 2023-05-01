@@ -1,5 +1,3 @@
-using HumansVsAliens.View;
-
 namespace HumansVsAliens.View
 {
     public class AlienHealthView : IHealthView

@@ -6,9 +6,9 @@ using Photon.Realtime;
 
 namespace HumansVsAliens.Networking
 {
-    public class Server<TModel> : IServer<TModel>, IOnEventCallback, IDisposable
+    public class Server : IServer, IOnEventCallback, IDisposable
     {
-        private readonly Dictionary<int, IServerCommand<TModel>> _commands = new();
+        private readonly Dictionary<int, IServerCommand> _commands = new();
       
         private const byte ServerCommandsCode = 1;
         private const byte ClientsCommandsCode = 2;
@@ -20,22 +20,22 @@ namespace HumansVsAliens.Networking
 
         public bool CanSendCommands => PhotonNetwork.IsConnectedAndReady;
 
-        public void SendCommand(IServerCommand<TModel> command)
+        public void SendCommand(IServerCommand command)
         {
             SendCommand(command, ServerCommandsCode, ReceiverGroup.MasterClient);
         }
 
-        public void SendCommandToClients(IServerCommand<TModel> command)
+        public void SendCommandToClients(IServerCommand command)
         {
             SendCommand(command, ClientsCommandsCode, ReceiverGroup.All);
         }
 
-        private void SendCommand(IServerCommand<TModel> command, byte code, ReceiverGroup receivers)
+        private void SendCommand(IServerCommand command, byte code, ReceiverGroup receivers)
         {
             int hashCode = command.GetHashCode();
             
             if (CanSendCommands == false)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException($"Connect to network!");
 
             if (_commands.ContainsKey(hashCode))
                 throw new InvalidOperationException($"Server is sending same command!");
@@ -48,7 +48,7 @@ namespace HumansVsAliens.Networking
         public void OnEvent(EventData photonEvent)
         {
             var commandHashCode = (int)photonEvent.CustomData;
-            IServerCommand<TModel> command = _commands[commandHashCode];
+            IServerCommand command = _commands[commandHashCode];
             command.Execute();
             _commands.Remove(commandHashCode);
         }

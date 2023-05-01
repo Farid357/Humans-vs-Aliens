@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace HumansVsAliens.View
@@ -6,8 +5,9 @@ namespace HumansVsAliens.View
     public sealed class BladedWeaponView : MonoBehaviour, IBladedWeaponView
     {
         [SerializeField] private BladedWeaponViewData _data;
+        [SerializeField] private Transform _transform;
         
-        public Vector3 Position => transform.position;
+        public Vector3 Position => _transform.position;
         
         public IBladedWeaponViewData Data => _data;
 

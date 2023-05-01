@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using HumansVsAliens.LoadSystem;
+using HumansVsAliens.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;

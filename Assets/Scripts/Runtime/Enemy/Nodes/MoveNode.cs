@@ -20,9 +20,10 @@ namespace HumansVsAliens.Model
 
         public override BehaviorNodeStatus OnExecute(long time)
         {
-            Vector3 direction = _target.position - _movement.Transform.position;
-            _movement.Move(direction.normalized);
-            return direction.sqrMagnitude >= _distanceToStopMovement * _distanceToStopMovement
+            Vector3 difference = _target.position - _movement.Transform.position;
+            _movement.Move(difference.normalized);
+          
+            return difference.sqrMagnitude >= _distanceToStopMovement * _distanceToStopMovement
                 ? BehaviorNodeStatus.Success
                 : BehaviorNodeStatus.Failure;
         }
