@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace HumansVsAliens.View
@@ -20,6 +21,12 @@ namespace HumansVsAliens.View
         public void Disable()
         {
             gameObject.SetActive(false);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(Position, transform.forward);
         }
     }
 }

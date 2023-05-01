@@ -35,15 +35,8 @@ namespace HumansVsAliens
                 player,
             }));
 
-            RegisterCommand<AddScoreCommand>();
             await UniTask.Delay(3000);
-            server.SendCommandToClients(new AddScoreCommand(), score);
-        }
-
-        private void RegisterCommand<T>() where T : new()
-        {
-            PhotonPeer.RegisterType(typeof(T), _commandCode, (_, _) => 0, (_, _) => new T());
-            _commandCode++;
+            server.SendCommandToClients(new AddScoreCommand(score));
         }
         
         private void InitLoots(ICharacter character)

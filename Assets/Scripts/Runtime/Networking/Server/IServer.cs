@@ -1,11 +1,11 @@
 namespace HumansVsAliens.Networking
 {
-    public interface IServer<TModel>
+    public interface IServer<out TModel>
     {
         bool CanSendCommands { get; }
         
-        void SendCommand(IServerCommand<TModel> command, TModel model);
+        void SendCommand(IServerCommand<TModel> command);
 
-        void SendCommandToClients(IServerCommand<TModel> command, TModel model);
+        void SendCommandToClients(IServerCommand<TModel> command);
     }
 }

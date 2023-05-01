@@ -13,7 +13,7 @@ namespace HumansVsAliens.Factory
         public IEnemy Create(Vector3 position)
         {
             Alien alien = Instantiate(_alienPrefab, position, Quaternion.identity);
-            IHealth health = new Health(new CharacterHealthView(), _health);
+            IHealth health = new Health(new AlienHealthView(), _health);
             alien.Init(_character, health);
             return alien;
         }

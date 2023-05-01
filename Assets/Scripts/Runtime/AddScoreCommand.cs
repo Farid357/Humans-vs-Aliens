@@ -1,12 +1,20 @@
+using System;
 using HumansVsAliens.Networking;
 
 namespace HumansVsAliens.Model
 {
     public class AddScoreCommand : IServerCommand<IScore>
     {
-        public void Execute(IScore score)
+        private readonly IScore _score;
+
+        public AddScoreCommand(IScore score)
         {
-            score.Add(100);
+            _score = score ?? throw new ArgumentNullException(nameof(score));
+        }
+
+        public void Execute()
+        {
+            _score.Add(100);
         }
     }
 }
