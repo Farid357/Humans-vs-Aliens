@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +19,7 @@ namespace HumansVsAliens.View
                 Color color = _text.color;
                 _text.DOColor(Color.red, 0.4f).OnComplete(() => _text.color = color);
             }
-            
+
             ShowingCount = enemiesCount;
             _text.text = enemiesCount.ToString();
         }

@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.View;
 
@@ -16,7 +17,7 @@ namespace HumansVsAliens.Model
         }
 
         private int LastShowedCount => _view.ShowingCount;
-        
+
         public void Update(float deltaTime)
         {
             int currentEnemiesCount = _enemiesWorld.Enemies.Count;

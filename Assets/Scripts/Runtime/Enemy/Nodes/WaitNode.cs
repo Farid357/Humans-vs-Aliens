@@ -1,16 +1,17 @@
 using BananaParty.BehaviorTree;
+using HumansVsAliens.Tools;
 using UnityEngine;
 
 namespace HumansVsAliens.Model
 {
     public class WaitNode : BehaviorNode
     {
-        private float _time;
         private readonly float _duration;
+        private float _time;
 
         public WaitNode(float duration)
         {
-            _duration = duration;
+            _duration = duration.ThrowIfLessOrEqualsToZeroException();
         }
 
         public override string Name => $"{base.Name} {_duration}";

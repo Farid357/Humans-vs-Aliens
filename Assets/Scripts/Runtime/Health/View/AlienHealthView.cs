@@ -1,7 +1,16 @@
+using UnityEngine;
+
 namespace HumansVsAliens.View
 {
     public class AlienHealthView : IHealthView
     {
+        private readonly GameObject _gameObject;
+
+        public AlienHealthView(GameObject gameObject)
+        {
+            _gameObject = gameObject ?? throw new System.ArgumentNullException(nameof(gameObject));
+        }
+
         public void Visualize(int health)
         {
             
@@ -9,6 +18,7 @@ namespace HumansVsAliens.View
 
         public void Die()
         {
+            Object.Destroy(_gameObject);
         }
     }
 }

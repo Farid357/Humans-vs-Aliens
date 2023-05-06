@@ -4,6 +4,6 @@ namespace HumansVsAliens.Model
     {
         bool IsEnded { get; }
         
-        void Start();
+        void Restart();
     }
 }

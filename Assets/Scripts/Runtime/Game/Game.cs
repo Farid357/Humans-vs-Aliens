@@ -17,6 +17,7 @@ namespace HumansVsAliens
         [SerializeField] private ScoreFactory _scoreFactory;
         [SerializeField] private EnemyWavesFactory _enemyWavesFactory;
         [SerializeField] private EnemyCounterView _enemyCounterView;
+        [SerializeField] private TimerBetweenWavesView _timerBetweenWavesView;
 
         private IGameLoop _gameLoop;
 
@@ -28,7 +29,8 @@ namespace HumansVsAliens
             IScore score = _scoreFactory.Create();
             IGameLoopObject player = new Player(character);
             _enemyWavesFactory.Init(enemiesWorld, character);
-            IEnemyWavesLoop enemyWavesLoop = new EnemyWavesLoop(_enemyWavesFactory.Create());
+            var timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
+            IEnemyWavesLoop enemyWavesLoop = new EnemyWavesLoop(_enemyWavesFactory.Create(), timerBetweenWaves);
             IServer server = new Server();
             IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
 
@@ -37,9 +39,10 @@ namespace HumansVsAliens
                 player,
                 enemyWavesLoop,
                 enemiesWorld,
+                timerBetweenWaves,
                 enemyCounter
             }));
-            
+
             InitLoots(character);
             await UniTask.Delay(3000);
             server.SendCommandToClients(new PrepareGameCommand(enemyWavesLoop));

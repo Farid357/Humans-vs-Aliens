@@ -21,7 +21,8 @@ namespace HumansVsAliens.Factory
         public IEnemy Create(Vector3 position)
         {
             Alien alien = PhotonNetwork.Instantiate(_alienPrefab.name, position, Quaternion.identity).GetComponent<Alien>();
-            IHealth health = new Health(new AlienHealthView(), _health);
+            IHealthView healthView = new AlienHealthView(alien.gameObject);
+            IHealth health = new Health(healthView, _health);
             alien.Init(_character, health);
             return alien;
         }

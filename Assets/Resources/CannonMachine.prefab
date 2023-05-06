@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 9015119833918375189}
   - component: {fileID: 3633653727045688849}
   - component: {fileID: 7233540814727073964}
+  - component: {fileID: 3990214224754697017}
   m_Layer: 0
   m_Name: CannonMachine
   m_TagString: Untagged
@@ -451,7 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movement: {fileID: 2412783333288122908}
   _attackDamage: 10
-  _distanceToAttack: 5
+  _distanceToAttack: 7.5
 --- !u!114 &2412783333288122908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +558,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!65 &3990214224754697017
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782509303097944415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.61, y: 3.3400002, z: 3.447281}
+  m_Center: {x: 0.000000001946944, y: 1.02, z: -0.6186407}
 --- !u!1 &7782603482006541105
 GameObject:
   m_ObjectHideFlags: 0

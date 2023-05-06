@@ -14,7 +14,7 @@ namespace HumansVsAliens.Model
 
         public void Execute()
         {
-            _wave.Start();
+            _wave.Restart();
         }
     }
 }

@@ -18,17 +18,18 @@ namespace HumansVsAliens.Model
         }
 
         public bool CanHit => View.IsActive;
-        
+
         public IBladedWeaponView View { get; }
 
         public void Hit()
         {
             if (CanHit == false)
                 throw new InvalidOperationException($"View is not active! You can't hit!");
-            
-            if (Physics.Raycast(View.Position, Vector3.forward, out RaycastHit hitInfo, _maxHitDistance))
+
+            Collider[] hits = Physics.OverlapSphere(View.Position, _maxHitDistance);
+            foreach (Collider hit in hits)
             {
-                if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out IEnemy enemy))
+                if (hit != null && hit.TryGetComponent(out IEnemy enemy))
                 {
                     enemy.Health.TakeDamage(_damage);
                 }

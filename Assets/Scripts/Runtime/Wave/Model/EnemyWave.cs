@@ -11,7 +11,6 @@ namespace HumansVsAliens.Model
         private readonly IReadOnlyDictionary<EnemyType, IEnemyFactory> _enemyFactories;
         private readonly IEnemiesWorld _enemiesWorld;
         private readonly IEnemyWaveData _data;
-        private bool _isStarted;
 
         public EnemyWave(IReadOnlyDictionary<EnemyType, IEnemyFactory> enemyFactories, IEnemiesWorld enemiesWorld, IEnemyWaveData data)
         {
@@ -22,12 +21,8 @@ namespace HumansVsAliens.Model
 
         public bool IsEnded => _enemiesWorld.EverybodyDied;
 
-        public void Start()
+        public void Restart()
         {
-            if (_isStarted)
-                throw new InvalidOperationException($"Wave is already started!");
-
-            _isStarted = true;
             CreateEnemies();
         }
 

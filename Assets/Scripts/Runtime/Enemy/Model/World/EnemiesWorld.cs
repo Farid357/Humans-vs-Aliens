@@ -27,6 +27,7 @@ namespace HumansVsAliens.Model
                 if (enemy.Key.Health.IsDied())
                 {
                     _enemies.Remove(enemy.Key);
+                    break;
                 }
             }
         }
