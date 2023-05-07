@@ -6,7 +6,7 @@ namespace HumansVsAliens.Model
 {
     public sealed class Alien : MonoBehaviour, IEnemy
     {
-        [SerializeField] private MovementWithNavmesh _movement;
+        [SerializeField] private Movement _movement;
         [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _distanceToAttack = 5f;
         

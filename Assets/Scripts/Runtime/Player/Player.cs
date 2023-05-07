@@ -33,6 +33,12 @@ namespace HumansVsAliens.Model
             {
                 _character.Attack();
             }
+
+            if (_input.Camera.ZoomIn.IsPressed() && !_character.Camera.IsInFullZoomIn)
+                _character.Camera.ZoomIn();
+
+            if (!_input.Camera.ZoomIn.IsPressed() && !_character.Camera.IsInFullZoomOut)
+                _character.Camera.ZoomOut();
         }
     }
 }

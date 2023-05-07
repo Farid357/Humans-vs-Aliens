@@ -9,8 +9,9 @@ namespace HumansVsAliens.Model
     {
         private readonly int _damage;
         private readonly float _maxHitDistance;
+        private Collider[] _hits = new Collider[256];
 
-        public BladedWeapon(IBladedWeaponView view, int damage, float maxHitDistance = 1.5f)
+        public BladedWeapon(IBladedWeaponView view, int damage, float maxHitDistance)
         {
             View = view ?? throw new ArgumentNullException(nameof(view));
             _damage = damage.ThrowIfLessThanOrEqualsToZeroException();
@@ -26,8 +27,9 @@ namespace HumansVsAliens.Model
             if (CanHit == false)
                 throw new InvalidOperationException($"View is not active! You can't hit!");
 
-            Collider[] hits = Physics.OverlapSphere(View.Position, _maxHitDistance);
-            foreach (Collider hit in hits)
+            Physics.OverlapSphereNonAlloc(View.Position, _maxHitDistance, _hits);
+
+            foreach (Collider hit in _hits)
             {
                 if (hit != null && hit.TryGetComponent(out IEnemy enemy))
                 {

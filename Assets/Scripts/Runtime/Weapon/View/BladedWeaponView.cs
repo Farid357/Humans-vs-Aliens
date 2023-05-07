@@ -22,11 +22,5 @@ namespace HumansVsAliens.View
         {
             gameObject.SetActive(false);
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(Position, transform.forward);
-        }
     }
 }

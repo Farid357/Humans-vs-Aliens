@@ -21,7 +21,7 @@ namespace HumansVsAliens
 
         private IGameLoop _gameLoop;
 
-        private async void Awake()
+        private void Awake()
         {
             _gameLoop = new StandardGameLoop();
             var enemiesWorld = new EnemiesWorld();
@@ -44,7 +44,6 @@ namespace HumansVsAliens
             }));
 
             InitLoots(character);
-            await UniTask.Delay(3000);
             server.SendCommandToClients(new PrepareGameCommand(enemyWavesLoop));
         }
 

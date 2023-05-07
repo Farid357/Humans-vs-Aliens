@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.View
@@ -18,7 +19,7 @@ namespace HumansVsAliens.View
 
         public void Die()
         {
-            Object.Destroy(_gameObject);
+            PhotonNetwork.Destroy(_gameObject);
         }
     }
 }

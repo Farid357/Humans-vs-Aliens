@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,7 @@ namespace HumansVsAliens.SceneManagement
 #if UNITY_EDITOR
         [SerializeField] private SceneAsset _scene;
 #endif
-        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField, ReadOnly] public string Name { get; private set; }
 
         public void Load()
         {

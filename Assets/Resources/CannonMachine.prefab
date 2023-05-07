@@ -409,10 +409,10 @@ GameObject:
   - component: {fileID: 6937516916527194289}
   - component: {fileID: 2412783333288122908}
   - component: {fileID: 5360201717463994797}
-  - component: {fileID: 9015119833918375189}
   - component: {fileID: 3633653727045688849}
   - component: {fileID: 7233540814727073964}
   - component: {fileID: 3990214224754697017}
+  - component: {fileID: 5643142524180257280}
   m_Layer: 0
   m_Name: CannonMachine
   m_TagString: Untagged
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 5360201717463994797}
-  _animations: {fileID: 9015119833918375189}
+  _animations: {fileID: 5643142524180257280}
   _speed: 0
 --- !u!195 &5360201717463994797
 NavMeshAgent:
@@ -490,18 +490,6 @@ NavMeshAgent:
   m_BaseOffset: 0.53
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &9015119833918375189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782509303097944415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddde5d69cec64c758f5d1989a7d4769e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3633653727045688849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +559,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.61, y: 3.3400002, z: 3.447281}
   m_Center: {x: 0.000000001946944, y: 1.02, z: -0.6186407}
+--- !u!114 &5643142524180257280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782509303097944415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d47b8c54de29b45b65606fea149d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7782603482006541105
 GameObject:
   m_ObjectHideFlags: 0
