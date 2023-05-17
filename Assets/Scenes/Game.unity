@@ -1353,6 +1353,7 @@ GameObject:
   - component: {fileID: 810996714}
   - component: {fileID: 810996713}
   - component: {fileID: 810996715}
+  - component: {fileID: 810996716}
   m_Layer: 5
   m_Name: Wave Timer Text
   m_TagString: Untagged
@@ -1491,6 +1492,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 810996713}
+--- !u!114 &810996716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810996711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05cb6150b81796479a52055bbbfb0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToStartWave: 10
+  _timer: {fileID: 810996713}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,6 +2527,7 @@ MonoBehaviour:
   _enemyWavesFactory: {fileID: 144319586}
   _enemyCounterView: {fileID: 1063063116}
   _timerBetweenWavesView: {fileID: 810996715}
+  _enemyWavesView: {fileID: 810996716}
 --- !u!4 &1669834146
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,7 +2608,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1797913942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,7 +3346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthView: {fileID: 2129116068}
-  _prefab: {fileID: 7177022205412232007, guid: 149759320526cec4c998c0a9e6e1d5f8, type: 3}
+  _prefab: {fileID: 380590219958481484, guid: ef4a7d9f89906314db59b5dbd20ba71d, type: 3}
   _weaponFactory: {fileID: 478308404}
   _spawnPoint: {fileID: 495104435}
   _bladedWeaponsCollectionView: {fileID: 478308402}
@@ -3655,5 +3671,15 @@ PrefabInstance:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 1463441310}
+    - target: {fileID: 5940924020302966549, guid: 9521277aeb448124c89145b13ea3105a,
+        type: 3}
+      propertyPath: _attackRadius
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940924020302966549, guid: 9521277aeb448124c89145b13ea3105a,
+        type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9521277aeb448124c89145b13ea3105a, type: 3}

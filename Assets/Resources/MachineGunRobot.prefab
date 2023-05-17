@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7817447207385117481}
   - component: {fileID: 7783891032250755081}
   - component: {fileID: 7791400326652613167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7810181996330532747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 7810046602297996345}
   - component: {fileID: 7783634633235456069}
   - component: {fileID: 7792133135543867149}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Robot_Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7810305109922177437}
   - component: {fileID: 7915613646425806095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 7809805954815083403}
   - component: {fileID: 7922603124895882069}
   - component: {fileID: 8895043683664967991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 7817237458261404069}
   - component: {fileID: 7783876670859658471}
   - component: {fileID: 7791275461961208993}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 7809889201840688437}
   - component: {fileID: 7785238941686337563}
   - component: {fileID: 7793005700449679695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 7817126037996338813}
   - component: {fileID: 7785305081190800115}
   - component: {fileID: 7791765842279675859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_GunJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 7809954362791643813}
   - component: {fileID: 7783698480935595585}
   - component: {fileID: 7793005431922796667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_FireBurster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 7817314578293603639}
   - component: {fileID: 7984156895549287335}
   - component: {fileID: 7976401461653113217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5572,7 +5572,7 @@ GameObject:
   - component: {fileID: 7817244091800019377}
   - component: {fileID: 7976922720654025181}
   - component: {fileID: 7978091855303566191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireBurstEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10396,7 +10396,7 @@ GameObject:
   - component: {fileID: 7810309467695110389}
   - component: {fileID: 7784287546128504591}
   - component: {fileID: 7792078290860546137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineGunRobot_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}

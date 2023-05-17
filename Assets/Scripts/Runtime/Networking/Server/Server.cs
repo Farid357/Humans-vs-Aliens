@@ -47,6 +47,9 @@ namespace HumansVsAliens.Networking
 
         public void OnEvent(EventData photonEvent)
         {
+            if (photonEvent.CustomData is not int)
+                return;
+
             var commandHashCode = (int)photonEvent.CustomData;
             IServerCommand command = _commands[commandHashCode];
             command.Execute();
