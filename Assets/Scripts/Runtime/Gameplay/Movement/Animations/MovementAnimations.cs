@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public abstract class MovementAnimations : MonoBehaviour
     {

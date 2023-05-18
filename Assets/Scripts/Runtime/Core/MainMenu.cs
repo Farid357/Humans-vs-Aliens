@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Network = HumansVsAliens.Networking.Network;
 using HumansVsAliens.SceneManagement;
 using HumansVsAliens.Networking;
+using HumansVsAliens.UI;
 using UnityEngine;
-using Network = HumansVsAliens.Networking.Network;
 
 namespace HumansVsAliens.Core
 {

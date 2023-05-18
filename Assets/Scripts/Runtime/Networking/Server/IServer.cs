@@ -5,8 +5,6 @@ namespace HumansVsAliens.Networking
         bool CanSendCommands { get; }
         
         void SendCommand(IServerCommand command);
-
-        void SendCommandToClients(IServerCommand command);
     }
 }
 

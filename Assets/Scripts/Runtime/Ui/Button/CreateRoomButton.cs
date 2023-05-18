@@ -7,7 +7,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     public class CreateRoomButton : Button
     {

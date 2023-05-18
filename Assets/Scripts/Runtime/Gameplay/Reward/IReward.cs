@@ -1,4 +1,4 @@
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public interface IReward
     {

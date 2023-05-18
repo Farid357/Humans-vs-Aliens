@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     [RequireComponent(typeof(TMP_InputField))]
     public sealed class RoomNameField : MonoBehaviour, IInputField

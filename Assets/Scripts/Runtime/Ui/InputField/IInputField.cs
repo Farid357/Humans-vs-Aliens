@@ -1,4 +1,4 @@
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     public interface IInputField
     {

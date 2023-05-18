@@ -1,6 +1,6 @@
 using Photon.Pun;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     public class JoinRandomRoomButton : Button
     {

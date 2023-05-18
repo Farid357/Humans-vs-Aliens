@@ -2,7 +2,7 @@ using System;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Tools;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public class KillReward : IGameLoopObject
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     [RequireComponent(typeof(Collider))]
     public abstract class Loot : MonoBehaviour

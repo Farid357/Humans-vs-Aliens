@@ -1,7 +1,7 @@
 using System;
 using HumansVsAliens.Tools;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public class ScoreReward : IReward
     {

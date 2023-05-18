@@ -1,8 +1,8 @@
 using System;
-using HumansVsAliens.Factory;
+using HumansVsAliens.Gameplay;
 using UnityEngine;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public sealed class WeaponLoot : Loot
     {

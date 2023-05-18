@@ -2,7 +2,7 @@ using System;
 using HumansVsAliens.GameLoop;
 using UnityEngine;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public sealed class Player : IGameLoopObject
     {

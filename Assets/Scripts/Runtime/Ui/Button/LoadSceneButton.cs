@@ -2,7 +2,7 @@ using System;
 using HumansVsAliens.SceneManagement;
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     [RequireComponent(typeof(UnityEngine.UI.Button))]
     public sealed class LoadSceneButton : MonoBehaviour

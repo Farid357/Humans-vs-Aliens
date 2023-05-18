@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace HumansVsAliens.Model
+namespace HumansVsAliens.Gameplay
 {
     public sealed class MovementWithNavmesh : Movement
     {

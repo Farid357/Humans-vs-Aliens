@@ -1,5 +1,5 @@
 using System;
-using HumansVsAliens.Model;
+using HumansVsAliens.Gameplay;
 
 namespace HumansVsAliens.Tools
 {

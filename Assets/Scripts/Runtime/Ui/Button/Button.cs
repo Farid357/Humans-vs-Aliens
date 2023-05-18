@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     [RequireComponent(typeof(UnityEngine.UI.Button))]
     public abstract class Button : MonoBehaviour

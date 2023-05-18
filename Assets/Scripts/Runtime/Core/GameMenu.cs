@@ -1,4 +1,5 @@
 using HumansVsAliens.SceneManagement;
+using HumansVsAliens.UI;
 using UnityEngine;
 
 namespace HumansVsAliens.Core

@@ -1214,9 +1214,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 525778249}
-  - component: {fileID: 525778248}
   - component: {fileID: 525778247}
   - component: {fileID: 525778250}
+  - component: {fileID: 525778251}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1238,22 +1238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressText: {fileID: 322712840}
   _loadingWindow: {fileID: 2111006932}
---- !u!114 &525778248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525778246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b04485f4784231ad56d4111bf46c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _game: {fileID: 11400000, guid: db94579bf9416f74db819e01aee21bb4, type: 2}
-  _sceneLoadingView: {fileID: 525778247}
-  _createRoomButton: {fileID: 1137066543}
-  _joinRoomButton: {fileID: 368261954}
 --- !u!4 &525778249
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1273,22 @@ MonoBehaviour:
   _background: {fileID: 151496919}
   _delayBetweenIcons: 10
   _fadeDuration: 1.5
+--- !u!114 &525778251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525778246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922c8985892117b4c85105b64ba6ead1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 11400000, guid: db94579bf9416f74db819e01aee21bb4, type: 2}
+  _sceneLoadingView: {fileID: 525778247}
+  _createRoomButton: {fileID: 1137066543}
+  _joinRoomButton: {fileID: 368261954}
 --- !u!1001 &625974693
 PrefabInstance:
   m_ObjectHideFlags: 0
