@@ -1,0 +1,17 @@
+{
+    "name": "HumansVsAliens.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:162cdd4d0e2865749909713dd9d1620e",
+        "GUID:22861456e4a0b8341918ca81a729e9c0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,4 +1,3 @@
-using HumansVsAliens.Gameplay;
 using HumansVsAliens.View;
 using SaveSystem;
 using SaveSystem.Paths;
@@ -14,6 +13,7 @@ namespace HumansVsAliens.Gameplay
         {
             ISaveStorage<int> moneyStorage = new BinaryStorage<int>(new Path(nameof(IWallet)));
             int money = moneyStorage.HasSave() ? moneyStorage.Load() : 100;
+            _view.Visualize(money);
             return new WalletWithSave(new Wallet(money, _view), moneyStorage);
         }
     }
