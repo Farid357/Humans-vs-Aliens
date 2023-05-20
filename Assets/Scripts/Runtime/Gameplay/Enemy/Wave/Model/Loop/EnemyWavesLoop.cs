@@ -18,11 +18,11 @@ namespace HumansVsAliens.Gameplay
 
         public bool IsEnded => false;
 
-        public void Restart()
+        public void Start()
         {
             _enemyWave = _wavesQueue.GetWave();
             _wasStarted = true;
-            _enemyWave.Restart();
+            _enemyWave.Start();
         }
 
         public void Update(float deltaTime)
@@ -41,7 +41,7 @@ namespace HumansVsAliens.Gameplay
         {
             _enemyWave = _wavesQueue.GetWave();
             _timer.Stop();
-            _enemyWave.Restart();
+            _enemyWave.Start();
         }
     }
 }

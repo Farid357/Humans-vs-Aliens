@@ -8,9 +8,8 @@ namespace HumansVsAliens.Gameplay
     {
         private readonly IScoreView _view;
 
-        public Score(int count, IScoreView view)
+        public Score(IScoreView view)
         {
-            Count = count.ThrowIfLessThanZeroException();
             _view = view ?? throw new ArgumentNullException(nameof(view));
         }
 

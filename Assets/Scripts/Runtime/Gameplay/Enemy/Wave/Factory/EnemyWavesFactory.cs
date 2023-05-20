@@ -1,4 +1,5 @@
 using HumansVsAliens.GameLoop;
+using HumansVsAliens.Networking;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,11 @@ namespace HumansVsAliens.Gameplay
         private IEnemiesWorld _enemiesWorld;
 
         public void Init(IEnemiesWorld enemiesWorld, IReadOnlyCharacter character, IGameLoopObjectsGroup gameLoop, 
-            ICharacterStatistics statistics)
+            ICharacterStatistics statistics, IServer server)
         {
             _enemiesWorld = enemiesWorld ?? throw new ArgumentNullException(nameof(enemiesWorld));
-            _alienFactory.Init(character, gameLoop, statistics);
-            _redMonsterFactory.Init(character, gameLoop, statistics);
+            _alienFactory.Init(character, gameLoop, statistics, server);
+            _redMonsterFactory.Init(character, gameLoop, statistics, server);
         }
 
         public IEnemyWavesQueue Create()

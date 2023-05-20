@@ -9,7 +9,7 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private Movement _movement;
         [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _distanceToAttack = 5f;
-        
+
         private BehaviorNode _behaviorTree;
 
         public IHealth Health { get; private set; }
@@ -25,7 +25,7 @@ namespace HumansVsAliens.Gameplay
                 {
                     new MoveNode(_movement, characterTransform, 1.2f),
                 }),
-                
+
                 new ParallelSequenceNode(new IBehaviorNode[]
                 {
                     new IsNearNode(_movement.Transform, characterTransform, _distanceToAttack),
@@ -37,10 +37,13 @@ namespace HumansVsAliens.Gameplay
 
         private void Update()
         {
+            if (_behaviorTree == null)
+                return;
+
             if (_behaviorTree.Finished)
                 _behaviorTree.Reset();
 
-            _behaviorTree.Execute((long)(Time.time * 1000));
+            _behaviorTree?.Execute((long)(Time.time * 1000));
         }
     }
 }

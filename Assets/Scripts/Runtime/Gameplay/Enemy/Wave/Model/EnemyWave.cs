@@ -23,7 +23,7 @@ namespace HumansVsAliens.Gameplay
 
         public bool IsEnded => _enemiesWorld.EverybodyDied;
 
-        public void Restart()
+        public void Start()
         {
             _busyEnemyPositions.Clear();
             CreateEnemies();

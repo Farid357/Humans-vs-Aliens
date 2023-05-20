@@ -1,7 +1,4 @@
-using HumansVsAliens.Tools;
 using HumansVsAliens.View;
-using SaveSystem;
-using SaveSystem.Paths;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
@@ -12,11 +9,8 @@ namespace HumansVsAliens.Gameplay
 
         public IScore Create()
         {
-            ISaveStorage<int> scoreStorage = new BinaryStorage<int>(new Path(nameof(IScore) + "SaveCount"));
-            int scoreCount = scoreStorage.LoadOrDefault();
-            IScore score = new Score(scoreCount, _scoreView);
-            _scoreView.Visualize(scoreCount);
-            return new ScoreWithSave(score, scoreStorage);
+            IScore score = new ScoreSynchronization(new Score(_scoreView));
+            return score;
         }
     }
 }

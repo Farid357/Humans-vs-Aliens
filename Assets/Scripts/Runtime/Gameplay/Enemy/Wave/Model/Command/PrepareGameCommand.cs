@@ -17,7 +17,7 @@ namespace HumansVsAliens.Gameplay
         public async void Execute()
         {
             await _wavesView.StartWave();
-            _wave.Restart();
+            _wave.Start();
         }
     }
 }

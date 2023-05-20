@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using HumansVsAliens.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
@@ -31,7 +30,6 @@ namespace HumansVsAliens.Networking
 
         public void OnJoinedRoom()
         {
-            Debug.Log("Joined");
             _scene.Load();
         }
 

@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using UnityEngine;
 
 namespace HumansVsAliens.Networking
@@ -10,7 +11,7 @@ namespace HumansVsAliens.Networking
         private IServerCommand _serverCommand;
         private PhotonView _photonView;
 
-        public bool CanSendCommands => PhotonNetwork.IsConnectedAndReady;
+        public bool IsConnected => PhotonNetwork.IsConnectedAndReady;
 
         private void Awake()
         {
@@ -19,7 +20,10 @@ namespace HumansVsAliens.Networking
 
         public void SendCommand(IServerCommand serverCommand)
         {
-            _serverCommand = serverCommand ?? throw new System.ArgumentNullException(nameof(serverCommand));
+            if(!IsConnected)
+                throw new InvalidOperationException($"Server is not connected! You can't send commands!");
+
+            _serverCommand = serverCommand ?? throw new ArgumentNullException(nameof(serverCommand));
             _photonView.RPC(nameof(SendCommandRpc), RpcTarget.All);
         }
 

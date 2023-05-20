@@ -2,7 +2,7 @@ namespace HumansVsAliens.Networking
 {
     public interface IServer
     {
-        bool CanSendCommands { get; }
+        bool IsConnected { get; }
         
         void SendCommand(IServerCommand command);
     }

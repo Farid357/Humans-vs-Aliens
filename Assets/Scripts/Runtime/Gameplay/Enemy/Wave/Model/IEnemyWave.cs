@@ -4,6 +4,6 @@ namespace HumansVsAliens.Gameplay
     {
         bool IsEnded { get; }
         
-        void Restart();
+        void Start();
     }
 }

@@ -28,7 +28,7 @@ namespace HumansVsAliens.Core
             ICharacter character = _characterFactory.Create();
             ICharacterStatistics statistics = _statisticsFactory.Create();
             IGameLoopObject player = new Player(character);
-            _enemyWavesFactory.Init(enemiesWorld, character, _gameLoop, statistics);
+            _enemyWavesFactory.Init(enemiesWorld, character, _gameLoop, statistics, _server);
             var timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
             IEnemyWavesLoop enemyWavesLoop = new EnemyWavesLoop(_enemyWavesFactory.Create(), timerBetweenWaves);
             IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);

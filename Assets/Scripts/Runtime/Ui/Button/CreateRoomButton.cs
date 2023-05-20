@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using HumansVsAliens.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -14,7 +15,7 @@ namespace HumansVsAliens.UI
         [SerializeField] private PlayersToggle _toggle;
         [SerializeField] private RoomNameField _nameField;
         [SerializeField] private TMP_Text _errorText;
-     
+
         private CancellationToken _cancellationToken;
 
         private void Start()

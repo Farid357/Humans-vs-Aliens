@@ -20,7 +20,7 @@ namespace HumansVsAliens.Core
         {
             INetwork network = new Network();
             IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
-            IRoom gameRoom = new Room(gameScene);
+            IRoom room = new Room(gameScene);
 
             _buttons = new List<Button>
             {
