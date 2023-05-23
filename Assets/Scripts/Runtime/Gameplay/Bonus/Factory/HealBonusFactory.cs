@@ -1,6 +1,5 @@
 using System;
 using HumansVsAliens.Tools;
-using HumansVsAliens.View;
 using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,7 +8,7 @@ namespace HumansVsAliens.Gameplay
 {
     public class HealBonusFactory : MonoBehaviour, IBonusFactory
     {
-        [SerializeField] private BonusView _bonusPrefab;
+        [SerializeField] private PhysicsBonus _bonusPrefab;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField, Min(1)] private int _maxHeal = 10;
         [SerializeField, Min(1)] private int _minHeal = 5;
@@ -25,8 +24,9 @@ namespace HumansVsAliens.Gameplay
         {
             Vector3 position = _spawnPoints.GetRandom().position;
             int heal = Random.Range(_minHeal, _maxHeal);
-            IBonusView view = PhotonNetwork.Instantiate(_bonusPrefab.name, position, Quaternion.identity).GetComponent<BonusView>();
-            return new HealBonus(new Bonus(view), _health, heal);
+            PhysicsBonus bonus = PhotonNetwork.Instantiate(_bonusPrefab.name, position, Quaternion.identity).GetComponent<PhysicsBonus>();
+            bonus.Init(new HealBonus(new Bonus(bonus.View), _health, heal));
+            return bonus;
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace HumansVsAliens.View
 {
+    [RequireComponent(typeof(PhotonView))]
     public class BonusView : MonoBehaviour, IBonusView
     {
         [SerializeField] private AudioSource _pickAudio;

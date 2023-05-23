@@ -11,6 +11,7 @@ namespace HumansVsAliens.Gameplay
 
         public IChest Create()
         {
+            //TODO Replace Reward
             IChestView view = PhotonNetwork.Instantiate(_chestPrefab.name, _centerOfMap.position, Quaternion.identity).GetComponent<ChestView>();
             return new Chest(view, new FakeReward());
         }
