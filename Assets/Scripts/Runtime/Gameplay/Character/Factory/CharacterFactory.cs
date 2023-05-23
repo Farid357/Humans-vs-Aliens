@@ -15,7 +15,7 @@ namespace HumansVsAliens.Gameplay
         public ICharacter Create()
         {
             Character character = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<Character>();
-            IHealth health = new Health(_healthView, 100);
+            IHealth health = new HealthWithHealClamp(new Health(_healthView, 100));
             IBladedWeapon weapon = _weaponFactory.Create(character.transform);
             IBladedWeaponsCollection weaponsCollection = new BladedWeaponsCollection(weapon, _bladedWeaponsCollectionView);
             _bladedWeaponsCollectionView.SwitchWeapon(weapon);
