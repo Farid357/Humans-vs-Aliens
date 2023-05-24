@@ -9,7 +9,7 @@ namespace HumansVsAliens.Tests
         [Test]
         public void PutsMoneyCorrect()
         {
-            IWallet wallet = new Wallet(0, new DummyWalletView());
+            IWallet wallet = new Wallet(new DummyWalletView(), 0);
             wallet.Put(10);
             Assert.That(wallet.Money == 10);
         }
@@ -17,7 +17,7 @@ namespace HumansVsAliens.Tests
         [Test]
         public void TakesMoneyCorrect()
         {
-            IWallet wallet = new Wallet(10, new DummyWalletView());
+            IWallet wallet = new Wallet(new DummyWalletView(), 10);
             wallet.Take(10);
             Assert.That(wallet.Money == 0);
             Assert.False(wallet.CanTake(10));

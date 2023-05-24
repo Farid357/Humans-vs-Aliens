@@ -8,10 +8,10 @@ namespace HumansVsAliens.Gameplay
     {
         private readonly IWalletView _view;
 
-        public Wallet(int money, IWalletView view)
+        public Wallet(IWalletView view, int money)
         {
-            Money = money.ThrowIfLessThanZeroException();
             _view = view ?? throw new ArgumentNullException(nameof(view));
+            Money = money.ThrowIfLessThanZeroException();
         }
 
         public int Money { get; private set; }

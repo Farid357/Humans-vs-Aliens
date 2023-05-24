@@ -14,7 +14,7 @@ namespace HumansVsAliens.Gameplay
             ISaveStorage<int> moneyStorage = new BinaryStorage<int>(new Path(nameof(IWallet)));
             int money = moneyStorage.HasSave() ? moneyStorage.Load() : 100;
             _view.Visualize(money);
-            return new WalletWithSave(new Wallet(money, _view), moneyStorage);
+            return new WalletWithSave(new Wallet(_view, money), moneyStorage);
         }
     }
 }

@@ -12,6 +12,9 @@ namespace HumansVsAliens.Gameplay
         {
             _wallet = wallet ?? throw new ArgumentNullException(nameof(wallet));
             _moneyStorage = moneyStorage ?? throw new ArgumentNullException(nameof(moneyStorage));
+
+            if (_moneyStorage.HasSave() && _moneyStorage.Load() != _wallet.Money)
+                throw new InvalidOperationException("Put saved money to wallet!");
         }
 
         public int Money => _wallet.Money;
