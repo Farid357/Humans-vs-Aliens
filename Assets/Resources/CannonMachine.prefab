@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 5360201717463994797}
   _animations: {fileID: 5643142524180257280}
-  _speed: 0
+  _speed: 1.5
 --- !u!195 &5360201717463994797
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -486,8 +486,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3.45
-  m_BaseOffset: 0.53
+  m_Height: 4.32
+  m_BaseOffset: 0.67
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3633653727045688849
@@ -557,7 +557,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.61, y: 3.3400002, z: 3.447281}
+  m_Size: {x: 3.51, y: 3.3400002, z: 2.4}
   m_Center: {x: 0.000000001946944, y: 1.02, z: -0.6186407}
 --- !u!114 &5643142524180257280
 MonoBehaviour:

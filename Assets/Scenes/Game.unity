@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 8bcd8a2b7353c3945926213702dc9968, type: 2}
 --- !u!1 &116012221
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull Arena
       objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}
       propertyPath: m_Color.b
@@ -434,6 +439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skull Arena (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}
@@ -1981,6 +1991,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull Arena (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}
       propertyPath: m_Color.b
@@ -2433,6 +2448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull Arena (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}
       propertyPath: m_Color.b
@@ -2536,6 +2556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skull Arena (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}
@@ -3155,6 +3180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skull Arena (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010103213301651482, guid: d9dbd44fd98cda04a86ab7e1a142f890,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4010103213859005692, guid: d9dbd44fd98cda04a86ab7e1a142f890,
         type: 3}

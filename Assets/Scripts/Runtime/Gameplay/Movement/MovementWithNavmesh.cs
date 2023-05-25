@@ -13,7 +13,7 @@ namespace HumansVsAliens.Gameplay
 
         public override void Move(Vector3 direction)
         {
-            //_agent.Move(direction * _speed);
+            _agent.SetDestination(Transform.position + direction * _speed);
             _animations.PlayMove(direction);
         }
     }
