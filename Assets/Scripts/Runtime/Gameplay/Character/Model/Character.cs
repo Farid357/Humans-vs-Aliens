@@ -9,7 +9,7 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private CharacterMovement _movement;
         [SerializeField] private CharacterAnimations _animations;
         [SerializeField] private CharacterCamera _camera;
-        
+
         private IBladedWeaponsCollection _weaponsCollection;
 
         public void Init(IHealth health, IBladedWeaponsCollection weaponsCollection)
@@ -25,26 +25,26 @@ namespace HumansVsAliens.Gameplay
         public bool CanAttack => _weaponsCollection.Weapon.CanHit;
 
         public ICharacterMovement Movement => _movement;
-        
+
         public ICharacterCamera Camera => _camera;
 
         public IHealthAnimations Animations => _animations;
-        
+
         public void Attack()
         {
             if (!IsAlive)
                 throw new InvalidOperationException($"Character is not alive!");
-            
-            if(!CanAttack)
+
+            if (!CanAttack)
                 throw new InvalidOperationException($"Character can't attack!");
-            
+
             _weaponsCollection.Weapon.Hit();
             _animations.PlayAttack();
         }
 
         public void SwitchWeapon(IBladedWeapon weapon)
         {
-            if(!IsAlive)
+            if (!IsAlive)
                 throw new InvalidOperationException($"Character is not alive!");
 
             _weaponsCollection.Weapon.View.Disable();

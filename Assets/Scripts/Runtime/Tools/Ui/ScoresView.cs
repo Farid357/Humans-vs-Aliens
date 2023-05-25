@@ -1,4 +1,5 @@
 ﻿using ExitGames.Client.Photon;
+using HumansVsAliens.Tools;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace HumansVsAliens.Gameplay
 
             foreach (var player in PhotonNetwork.PlayerList)
             {
-                _text.text += $"{player.NickName} - {player.CustomProperties[ScoreSynchronization.ScoreProperty]}\n";
+                _text.text += $"{player.NickName} - {player.GetScore()}\n";
             }
         }
     }

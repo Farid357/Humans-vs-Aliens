@@ -2370,7 +2370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 10
-  _speed: 1.5
+  _speed: 0.6
   _animations: {fileID: 7804744316766476867}
 --- !u!114 &7804744316766476867
 MonoBehaviour:

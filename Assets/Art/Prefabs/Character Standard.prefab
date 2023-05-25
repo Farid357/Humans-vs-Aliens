@@ -47,8 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 9185034916184467561, guid: d2f8781a5fd8ef54e840ead0a3214333, type: 3}
   _spawnPoint: {fileID: 0}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   _damage: 10
-  _attackRadius: 2.25
+  _attackRadius: 2.5
 --- !u!114 &5940924020302966547
 MonoBehaviour:
   m_ObjectHideFlags: 0

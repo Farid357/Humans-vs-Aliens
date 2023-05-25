@@ -1,7 +1,8 @@
+using HumansVsAliens.GameLoop;
+
 namespace HumansVsAliens.Gameplay
 {
-    public interface IBonusLoop
+    public interface IBonusLoop : IGameLoopObject
     {
-        void Start();
     }
 }

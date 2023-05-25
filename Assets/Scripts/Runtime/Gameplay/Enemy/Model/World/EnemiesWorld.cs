@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using HumansVsAliens.GameLoop;
+using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.Gameplay
 {
@@ -17,7 +17,7 @@ namespace HumansVsAliens.Gameplay
 
         public IReadOnlyDictionary<IEnemy, EnemyType> Enemies => _enemies;
 
-        public bool EverybodyDied => _enemies.Keys.All(enemy => !enemy.Health.IsAlive);
+        public bool EverybodyDied => _enemies.Keys.All(enemy => enemy.Health.IsDied());
 
         public void Add(IEnemy enemy, EnemyType type)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ExitGames.Client.Photon;
+using HumansVsAliens.Tools;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -9,8 +9,6 @@ namespace HumansVsAliens.Gameplay
     public sealed class ScoreSynchronization : IScore, IMatchmakingCallbacks
     {
         private readonly IScore _score;
-
-        public const string ScoreProperty = "Score";
 
         public ScoreSynchronization(IScore score)
         {
@@ -33,7 +31,7 @@ namespace HumansVsAliens.Gameplay
 
         private void SetScore(int count)
         {
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable() { { ScoreProperty, count } });
+            PhotonNetwork.LocalPlayer.SetScore(count);
         }
 
         #region PhotonTrash

@@ -821,7 +821,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 368261949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33183b12cc7b4f3096deba9278fa7ac2, type: 3}
+  m_Script: {fileID: 11500000, guid: e12ce58074364579867dd41f17bc70ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &427839892
@@ -1287,7 +1287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _game: {fileID: 11400000, guid: db94579bf9416f74db819e01aee21bb4, type: 2}
   _sceneLoadingView: {fileID: 525778247}
-  _createRoomButton: {fileID: 1137066543}
   _joinRoomButton: {fileID: 368261954}
 --- !u!1001 &625974693
 PrefabInstance:

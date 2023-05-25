@@ -24,12 +24,12 @@ namespace HumansVsAliens.Gameplay
             Vector2 moveDirection = _input.Movement.Move.ReadValue<Vector2>();
             _character.Movement.Move(new Vector3(moveDirection.x, 0, moveDirection.y));
 
-            if (_input.Movement.Jump.IsPressed() && _character.Movement.OnGround)
+            if (_input.Movement.Jump.WasPerformedThisFrame() && _character.Movement.OnGround)
             {
                 _character.Movement.Jump();
             }
 
-            if (_input.Fighting.Attack.IsPressed() && _character.CanAttack)
+            if (_input.Fighting.Attack.WasPerformedThisFrame() && _character.CanAttack)
             {
                 _character.Attack();
             }

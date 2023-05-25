@@ -1,5 +1,3 @@
-using HumansVsAliens.GameLoop;
-using HumansVsAliens.Networking;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,31 +7,23 @@ namespace HumansVsAliens.Gameplay
     public class EnemyWavesFactory : MonoBehaviour, IEnemyWavesFactory
     {
         [SerializeField] private List<EnemyWaveData> _waveData;
-        [SerializeField] private AlienFactory _alienFactory;
-        [SerializeField] private AlienFactory _redMonsterFactory;
 
+        private IReadOnlyDictionary<EnemyType,IEnemyFactory> _factories;
         private IEnemiesWorld _enemiesWorld;
 
-        public void Init(IEnemiesWorld enemiesWorld, IReadOnlyCharacter character, IGameLoopObjectsGroup gameLoop, 
-            ICharacterStatistics statistics, IServer server)
+        public void Init(IEnemiesWorld enemiesWorld, IReadOnlyDictionary<EnemyType,IEnemyFactory> factories)
         {
             _enemiesWorld = enemiesWorld ?? throw new ArgumentNullException(nameof(enemiesWorld));
-            _alienFactory.Init(character, gameLoop, statistics, server);
-            _redMonsterFactory.Init(character, gameLoop, statistics, server);
+            _factories = factories ?? throw new ArgumentNullException(nameof(factories));
         }
 
         public IEnemyWavesQueue Create()
         {
             var queue = new Queue<IEnemyWave>();
-            IReadOnlyDictionary<EnemyType, IEnemyFactory> factories = new Dictionary<EnemyType, IEnemyFactory>
-            {
-                { EnemyType.Alien, _alienFactory},
-                {EnemyType.RedMonster, _redMonsterFactory }
-            };
 
             foreach (var waveData in _waveData)
             {
-                queue.Enqueue(new EnemyWave(factories, _enemiesWorld, waveData));
+                queue.Enqueue(new EnemyWave(_factories, _enemiesWorld, waveData));
             }
 
             return new EnemyWavesQueue(queue);

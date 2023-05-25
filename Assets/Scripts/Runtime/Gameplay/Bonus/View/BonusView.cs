@@ -11,7 +11,7 @@ namespace HumansVsAliens.View
         public void PickUp()
         {
             //TODO Replace audio
-            _pickAudio.Play();
+          //  _pickAudio.Play();
             PhotonNetwork.Destroy(gameObject);
         }
     }
