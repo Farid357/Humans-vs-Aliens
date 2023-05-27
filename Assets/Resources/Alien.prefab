@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7390504136154198954}
   - component: {fileID: 6240061978700826890}
   - component: {fileID: 2768692117062997429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: alien_helm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 489563060468799326}
   - component: {fileID: 5850725166761604766}
   - component: {fileID: 7741560846720154522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: alien_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 3084640944103076022}
   - component: {fileID: 200981666937471065}
   - component: {fileID: 3814756682862433579}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,8 +355,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0852861, y: 4.333539, z: 1.7152454}
-  m_Center: {x: 0.017408371, y: 2.2141976, z: 0.025702504}
+  m_Size: {x: 2.33, y: 4.333539, z: 2.3662982}
+  m_Center: {x: 0.017408364, y: 2.2141976, z: 0.032993015}
 --- !u!1 &8424523115727132352
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 8752308870659575355}
   - component: {fileID: 3552709225978503303}
   - component: {fileID: 4110455656130912440}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: eyeR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1425780043859793982}
   - component: {fileID: 4484502950989326282}
   - component: {fileID: 6865188981723573648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: eyeL
   m_TagString: Untagged
   m_Icon: {fileID: 0}

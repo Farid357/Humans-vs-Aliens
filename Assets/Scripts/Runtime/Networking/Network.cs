@@ -8,12 +8,14 @@ namespace HumansVsAliens.Networking
 {
     public class Network : INetwork, IConnectionCallbacks, IDisposable
     {
-        public bool IsConnected => PhotonNetwork.IsConnected;
-
         public Network()
         {
             PhotonNetwork.AddCallbackTarget(this);
         }
+
+        public bool IsConnected => PhotonNetwork.IsConnected;
+        
+        public bool IsMasterClient => PhotonNetwork.IsMasterClient;
         
         public void Connect()
         {
@@ -34,6 +36,11 @@ namespace HumansVsAliens.Networking
             PhotonNetwork.JoinLobby();
         }
 
+        public void Dispose()
+        {
+            PhotonNetwork.RemoveCallbackTarget(this);
+        }
+        
         public void OnDisconnected(DisconnectCause cause)
         {
             Debug.Log($"Disconnected {cause}!");
@@ -49,11 +56,6 @@ namespace HumansVsAliens.Networking
 
         public void OnCustomAuthenticationFailed(string debugMessage)
         {
-        }
-
-        public void Dispose()
-        {
-            PhotonNetwork.RemoveCallbackTarget(this);
         }
     }
 }

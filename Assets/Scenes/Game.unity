@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 144319586}
   - component: {fileID: 144319588}
   m_Layer: 0
-  m_Name: EnemyWaves
+  m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3392,10 +3392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterFactory: {fileID: 2129116067}
   _statisticsFactory: {fileID: 1665385828}
-  _enemyWavesFactory: {fileID: 144319586}
+  _wavesFactory: {fileID: 144319586}
   _enemyCounterView: {fileID: 1063063116}
   _timerBetweenWavesView: {fileID: 810996715}
-  _enemyWavesView: {fileID: 810996716}
+  _wavesView: {fileID: 810996716}
   _server: {fileID: 232241402}
   _healBonusFactory: {fileID: 1307141412}
   _enemyFactories: {fileID: 144319588}

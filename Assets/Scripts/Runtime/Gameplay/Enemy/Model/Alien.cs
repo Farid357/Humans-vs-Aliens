@@ -14,23 +14,24 @@ namespace HumansVsAliens.Gameplay
 
         public IHealth Health { get; private set; }
 
-        public void Init(IReadOnlyCharacter character, IHealth health)
+        public void Init(IHealth health)
         {
             Health = health ?? throw new ArgumentNullException(nameof(health));
-            Transform characterTransform = character.Movement.Transform;
-
-            _behaviorTree = new RepeatNode(new SequenceNode(new IBehaviorNode[]
+            ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
+         
+            _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
             {
-                new ParallelSequenceNode(new IBehaviorNode[]
+                new SequenceNode(new IBehaviorNode[]
                 {
-                    new MoveNode(_movement, characterTransform, 1.2f),
+                    new MoveToClosestCharacterNode(_movement, new CharacterSearcher(transform, 50), 1.2f),
                 }),
 
-                new ParallelSequenceNode(new IBehaviorNode[]
+                new SequenceNode(new IBehaviorNode[]
                 {
-                    new IsNearNode(_movement.Transform, characterTransform, _distanceToAttack),
-                    new WaitNode(2.2f),
-                    new AttackNode(character.Health, _attackDamage)
+                    new IsCharacterNearNode(forAttackCharacterSearcher),
+                    new WaitNode(1.2f),
+                    new AttackClosestCharacterNode(forAttackCharacterSearcher, _attackDamage),
+                    new WaitNode(1.2f),
                 })
             }));
         }
