@@ -20,7 +20,7 @@ namespace HumansVsAliens.View
             _animator.Play("Death");
         }
 
-        public void PlayGetHit()
+        public void PlayTakeDamage()
         {
             _animator.Play("Get Hit");
         }

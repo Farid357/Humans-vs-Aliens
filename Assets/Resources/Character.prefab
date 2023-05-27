@@ -2253,6 +2253,7 @@ GameObject:
   - component: {fileID: 7804744316766476867}
   - component: {fileID: 164613538280621306}
   - component: {fileID: 540800140707452913}
+  - component: {fileID: 1571415286938329552}
   m_Layer: 7
   m_Name: Character
   m_TagString: Untagged
@@ -2339,8 +2340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc202cabee44705a578dd3dbbc07646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _view: {fileID: 1571415286938329552}
   _movement: {fileID: 3634348700266075120}
-  _animations: {fileID: 5501406791602881285}
   _camera: {fileID: 4044149812696227078}
 --- !u!114 &5501406791602881285
 MonoBehaviour:
@@ -2441,6 +2442,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1571415286938329552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438810162810825780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0027f412d0455e8b5aa7a972842248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animations: {fileID: 5501406791602881285}
 --- !u!1 &7630713795265155875
 GameObject:
   m_ObjectHideFlags: 0

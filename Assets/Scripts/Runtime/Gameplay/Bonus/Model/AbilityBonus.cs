@@ -13,6 +13,8 @@ namespace HumansVsAliens.Gameplay
             _ability = ability ?? throw new ArgumentNullException(nameof(ability));
         }
 
+        public bool CanBePicked => _bonus.CanBePicked;
+
         public void PickUp()
         {
             _bonus.PickUp();

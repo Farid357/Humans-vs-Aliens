@@ -14,15 +14,17 @@ namespace HumansVsAliens.Gameplay
         {
             _wavesQueue = wavesQueue ?? throw new ArgumentNullException(nameof(wavesQueue));
             _timer = timer ?? throw new ArgumentNullException(nameof(timer));
+            Status = WavesLoopStatus.WaitNextWave;
         }
 
         public bool IsEnded => false;
 
+        public WavesLoopStatus Status { get; private set; }
+
         public void Start()
         {
-            _wave = _wavesQueue.GetWave();
             _wasStarted = true;
-            _wave.Start();
+            StartNextWave();
         }
 
         public void Update(float deltaTime)
@@ -31,7 +33,10 @@ namespace HumansVsAliens.Gameplay
                 return;
 
             if (_wave.IsEnded && !_timer.IsStarted)
+            {
                 _timer.Start();
+                Status = WavesLoopStatus.WaitNextWave;
+            }
 
             if (_timer.IsEnded && _wave.IsEnded)
                 StartNextWave();
@@ -42,6 +47,7 @@ namespace HumansVsAliens.Gameplay
             _wave = _wavesQueue.GetWave();
             _timer.Stop();
             _wave.Start();
+            Status = WavesLoopStatus.WaveIsGoing;
         }
     }
 }

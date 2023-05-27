@@ -6,8 +6,8 @@ namespace HumansVsAliens.Gameplay
 {
     public sealed class Character : MonoBehaviour, ICharacter
     {
+        [SerializeField] private CharacterView _view;
         [SerializeField] private CharacterControllerMovement _movement;
-        [SerializeField] private CharacterAnimations _animations;
         [SerializeField] private CharacterCamera _camera;
 
         private IBladedWeaponsCollection _weaponsCollection;
@@ -28,7 +28,7 @@ namespace HumansVsAliens.Gameplay
 
         public ICharacterCamera Camera => _camera;
 
-        public IHealthAnimations Animations => _animations;
+        public IHealthAnimations Animations => _view.Animations;
 
         public void Attack()
         {
@@ -39,7 +39,7 @@ namespace HumansVsAliens.Gameplay
                 throw new InvalidOperationException($"Character can't attack!");
 
             _weaponsCollection.Weapon.Hit();
-            _animations.PlayAttack();
+            _view.Attack();
         }
 
         public void SwitchWeapon(IBladedWeapon weapon)
@@ -50,6 +50,7 @@ namespace HumansVsAliens.Gameplay
             _weaponsCollection.Weapon.View.Disable();
             weapon.View.Enable();
             _weaponsCollection.SwitchWeapon(weapon);
+            _view.SwitchWeapon();
         }
     }
 }

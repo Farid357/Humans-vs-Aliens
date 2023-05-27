@@ -21,7 +21,7 @@ namespace HumansVsAliens.View
         {
             _healthText.text = $"{health}/100";
             _bar.Visualize(health, 100);
-            _characterAnimations.PlayGetHit();
+            _characterAnimations.PlayTakeDamage();
         }
 
         public void Die()

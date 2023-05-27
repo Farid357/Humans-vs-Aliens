@@ -5,8 +5,8 @@ namespace HumansVsAliens.Gameplay
     public sealed class CharacterMovementAnimations : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        
-        private const string Walk = "Walk";
+       
+        private static readonly int _walk = Animator.StringToHash("Walk");
 
         public void PlayMove(Vector3 direction)
         {
@@ -16,19 +16,19 @@ namespace HumansVsAliens.Gameplay
                 return;
             }
 
-            if (_animator.GetBool(Walk) == false)
-                _animator.SetBool(Walk, true);
-        }
-
-        public void PlayStay()
-        {
-            _animator.SetBool(Walk, false);
+            if (_animator.GetBool(_walk) == false)
+                _animator.SetBool(_walk, true);
         }
 
         public void PlayJump()
         {
-            _animator.SetBool(Walk, false);
+            _animator.SetBool(_walk, false);
             _animator.Play("Jump");
+        }
+
+        private void PlayStay()
+        {
+            _animator.SetBool(_walk, false);
         }
     }
 }

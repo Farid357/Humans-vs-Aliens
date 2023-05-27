@@ -4,6 +4,6 @@ namespace HumansVsAliens.View
     {
         void PlayDeath();
         
-        void PlayGetHit();
+        void PlayTakeDamage();
     }
 }

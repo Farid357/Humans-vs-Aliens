@@ -18,7 +18,7 @@ namespace HumansVsAliens.Gameplay
         {
             _time += deltaTime;
 
-            if (_time >= 5)
+            if (_time >= 15)
             {
                 IBonusFactory bonusFactory = _bonusFactories.GetRandom();
                 bonusFactory.Create();

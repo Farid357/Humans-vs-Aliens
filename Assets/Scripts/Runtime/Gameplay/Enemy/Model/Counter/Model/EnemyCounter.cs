@@ -1,13 +1,11 @@
 using System;
 using System.Linq;
-using Cysharp.Threading.Tasks;
 using HumansVsAliens.GameLoop;
-using HumansVsAliens.Tools;
 using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class EnemyCounter : IGameLoopObject
+    public sealed class EnemyCounter : IGameLoopObject
     {
         private readonly IReadOnlyEnemiesWorld _enemiesWorld;
         private readonly IEnemyCounterView _view;
@@ -21,7 +19,7 @@ namespace HumansVsAliens.Gameplay
 
         public void Update(float deltaTime)
         {
-            int currentEnemiesCount = _enemiesWorld.Enemies.Where(enemy => enemy.Key.Health.IsAlive).Count();
+            int currentEnemiesCount = _enemiesWorld.Enemies.Count(enemy => enemy.Key.Health.IsAlive);
 
             if (_lastShowedCount != currentEnemiesCount)
             {

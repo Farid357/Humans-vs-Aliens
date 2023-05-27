@@ -12,6 +12,8 @@ namespace HumansVsAliens.Gameplay
         private IBonus _bonus;
 
         public IBonusView View => _view;
+        
+        public bool CanBePicked => _bonus.CanBePicked;
 
         public void Init(IBonus bonus)
         {
@@ -20,6 +22,9 @@ namespace HumansVsAliens.Gameplay
 
         private void Update()
         {
+            if (!CanBePicked)
+                return;
+
             Physics.OverlapSphereNonAlloc(transform.position, 1.2f, _colliders);
 
             foreach (Collider collider in _colliders)

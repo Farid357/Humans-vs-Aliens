@@ -16,8 +16,13 @@ namespace HumansVsAliens.Gameplay
             _heal = heal.ThrowIfLessThanOrEqualsToZeroException();
         }
 
+        public bool CanBePicked => _bonus.CanBePicked && _health.Value < 100;
+
         public void PickUp()
         {
+            if (!CanBePicked)
+                throw new InvalidOperationException($"Bonus can't be picked! Health value is greater than 100!");
+
             _bonus.PickUp();
             _health.Heal(_heal);
         }

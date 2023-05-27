@@ -1,4 +1,3 @@
-using HumansVsAliens.GameLoop;
 using System.Collections.Generic;
 
 namespace HumansVsAliens.Gameplay

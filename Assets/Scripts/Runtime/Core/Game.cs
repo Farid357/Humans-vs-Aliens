@@ -19,7 +19,8 @@ namespace HumansVsAliens.Core
         [SerializeField] private Server _server;
         [SerializeField] private HealBonusFactory _healBonusFactory;
         [SerializeField] private EnemyFactories _enemyFactories;
-        
+        [SerializeField] private KillsStreakView _killsStreakView;
+
         private IGameLoop _gameLoop;
 
         private void Start()
@@ -31,6 +32,7 @@ namespace HumansVsAliens.Core
             ICharacterStatistics statistics = _statisticsFactory.Create();
             IGameLoopObject player = new Player(character);
             ITimerBetweenWaves timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
+            IGameLoopObject killsStreak = new KillsStreak(enemiesWorld, _killsStreakView, character.Health);
             _enemyFactories.Init(_gameLoop, statistics, _server);
             _wavesFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);
@@ -41,19 +43,20 @@ namespace HumansVsAliens.Core
             {
                 _healBonusFactory
             });
-            
+
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>
             {
                 player,
                 wavesLoop,
                 enemyCounter,
+                killsStreak,
                 bonusLoop
             }));
 
             if (network.IsMasterClient)
                 _server.SendCommand(new PrepareGameCommand(wavesLoop, _wavesView));
         }
-        
+
         private void Update()
         {
             _gameLoop.Update(Time.deltaTime);

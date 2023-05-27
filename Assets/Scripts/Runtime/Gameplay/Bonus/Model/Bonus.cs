@@ -6,19 +6,20 @@ namespace HumansVsAliens.Gameplay
     public class Bonus : IBonus
     {
         private readonly IBonusView _view;
-        private bool _wasPickedUp;
 
         public Bonus(IBonusView view)
         {
             _view = view ?? throw new ArgumentNullException(nameof(view));
         }
 
+        public bool CanBePicked { get; private set; } = true;
+
         public void PickUp()
         {
-            if (_wasPickedUp)
+            if (!CanBePicked)
                 throw new InvalidOperationException($"Bonus is already picked!");
             
-            _wasPickedUp = true;
+            CanBePicked = false;
             _view.PickUp();
         }
     }
