@@ -1,6 +1,6 @@
 using HumansVsAliens.View;
 
-namespace HumansVsAliens.Tests.Tests.Bonus
+namespace HumansVsAliens.Tests
 {
     public class DummyChestView : IChestView
     {

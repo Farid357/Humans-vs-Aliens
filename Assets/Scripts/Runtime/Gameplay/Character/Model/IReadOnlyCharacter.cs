@@ -8,7 +8,7 @@ namespace HumansVsAliens.Gameplay
         
         IHealth Health { get; }
         
-        ICharacterMovement Movement { get; }
+        IMovementWithJump Movement { get; }
         
         ICharacterCamera Camera { get; }
     }

@@ -51,7 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _damage: 10
-  _attackRadius: 2.85
+  _attackRadius: 3.2
 --- !u!114 &5940924020302966547
 MonoBehaviour:
   m_ObjectHideFlags: 0

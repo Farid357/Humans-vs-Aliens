@@ -1,7 +1,7 @@
 using HumansVsAliens.Gameplay;
 using NUnit.Framework;
 
-namespace HumansVsAliens.Tests.Tests.Bonus
+namespace HumansVsAliens.Tests
 {
     [TestFixture]
     public class ChestTest

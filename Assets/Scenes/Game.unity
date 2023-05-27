@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alienPrefab: {fileID: 6937516916527194289, guid: 0c1a3927fe3299d43a2813fc4f9ef223,
+  _alienPrefab: {fileID: 2416878759100590371, guid: ab8623a6658fab542ae984d85e1eb524,
     type: 3}
   _rewardFactory: {fileID: 771912977}
   _health: 30
@@ -2687,7 +2687,7 @@ MonoBehaviour:
   _alienPrefab: {fileID: 4191114923340187176, guid: 6c3a62f48a7affb45a4310006538a167,
     type: 3}
   _rewardFactory: {fileID: 1286781789}
-  _health: 50
+  _health: 20
 --- !u!114 &1286781789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4779,7 +4779,7 @@ PrefabInstance:
     - target: {fileID: 5940924020302966549, guid: 9521277aeb448124c89145b13ea3105a,
         type: 3}
       propertyPath: _damage
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5940924020302966549, guid: 9521277aeb448124c89145b13ea3105a,
         type: 3}

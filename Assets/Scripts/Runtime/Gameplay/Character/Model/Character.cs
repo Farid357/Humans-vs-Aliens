@@ -6,7 +6,7 @@ namespace HumansVsAliens.Gameplay
 {
     public sealed class Character : MonoBehaviour, ICharacter
     {
-        [SerializeField] private CharacterMovement _movement;
+        [SerializeField] private CharacterControllerMovement _movement;
         [SerializeField] private CharacterAnimations _animations;
         [SerializeField] private CharacterCamera _camera;
 
@@ -24,7 +24,7 @@ namespace HumansVsAliens.Gameplay
 
         public bool CanAttack => _weaponsCollection.Weapon.CanHit;
 
-        public ICharacterMovement Movement => _movement;
+        public IMovementWithJump Movement => _movement;
 
         public ICharacterCamera Camera => _camera;
 
