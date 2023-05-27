@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 using HumansVsAliens.Gameplay;
 using NUnit.Framework;
 
-namespace HumansVsAliens.Tests
+namespace HumansVsAliens.Tests.Abilities
 {
     [TestFixture]
     public class TemporaryAbilityTest
     {
         [Test]
-        public async Task DeactivatesAndActivatesCorrectly()
+        public async void DeactivatesAndActivatesCorrectly()
         {
             IAbility ability = new TemporaryAbility(new Ability(new DummyAbilityView()), 0.2f);
             ability.Activate();

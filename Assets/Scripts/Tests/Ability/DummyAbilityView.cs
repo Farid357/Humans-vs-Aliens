@@ -1,6 +1,6 @@
 using HumansVsAliens.View;
 
-namespace HumansVsAliens.Tests
+namespace HumansVsAliens.Tests.Abilities
 {
     public class DummyAbilityView : IAbilityView
     {
