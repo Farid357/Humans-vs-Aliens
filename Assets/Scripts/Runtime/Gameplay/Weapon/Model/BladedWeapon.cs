@@ -33,7 +33,7 @@ namespace HumansVsAliens.Gameplay
 
             foreach (Collider hit in _hits)
             {
-                if (hit != null && hit.TryGetComponent(out IEnemy enemy))
+                if (hit != null && hit.TryGetComponent(out IEnemy enemy) && enemy.Health.IsAlive)
                 {
                     enemy.Health.TakeDamage(_damage);
                 }

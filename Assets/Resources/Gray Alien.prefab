@@ -2399,6 +2399,7 @@ GameObject:
   - component: {fileID: 2512201242816886485}
   - component: {fileID: 4184210678978810722}
   - component: {fileID: 6325467296896649230}
+  - component: {fileID: 1984057080966091433}
   m_Layer: 6
   m_Name: Gray Alien
   m_TagString: Untagged
@@ -2435,6 +2436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb81e466cb8a4208b4a27a9b7756d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthView: {fileID: 1984057080966091433}
   _movement: {fileID: 6819906260720412682}
   _healthSynchronization: {fileID: 6325467296896649230}
   _attackDamage: 10
@@ -2568,6 +2570,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fb52fc448164aad8843ea0c4f16aaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1984057080966091433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096720086522951078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ee0fd072c940ecbc05db13068b88fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9153184067391356146

@@ -15,8 +15,8 @@ namespace HumansVsAliens.Core
         private void Awake()
         {
             INetwork network = new Network();
-            IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
-            IRoom room = new Room(gameScene);
+          //  IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
+            IRoom room = new Room(_game);
 
             _joinRoomButton.Init(new JoinRandomRoomButton());
             

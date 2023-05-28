@@ -1,4 +1,3 @@
-using System;
 using HumansVsAliens.Networking;
 using HumansVsAliens.View;
 using Photon.Pun;
@@ -13,8 +12,9 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private BladedWeaponsCollectionView _bladedWeaponsCollectionView;
         [SerializeField] private InvulnerabilityFactory _invulnerabilityFactory;
-
-        public ICharacter Create(IServer server, out IInvulnerability invulnerability)
+        [SerializeField] private CharacterHealthView _healthView;
+        
+        public ICharacter Create(out IInvulnerability invulnerability)
         {
             Character character = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<Character>();
             IBladedWeapon weapon = _weaponFactory.Create(character.transform);
@@ -22,8 +22,9 @@ namespace HumansVsAliens.Gameplay
             _bladedWeaponsCollectionView.SwitchWeapon(weapon);
             invulnerability = null;
             PhotonView photonView = PhotonView.Get(character);
-            photonView.RPC(nameof(character.Init), RpcTarget.All, 100);
-            character.SetWeaponsCollection(weaponsCollection);
+            photonView.RPC(nameof(character.Init), RpcTarget.AllBuffered, 100);
+            _healthView.Init(character.Animations);
+            character.InitLocal(weaponsCollection, _healthView);
             return character;
         }
     }

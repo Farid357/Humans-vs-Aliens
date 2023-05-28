@@ -2455,8 +2455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animations: {fileID: 5501406791602881285}
-  _healthView: {fileID: 0}
-  _weaponsCollectionView: {fileID: 0}
 --- !u!1 &7630713795265155875
 GameObject:
   m_ObjectHideFlags: 0

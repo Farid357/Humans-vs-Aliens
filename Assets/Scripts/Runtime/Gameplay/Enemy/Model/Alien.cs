@@ -8,6 +8,7 @@ namespace HumansVsAliens.Gameplay
     [RequireComponent(typeof(PhotonView))]
     public sealed class Alien : MonoBehaviour, IEnemy
     {
+        [SerializeField] private AlienHealthView _healthView;
         [SerializeField] private Movement _movement;
         [SerializeField] private HealthSynchronization _healthSynchronization;
         [SerializeField] private int _attackDamage = 10;
@@ -22,7 +23,7 @@ namespace HumansVsAliens.Gameplay
         {
             IHealth health = new Health(healthValue);
             _healthSynchronization.Init(health);
-            Health = new HealthWithView(health, new AlienHealthView(gameObject));
+            Health = new HealthWithView(health, _healthView);
             ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]

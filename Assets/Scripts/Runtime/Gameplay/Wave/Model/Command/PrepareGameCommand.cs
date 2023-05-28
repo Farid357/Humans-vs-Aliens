@@ -3,7 +3,7 @@ using HumansVsAliens.Networking;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class PrepareGameCommand : IServerCommand
+    public class PrepareGameCommand : ICommand
     {
         private readonly IWavesView _wavesView;
         private readonly IWave _wave;

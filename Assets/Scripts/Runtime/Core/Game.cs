@@ -16,7 +16,6 @@ namespace HumansVsAliens.Core
         [SerializeField] private EnemyCounterView _enemyCounterView;
         [SerializeField] private TimerBetweenWavesView _timerBetweenWavesView;
         [SerializeField] private WavesView _wavesView;
-        [SerializeField] private ServerFactory _serverFactory;
         [SerializeField] private HealBonusFactory _healBonusFactory;
         [SerializeField] private EnemyFactories _enemyFactories;
         [SerializeField] private KillsStreakView _killsStreakView;
@@ -28,14 +27,13 @@ namespace HumansVsAliens.Core
         {
             _gameLoop = new StandardGameLoop();
             INetwork network = new Network();
-            IServer server = _serverFactory.Create();
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
-            ICharacter character = _characterFactory.Create(server, out IInvulnerability invulnerability);
+            ICharacter character = _characterFactory.Create(out IInvulnerability invulnerability);
             ICharacterStatistics statistics = _statisticsFactory.Create();
             IPlayer player = new Player(character);
             ITimerBetweenWaves timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
             IGameLoopObject killsStreak = new KillsStreak(enemiesWorld, _killsStreakView, character.Health);
-            _enemyFactories.Init(_gameLoop, statistics, server);
+            _enemyFactories.Init(_gameLoop, statistics);
             _wavesFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);
             IWavesLoop wavesLoop = new WavesLoop(_wavesFactory.Create(), timerBetweenWaves);
@@ -60,7 +58,7 @@ namespace HumansVsAliens.Core
             }));
 
             if (network.IsMasterClient)
-                server.SendCommand(new PrepareGameCommand(wavesLoop, _wavesView), ServerCommandReceivers.Server);
+                new PrepareGameCommand(wavesLoop, _wavesView).Execute();
         }
 
         private void Update()

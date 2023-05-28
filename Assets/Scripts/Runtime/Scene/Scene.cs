@@ -2,7 +2,6 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace HumansVsAliens.SceneManagement
 {
@@ -14,9 +13,14 @@ namespace HumansVsAliens.SceneManagement
 #endif
         [field: SerializeField, ReadOnly] public string Name { get; private set; }
 
+        private void Awake()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+        }
+
         public void Load()
         {
-            SceneManager.LoadScene(Name);
+            PhotonNetwork.LoadLevel(Name);
         }
 
         public void OnAfterDeserialize()

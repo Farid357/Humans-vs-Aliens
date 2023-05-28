@@ -4532,11 +4532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 380590219958481484, guid: ef4a7d9f89906314db59b5dbd20ba71d, type: 3}
-  _healthFactory: {fileID: 2129116072}
   _weaponFactory: {fileID: 478308404}
   _spawnPoint: {fileID: 495104435}
   _bladedWeaponsCollectionView: {fileID: 478308402}
   _invulnerabilityFactory: {fileID: 2129116071}
+  _healthView: {fileID: 2129116068}
 --- !u!114 &2129116068
 MonoBehaviour:
   m_ObjectHideFlags: 0

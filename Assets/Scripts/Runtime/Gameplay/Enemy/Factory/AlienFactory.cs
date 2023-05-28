@@ -1,6 +1,5 @@
 using System;
 using HumansVsAliens.GameLoop;
-using HumansVsAliens.Networking;
 using Photon.Pun;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace HumansVsAliens.Gameplay
         private IGameLoopObjectsGroup _gameLoop;
         private IRewardFactory _rewardFactory;
 
-        public void Init(IGameLoopObjectsGroup gameLoop, IRewardFactory rewardFactory, IServer server)
+        public void Init(IGameLoopObjectsGroup gameLoop, IRewardFactory rewardFactory)
         {
             _rewardFactory = rewardFactory ?? throw new ArgumentNullException(nameof(rewardFactory));
             _gameLoop = gameLoop ?? throw new ArgumentNullException(nameof(gameLoop));
@@ -24,7 +23,7 @@ namespace HumansVsAliens.Gameplay
         {
             Alien alien = PhotonNetwork.Instantiate(_alienPrefab.name, position, Quaternion.identity).GetComponent<Alien>();
             PhotonView photonView = PhotonView.Get(alien);
-            photonView.RPC(nameof(alien.Init), RpcTarget.All, _health);
+            photonView.RPC(nameof(alien.Init), RpcTarget.AllBuffered, _health);
             IReward reward = _rewardFactory.Create();
             IGameLoopObject killReward = new KillReward(alien.Health, reward);
             _gameLoop.Add(killReward);

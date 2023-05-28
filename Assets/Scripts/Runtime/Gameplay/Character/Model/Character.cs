@@ -17,13 +17,12 @@ namespace HumansVsAliens.Gameplay
         [PunRPC]
         public void Init(int health)
         {
-            CharacterHealthView healthView = FindObjectOfType<CharacterHealthView>();
-            healthView.Init(_view.Animations);
-            Health = new HealthWithView(new Health(health), healthView);
+            Health = new Health(health);
         }
 
-        public void SetWeaponsCollection(IBladedWeaponsCollection weaponsCollection)
+        public void InitLocal(IBladedWeaponsCollection weaponsCollection, IHealthView healthView)
         {
+            Health = new HealthWithView(Health, healthView);
             _weaponsCollection = weaponsCollection ?? throw new ArgumentNullException(nameof(weaponsCollection));
         }
 
@@ -36,6 +35,8 @@ namespace HumansVsAliens.Gameplay
         public IMovementWithJump Movement => _movement;
 
         public ICharacterCamera Camera => _camera;
+        
+        public IHealthAnimations Animations => _view.Animations;
 
         public void Attack()
         {

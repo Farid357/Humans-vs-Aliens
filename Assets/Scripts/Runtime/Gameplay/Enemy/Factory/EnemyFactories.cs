@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using HumansVsAliens.GameLoop;
-using HumansVsAliens.Networking;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
@@ -11,11 +10,11 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private AlienFactory _redAlienFactory;
         [SerializeField] private AlienFactory _grayAlienFactory;
         
-        public void Init(IGameLoopObjectsGroup gameLoop, ICharacterStatistics statistics, IServer server)
+        public void Init(IGameLoopObjectsGroup gameLoop, ICharacterStatistics statistics)
         {
-            _alienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 10, 15), server);
-            _redAlienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 1, 5), server);
-            _grayAlienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 25, 50), server);
+            _alienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 10, 15));
+            _redAlienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 1, 5));
+            _grayAlienFactory.Init(gameLoop, new EnemyRewardFactory(statistics, 25, 50));
         }
 
         public IReadOnlyDictionary<EnemyType, IEnemyFactory> Create()
