@@ -1,6 +1,5 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.View
@@ -9,12 +8,26 @@ namespace HumansVsAliens.View
     {
         [SerializeField] private Animator _animator;
         
-        public async void Open()
+        private readonly int _openAnimationId = Animator.StringToHash("Open");
+
+        private async void OnEnable()
         {
-            _animator.Play("Open");
-            TimeSpan animationLength = TimeSpan.FromSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-            await UniTask.Delay(animationLength);
-            PhotonNetwork.Destroy(gameObject);
+            _animator.Play(_openAnimationId);
+            float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            await UniTask.Delay(TimeSpan.FromSeconds(animationLength));
+            _animator.Play("Close");
+        }
+
+        public void Open()
+        {
+            _animator.Play(_openAnimationId);
+            float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            Destroy(gameObject, animationLength);
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

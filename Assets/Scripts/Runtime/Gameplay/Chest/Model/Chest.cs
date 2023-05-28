@@ -22,7 +22,7 @@ namespace HumansVsAliens.Gameplay
                 throw new InvalidOperationException($"Chest is already opened!");
             
             IsOpen = true;
-            _reward.Apply();
+            _reward.Receive();
             _view.Open();
         }
     }

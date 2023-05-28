@@ -268,7 +268,6 @@ GameObject:
   m_Component:
   - component: {fileID: 144319587}
   - component: {fileID: 144319586}
-  - component: {fileID: 144319588}
   m_Layer: 0
   m_Name: Waves
   m_TagString: Untagged
@@ -291,7 +290,7 @@ MonoBehaviour:
   _waveData:
   - _enemies:
     - <Count>k__BackingField: 2
-      <Type>k__BackingField: 0
+      <Type>k__BackingField: 2
     - <Count>k__BackingField: 2
       <Type>k__BackingField: 1
     _enemiesPositions:
@@ -315,20 +314,6 @@ Transform:
   m_Father: {fileID: 1669834146}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144319588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144319585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f255cf3edd4c25add9f1b5d60fc20d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _alienFactory: {fileID: 771912978}
-  _redAlienFactory: {fileID: 1286781788}
 --- !u!1001 &163074252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1088,6 +1073,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 173330268}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &355638634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355638635}
+  m_Layer: 0
+  m_Name: Center of map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355638635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355638634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.71, y: -0.92, z: -2.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1695,6 @@ GameObject:
   m_Component:
   - component: {fileID: 771912976}
   - component: {fileID: 771912978}
-  - component: {fileID: 771912977}
   m_Layer: 0
   m_Name: Alien Factory
   m_TagString: Untagged
@@ -1702,20 +1717,6 @@ Transform:
   m_Father: {fileID: 1003220554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &771912977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771912975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df5b2b442a207a4a933ecd73e7be8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _money: 5
-  _scoreCount: 10
 --- !u!114 &771912978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,7 +1731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alienPrefab: {fileID: 2416878759100590371, guid: ab8623a6658fab542ae984d85e1eb524,
     type: 3}
-  _rewardFactory: {fileID: 771912977}
   _health: 30
 --- !u!1 &810996711
 GameObject:
@@ -1955,6 +1955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003220554}
+  - component: {fileID: 1003220555}
   m_Layer: 0
   m_Name: EnemyFactories
   m_TagString: Untagged
@@ -1976,9 +1977,25 @@ Transform:
   m_Children:
   - {fileID: 771912976}
   - {fileID: 1286781790}
+  - {fileID: 1904355406}
   m_Father: {fileID: 1669834146}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1003220555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003220553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f255cf3edd4c25add9f1b5d60fc20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alienFactory: {fileID: 771912978}
+  _redAlienFactory: {fileID: 1286781788}
+  _grayAlienFactory: {fileID: 1904355407}
 --- !u!1001 &1023528295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2664,7 +2681,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1286781790}
   - component: {fileID: 1286781788}
-  - component: {fileID: 1286781789}
   m_Layer: 0
   m_Name: Red Alien Factory
   m_TagString: Untagged
@@ -2686,22 +2702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alienPrefab: {fileID: 4191114923340187176, guid: 6c3a62f48a7affb45a4310006538a167,
     type: 3}
-  _rewardFactory: {fileID: 1286781789}
   _health: 20
---- !u!114 &1286781789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286781787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df5b2b442a207a4a933ecd73e7be8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _money: 10
-  _scoreCount: 15
 --- !u!4 &1286781790
 Transform:
   m_ObjectHideFlags: 0
@@ -3110,7 +3111,7 @@ PrefabInstance:
     - target: {fileID: 5856519116292942089, guid: 98c7a04dc3b26b242a020b4eba6f30ba,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5856519116292942325, guid: 98c7a04dc3b26b242a020b4eba6f30ba,
         type: 3}
@@ -3361,6 +3362,7 @@ Transform:
   - {fileID: 2108786139}
   - {fileID: 1003220554}
   - {fileID: 1307141413}
+  - {fileID: 1942314234}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3398,8 +3400,9 @@ MonoBehaviour:
   _wavesView: {fileID: 810996716}
   _server: {fileID: 232241402}
   _healBonusFactory: {fileID: 1307141412}
-  _enemyFactories: {fileID: 144319588}
+  _enemyFactories: {fileID: 1003220555}
   _killsStreakView: {fileID: 1749961055}
+  _chestFactory: {fileID: 1942314236}
 --- !u!4 &1674970722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4155492373991610436, guid: d9dbd44fd98cda04a86ab7e1a142f890,
@@ -4007,6 +4010,115 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: -104.78}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1904355405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904355406}
+  - component: {fileID: 1904355407}
+  m_Layer: 0
+  m_Name: Gray Alien Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904355406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904355405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1003220554}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1904355407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904355405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alienPrefab: {fileID: 5830063095503735815, guid: 74a75cbd5eeed724d98785906dfd08ab,
+    type: 3}
+  _health: 25
+--- !u!1 &1942314233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1942314234}
+  - component: {fileID: 1942314236}
+  - component: {fileID: 1942314235}
+  m_Layer: 0
+  m_Name: ChestFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1942314234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942314233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669834146}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942314235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942314233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c22e515a52a439d8c57ee258401288a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1942314236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942314233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b2fff2b0764c77b71ada151acd68a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chestPrefabs:
+  - {fileID: 6638749329280213729, guid: 33dcdfbc105b1a746932742af1eb3d20, type: 3}
+  - {fileID: 468683169662637219, guid: 706af47135a94bc40bd4c833a573c7c3, type: 3}
+  _centerOfMap: {fileID: 355638635}
+  _chestRewardFactory: {fileID: 1942314235}
 --- !u!1 &1977182274
 GameObject:
   m_ObjectHideFlags: 0

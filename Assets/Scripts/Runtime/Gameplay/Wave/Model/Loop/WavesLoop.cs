@@ -14,7 +14,7 @@ namespace HumansVsAliens.Gameplay
         {
             _wavesQueue = wavesQueue ?? throw new ArgumentNullException(nameof(wavesQueue));
             _timer = timer ?? throw new ArgumentNullException(nameof(timer));
-            Status = WavesLoopStatus.WaitNextWave;
+            Status = WavesLoopStatus.WaitFirstWave;
         }
 
         public bool IsEnded => false;

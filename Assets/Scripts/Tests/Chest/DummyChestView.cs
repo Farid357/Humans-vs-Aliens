@@ -10,5 +10,10 @@ namespace HumansVsAliens.Tests
         {
             IsOpen = true;
         }
+
+        public void Destroy()
+        {
+            
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace HumansVsAliens.Gameplay
         }
 
         public IHealth Health { get; private set; }
-
+        
         public bool IsAlive => Health.IsAlive;
 
         public bool CanAttack => _weaponsCollection.Weapon.CanHit;

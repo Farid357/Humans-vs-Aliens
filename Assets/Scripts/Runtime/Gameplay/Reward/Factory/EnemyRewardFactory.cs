@@ -1,29 +1,28 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class EnemyRewardFactory : MonoBehaviour, IRewardFactory
+    public class EnemyRewardFactory : IRewardFactory
     {
-        [SerializeField, Min(5)] private int _money = 5;
-        [SerializeField, Min(5)] private int _scoreCount = 10;
+        private readonly ICharacterStatistics _statistics;
+        private readonly int _money;
+        private readonly int _scoreCount;
 
-        private IWallet _wallet;
-        private IScore _score;
-
-        public void Init(IWallet wallet, IScore score)
+        public EnemyRewardFactory(ICharacterStatistics statistics, int money, int scoreCount)
         {
-            _wallet = wallet ?? throw new ArgumentNullException(nameof(wallet));
-            _score = score ?? throw new ArgumentNullException(nameof(score));
+            _statistics = statistics ?? throw new ArgumentNullException(nameof(statistics));
+            _money = money.ThrowIfLessThanOrEqualsToZeroException();
+            _scoreCount = scoreCount.ThrowIfLessThanOrEqualsToZeroException();
         }
 
         public IReward Create()
         {
             IReward reward = new Rewards(new List<IReward>()
             {
-                new MoneyReward(_wallet, _money),
-                new ScoreReward(_score, _scoreCount)
+                new MoneyReward(_statistics.Wallet, _money),
+                new ScoreReward(_statistics.Score, _scoreCount)
             });
 
             return reward;

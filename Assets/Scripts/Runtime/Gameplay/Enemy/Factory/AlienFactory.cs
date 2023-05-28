@@ -10,17 +10,17 @@ namespace HumansVsAliens.Gameplay
     public class AlienFactory : MonoBehaviour, IEnemyFactory
     {
         [SerializeField] private Alien _alienPrefab;
-        [SerializeField] private EnemyRewardFactory _rewardFactory;
         [SerializeField] private int _health = 80;
 
         private IGameLoopObjectsGroup _gameLoop;
         private IServer _server;
+        private IRewardFactory _rewardFactory;
 
-        public void Init(IGameLoopObjectsGroup gameLoop, ICharacterStatistics statistics, IServer server)
+        public void Init(IGameLoopObjectsGroup gameLoop, IRewardFactory rewardFactory, IServer server)
         {
+            _rewardFactory = rewardFactory ?? throw new ArgumentNullException(nameof(rewardFactory));
             _gameLoop = gameLoop ?? throw new ArgumentNullException(nameof(gameLoop));
             _server = server ?? throw new ArgumentNullException(nameof(server));
-            _rewardFactory.Init(statistics.Wallet, statistics.Score);
         }
         
         public IEnemy Create(Vector3 position)

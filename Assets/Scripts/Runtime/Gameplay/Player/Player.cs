@@ -1,10 +1,9 @@
 using System;
-using HumansVsAliens.GameLoop;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class Player : IGameLoopObject
+    public sealed class Player : IPlayer
     {
         private readonly ICharacter _character;
         private readonly PlayerInput _input;

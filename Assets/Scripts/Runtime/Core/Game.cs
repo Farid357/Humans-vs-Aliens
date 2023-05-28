@@ -20,7 +20,8 @@ namespace HumansVsAliens.Core
         [SerializeField] private HealBonusFactory _healBonusFactory;
         [SerializeField] private EnemyFactories _enemyFactories;
         [SerializeField] private KillsStreakView _killsStreakView;
-
+        [SerializeField] private ChestFactory _chestFactory;
+        
         private IGameLoop _gameLoop;
 
         private void Start()
@@ -28,9 +29,9 @@ namespace HumansVsAliens.Core
             _gameLoop = new StandardGameLoop();
             INetwork network = new Network();
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
-            ICharacter character = _characterFactory.Create();
+            ICharacter character = _characterFactory.Create(out IInvulnerability invulnerability);
             ICharacterStatistics statistics = _statisticsFactory.Create();
-            IGameLoopObject player = new Player(character);
+            IPlayer player = new Player(character);
             ITimerBetweenWaves timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
             IGameLoopObject killsStreak = new KillsStreak(enemiesWorld, _killsStreakView, character.Health);
             _enemyFactories.Init(_gameLoop, statistics, _server);
@@ -38,7 +39,9 @@ namespace HumansVsAliens.Core
             _healBonusFactory.Init(character.Health);
             IWavesLoop wavesLoop = new WavesLoop(_wavesFactory.Create(), timerBetweenWaves);
             IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
-
+            IChestLoop chestLoop = new ChestLoop(wavesLoop, _chestFactory);
+            IGameLoopObject autoHeal = new AutoHeal(wavesLoop, character.Health);
+            
             IBonusLoop bonusLoop = new BonusLoop(new List<IBonusFactory>
             {
                 _healBonusFactory
@@ -50,6 +53,8 @@ namespace HumansVsAliens.Core
                 wavesLoop,
                 enemyCounter,
                 killsStreak,
+                chestLoop,
+                autoHeal,
                 bonusLoop
             }));
 

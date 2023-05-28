@@ -1,18 +1,19 @@
+using HumansVsAliens.Tools;
 using HumansVsAliens.View;
-using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
     public class ChestFactory : MonoBehaviour, IChestFactory
     {
-        [SerializeField] private ChestView _chestPrefab;
+        [SerializeField] private ChestView[] _chestPrefabs;
         [SerializeField] private Transform _centerOfMap;
+        [SerializeField] private ChestRewardFactory _chestRewardFactory;
 
         public IChest Create()
         {
             //TODO Replace Reward
-            IChestView view = PhotonNetwork.Instantiate(_chestPrefab.name, _centerOfMap.position, Quaternion.identity).GetComponent<ChestView>();
+            IChestView view = Instantiate(_chestPrefabs.GetRandom(), _centerOfMap.position, Quaternion.identity);
             return new Chest(view, new FakeReward());
         }
     }

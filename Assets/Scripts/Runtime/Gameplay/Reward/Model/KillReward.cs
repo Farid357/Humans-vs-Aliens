@@ -21,7 +21,7 @@ namespace HumansVsAliens.Gameplay
             if (_health.IsDied() && !_isRewardApplied)
             {
                 _isRewardApplied = true;
-                _reward.Apply();
+                _reward.Receive();
             }
         }
     }

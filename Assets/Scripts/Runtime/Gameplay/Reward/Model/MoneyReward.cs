@@ -14,7 +14,7 @@ namespace HumansVsAliens.Gameplay
             _money = money.ThrowIfLessThanOrEqualsToZeroException();
         }
 
-        public void Apply()
+        public void Receive()
         {
             _wallet.Put(_money);
         }

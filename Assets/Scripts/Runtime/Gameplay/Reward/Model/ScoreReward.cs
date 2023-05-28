@@ -14,7 +14,7 @@ namespace HumansVsAliens.Gameplay
             _addCount = addCount.ThrowIfLessThanOrEqualsToZeroException();
         }
 
-        public void Apply()
+        public void Receive()
         {
             _score.Add(_addCount);
         }

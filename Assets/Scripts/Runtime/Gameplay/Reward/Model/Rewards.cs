@@ -15,11 +15,11 @@ namespace HumansVsAliens.Gameplay
             _all = all ?? throw new ArgumentNullException(nameof(all));
         }
 
-        public void Apply()
+        public void Receive()
         {
             foreach (IReward reward in _all)
             {
-                reward.Apply();
+                reward.Receive();
             }
         }
     }

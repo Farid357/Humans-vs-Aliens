@@ -17,5 +17,10 @@ namespace HumansVsAliens.Tools
             
             health.TakeDamage(health.Value);
         }
+
+        public static void Heal(this IHealth health, int maxValue = 100)
+        {
+            health.Heal(maxValue - health.Value);
+        }
     }
 }

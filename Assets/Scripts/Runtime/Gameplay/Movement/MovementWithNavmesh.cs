@@ -7,7 +7,7 @@ namespace HumansVsAliens.Gameplay
     {
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private MovementAnimations _animations;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _speed = 2f;
         
         public override Transform Transform => _agent.transform;
 
