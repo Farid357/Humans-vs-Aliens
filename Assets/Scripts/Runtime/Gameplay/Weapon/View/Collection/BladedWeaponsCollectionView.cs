@@ -1,9 +1,10 @@
+using HumansVsAliens.Gameplay;
 using HumansVsAliens.View;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace HumansVsAliens.Gameplay
+namespace HumansVsAliens.View
 {
     public sealed class BladedWeaponsCollectionView : MonoBehaviour, IBladedWeaponsCollectionView
     {

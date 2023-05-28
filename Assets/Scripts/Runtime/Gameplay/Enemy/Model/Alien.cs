@@ -1,9 +1,11 @@
 using BananaParty.BehaviorTree;
 using HumansVsAliens.View;
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
+    [RequireComponent(typeof(PhotonView))]
     public sealed class Alien : MonoBehaviour, IEnemy
     {
         [SerializeField] private Movement _movement;
@@ -15,8 +17,10 @@ namespace HumansVsAliens.Gameplay
 
         public IHealth Health { get; private set; }
         
-        public void Init(IHealth health)
+        [PunRPC]
+        public void Init(int healthValue)
         {
+            IHealth health = new Health(healthValue);
             _healthSynchronization.Init(health);
             Health = new HealthWithView(health, new AlienHealthView(gameObject));
             ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
@@ -40,9 +44,6 @@ namespace HumansVsAliens.Gameplay
 
         private void Update()
         {
-            if (_behaviorTree == null)
-                return;
-
             if (_behaviorTree.Finished)
                 _behaviorTree.Reset();
 

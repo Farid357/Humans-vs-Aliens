@@ -1,4 +1,5 @@
 using System;
+using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {

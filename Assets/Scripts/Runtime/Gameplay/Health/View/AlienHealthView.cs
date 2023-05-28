@@ -9,7 +9,7 @@ namespace HumansVsAliens.View
 
         public AlienHealthView(GameObject gameObject)
         {
-            _gameObject = gameObject ?? throw new System.ArgumentNullException(nameof(gameObject));
+            _gameObject = gameObject ? gameObject : throw new System.ArgumentNullException(nameof(gameObject));
         }
 
         public void Visualize(int health)
@@ -19,6 +19,8 @@ namespace HumansVsAliens.View
 
         public void Die()
         {
+            PhotonView photonView = PhotonView.Get(_gameObject);
+
             PhotonNetwork.Destroy(_gameObject);
         }
     }

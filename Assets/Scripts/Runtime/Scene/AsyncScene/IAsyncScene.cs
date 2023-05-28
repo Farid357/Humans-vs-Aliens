@@ -4,10 +4,8 @@ namespace HumansVsAliens.SceneManagement
 {
     public interface IAsyncScene
     {
-        Task Load();
-
-        void Unload();
-        
         float LoadingProgress { get; }
+        
+        Task Load();
     }
 }

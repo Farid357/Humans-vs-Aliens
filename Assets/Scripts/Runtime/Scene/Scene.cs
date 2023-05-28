@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -16,11 +17,6 @@ namespace HumansVsAliens.SceneManagement
         public void Load()
         {
             SceneManager.LoadScene(Name);
-        }
-
-        public void Unload()
-        {
-            SceneManager.UnloadSceneAsync(Name);
         }
 
         public void OnAfterDeserialize()

@@ -1,6 +1,5 @@
 using System;
 using HumansVsAliens.Tools;
-using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,7 +23,7 @@ namespace HumansVsAliens.Gameplay
         {
             Vector3 position = _spawnPoints.GetRandom().position;
             int heal = Random.Range(_minHeal, _maxHeal);
-            BonusWithAutoPickUp bonus = PhotonNetwork.Instantiate(_bonusPrefab.name, position, Quaternion.identity).GetComponent<BonusWithAutoPickUp>();
+            BonusWithAutoPickUp bonus = Instantiate(_bonusPrefab, position, Quaternion.identity);
             bonus.Init(new HealBonus(new Bonus(bonus.View), _health, heal));
             return bonus;
         }

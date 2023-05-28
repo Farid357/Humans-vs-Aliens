@@ -1,11 +1,7 @@
-using HumansVsAliens.View;
-
-namespace HumansVsAliens.Gameplay
+namespace HumansVsAliens.View
 {
     public interface ICharacterView
     {
-        IHealthAnimations Animations { get; }
-
         void Attack();
         
         void SwitchWeapon();

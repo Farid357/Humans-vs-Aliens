@@ -1,9 +1,11 @@
 using System;
 using HumansVsAliens.View;
+using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
+    [RequireComponent(typeof(PhotonView))]
     public sealed class Character : MonoBehaviour, ICharacter
     {
         [SerializeField] private CharacterView _view;
@@ -11,10 +13,17 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private CharacterCamera _camera;
 
         private IBladedWeaponsCollection _weaponsCollection;
-
-        public void Init(IHealth health, IBladedWeaponsCollection weaponsCollection)
+        
+        [PunRPC]
+        public void Init(int health)
         {
-            Health = health ?? throw new ArgumentNullException(nameof(health));
+            CharacterHealthView healthView = FindObjectOfType<CharacterHealthView>();
+            healthView.Init(_view.Animations);
+            Health = new HealthWithView(new Health(health), healthView);
+        }
+
+        public void SetWeaponsCollection(IBladedWeaponsCollection weaponsCollection)
+        {
             _weaponsCollection = weaponsCollection ?? throw new ArgumentNullException(nameof(weaponsCollection));
         }
 
@@ -27,8 +36,6 @@ namespace HumansVsAliens.Gameplay
         public IMovementWithJump Movement => _movement;
 
         public ICharacterCamera Camera => _camera;
-
-        public IHealthAnimations Animations => _view.Animations;
 
         public void Attack()
         {

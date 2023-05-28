@@ -26,10 +26,5 @@ namespace HumansVsAliens.SceneManagement
             
             _loadingView.Visualize(_scene.LoadingProgress);
         }
-
-        public void Unload()
-        {
-            _scene.Unload();
-        }
     }
 }

@@ -1,4 +1,6 @@
-namespace HumansVsAliens.Gameplay
+using HumansVsAliens.Gameplay;
+
+namespace HumansVsAliens.View
 {
     public interface IBladedWeaponsCollectionView
     {

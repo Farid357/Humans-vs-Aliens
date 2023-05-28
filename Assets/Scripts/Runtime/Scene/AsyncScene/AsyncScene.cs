@@ -17,22 +17,17 @@ namespace HumansVsAliens.SceneManagement
 
         public async Task Load()
         {
-            AsyncOperation loadScene = SceneManager.LoadSceneAsync(_name);
-            loadScene.allowSceneActivation = false;
+            AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(_name);
+            loadSceneOperation.allowSceneActivation = false;
 
             while (!Mathf.Approximately(LoadingProgress, 0.9f))
             {
-                LoadingProgress = loadScene.progress;
+                LoadingProgress = loadSceneOperation.progress;
                 await Task.Yield();
             }
 
             LoadingProgress = 1f;
-            loadScene.allowSceneActivation = true;
-        }
-
-        public void Unload()
-        {
-            SceneManager.UnloadSceneAsync(_name);
+            loadSceneOperation.allowSceneActivation = true;
         }
     }
 }

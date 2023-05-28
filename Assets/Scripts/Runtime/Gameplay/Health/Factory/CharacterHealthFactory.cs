@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class CharacterHealthFactory : MonoBehaviour, ICharacterHealthFactory
+    public sealed class CharacterHealthFactory : MonoBehaviour
     {
         [SerializeField] private CharacterHealthView _healthView;
 
