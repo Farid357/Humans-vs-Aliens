@@ -2398,6 +2398,7 @@ GameObject:
   - component: {fileID: 7349534105255469089}
   - component: {fileID: 2512201242816886485}
   - component: {fileID: 4184210678978810722}
+  - component: {fileID: 6325467296896649230}
   m_Layer: 6
   m_Name: Gray Alien
   m_TagString: Untagged
@@ -2414,7 +2415,7 @@ Transform:
   m_GameObject: {fileID: 9096720086522951078}
   m_LocalRotation: {x: -0, y: -0.9964264, z: -0, w: -0.084466435}
   m_LocalPosition: {x: -1.51822, y: -1.3381891, z: -6.9229183}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1661, y: 1.4457, z: 1.2796}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6318557565790763388}
@@ -2435,6 +2436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 6819906260720412682}
+  _healthSynchronization: {fileID: 6325467296896649230}
   _attackDamage: 10
   _distanceToAttack: 3.5
 --- !u!114 &6819906260720412682
@@ -2539,6 +2541,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7349534105255469089}
+  - {fileID: 6325467296896649230}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2555,6 +2558,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8798505, y: 3.0322442, z: 1}
   m_Center: {x: -0, y: 1.5220792, z: 0}
+--- !u!114 &6325467296896649230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096720086522951078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb52fc448164aad8843ea0c4f16aaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9153184067391356146
 GameObject:
   m_ObjectHideFlags: 0

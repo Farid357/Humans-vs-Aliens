@@ -12,11 +12,11 @@ namespace HumansVsAliens.Tests.HealthSystem
             const int startHealthValue = 100;
             const int customMaxHealthValue = 130;
             
-            IHealth health = new HealthWithHealClamp(new Health(new DummyHealthView(), startHealthValue));
+            IHealth health = new HealthWithHealClamp(new Health(startHealthValue));
             health.Heal(10);
             Assert.That(health.Value == startHealthValue);
             
-            IHealth healthWithCustomClamp = new HealthWithHealClamp(new Health(new DummyHealthView(), customMaxHealthValue));
+            IHealth healthWithCustomClamp = new HealthWithHealClamp(new Health(customMaxHealthValue));
             health.Heal(40);
             Assert.That(healthWithCustomClamp.Value == customMaxHealthValue);
         }

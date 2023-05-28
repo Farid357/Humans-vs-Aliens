@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 3002210718968560850}
   - component: {fileID: 500526412065831663}
   - component: {fileID: 8690928504677554750}
+  - component: {fileID: 815655519837250707}
   m_Layer: 6
   m_Name: Red Monster
   m_TagString: Untagged
@@ -818,6 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 5351450667888392488}
+  _healthSynchronization: {fileID: 815655519837250707}
   _attackDamage: 10
   _distanceToAttack: 7.5
 --- !u!114 &5380312013070188710
@@ -840,6 +842,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8911236980819967242}
+  - {fileID: 815655519837250707}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -929,6 +932,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef6fe3d668a9af4598a9e44f269b588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &815655519837250707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835158714671227276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb52fc448164aad8843ea0c4f16aaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &849743116877790044

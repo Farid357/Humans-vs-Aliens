@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using System;
+using HumansVsAliens.Tools;
 using UnityEngine;
 
 namespace HumansVsAliens.Networking
@@ -13,18 +14,21 @@ namespace HumansVsAliens.Networking
 
         public bool IsConnected => PhotonNetwork.IsConnectedAndReady;
 
-        private void Awake()
+        private void OnEnable()
         {
             _photonView = GetComponent<PhotonView>();
         }
 
-        public void SendCommand(IServerCommand serverCommand)
+        public void SendCommand(IServerCommand serverCommand, ServerCommandReceivers receivers)
         {
             if(!IsConnected)
                 throw new InvalidOperationException($"Server is not connected! You can't send commands!");
-
+            
+            if(PhotonNetwork.IsMasterClient == false)
+                return;
+            
             _serverCommand = serverCommand ?? throw new ArgumentNullException(nameof(serverCommand));
-            _photonView.RPC(nameof(SendCommandRpc), RpcTarget.All);
+            _photonView.RPC(nameof(SendCommandRpc), receivers.ToPhoton());
         }
 
         [PunRPC]

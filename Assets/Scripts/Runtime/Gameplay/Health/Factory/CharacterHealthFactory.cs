@@ -10,7 +10,7 @@ namespace HumansVsAliens.Gameplay
         public IHealth Create(IHealthAnimations animations)
         {
             _healthView.Init(animations);
-            return new HealthWithHealClamp(new Health(_healthView, 100));
+            return new HealthWithHealClamp(new HealthWithView(new Health(100), _healthView));
         }
     }
 }

@@ -1,16 +1,12 @@
 using System;
 using HumansVsAliens.Tools;
-using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {
     public sealed class Health : IHealth
     {
-        private readonly IHealthView _view;
-
-        public Health(IHealthView view, int value)
+        public Health(int value)
         {
-            _view = view ?? throw new ArgumentNullException(nameof(view));
             Value = value.ThrowIfLessThanOrEqualsToZeroException();
         }
 
@@ -24,16 +20,11 @@ namespace HumansVsAliens.Gameplay
                 throw new InvalidOperationException($"Health isn't alive!");
 
             Value = Math.Max(0, Value - damage.ThrowIfLessThanZeroException());
-            _view.Visualize(Value);
-
-            if (!IsAlive)
-                _view.Die();
         }
 
         public void Heal(int heal)
         {
             Value += heal.ThrowIfLessThanZeroException();
-            _view.Visualize(Value);
         }
     }
 }

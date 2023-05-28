@@ -11,7 +11,7 @@ namespace HumansVsAliens.Tests.Bonuses
         [Test]
         public void HealsCorrectly()
         {
-            IHealth health = new Health(new DummyHealthView(), 50);
+            IHealth health = new Health(50);
             IBonus bonus = new HealBonus(new Bonus(new DummyBonusView()), health, 10);
             bonus.PickUp();
             Assert.That(health.Value == 60);

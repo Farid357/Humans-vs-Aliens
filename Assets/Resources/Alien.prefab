@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 3084640944103076022}
   - component: {fileID: 200981666937471065}
   - component: {fileID: 3814756682862433579}
+  - component: {fileID: 5455770367184088262}
   m_Layer: 6
   m_Name: Alien
   m_TagString: Untagged
@@ -231,6 +232,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5215051464643759463}
   - {fileID: 3344791950453283793}
+  - {fileID: 5455770367184088262}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -282,6 +284,7 @@ MonoBehaviour:
   _movement: {fileID: 2965239783422449257}
   _attackDamage: 10
   _distanceToAttack: 5
+  _healthSynchronization: {fileID: 5455770367184088262}
 --- !u!114 &2965239783422449257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +360,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.33, y: 4.333539, z: 2.3662982}
   m_Center: {x: 0.017408364, y: 2.2141976, z: 0.032993015}
+--- !u!114 &5455770367184088262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054495357846937082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb52fc448164aad8843ea0c4f16aaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8424523115727132352
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
-using System;
 using BananaParty.BehaviorTree;
+using HumansVsAliens.View;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
@@ -7,16 +7,18 @@ namespace HumansVsAliens.Gameplay
     public sealed class Alien : MonoBehaviour, IEnemy
     {
         [SerializeField] private Movement _movement;
+        [SerializeField] private HealthSynchronization _healthSynchronization;
         [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _distanceToAttack = 5f;
-
+        
         private BehaviorNode _behaviorTree;
 
         public IHealth Health { get; private set; }
-
+        
         public void Init(IHealth health)
         {
-            Health = health ?? throw new ArgumentNullException(nameof(health));
+            _healthSynchronization.Init(health);
+            Health = new HealthWithView(health, new AlienHealthView(gameObject));
             ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
