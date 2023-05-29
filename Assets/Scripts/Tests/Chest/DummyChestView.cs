@@ -5,6 +5,8 @@ namespace HumansVsAliens.Tests
     public class DummyChestView : IChestView
     {
         public bool IsOpen { get; private set; }
+        
+        public bool IsActive { get; private set; }
 
         public void Open()
         {
@@ -13,7 +15,7 @@ namespace HumansVsAliens.Tests
 
         public void Destroy()
         {
-            
+            IsActive = false;
         }
     }
 }

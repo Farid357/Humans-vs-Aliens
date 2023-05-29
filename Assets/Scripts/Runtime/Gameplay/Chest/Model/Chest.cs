@@ -15,12 +15,17 @@ namespace HumansVsAliens.Gameplay
         }
 
         public bool IsOpen { get; private set; }
-        
+
+        public IOnlyDestroyChestView View => _view;
+
         public void Open()
         {
             if (IsOpen)
-                throw new InvalidOperationException($"Chest is already opened!");
-            
+                throw new InvalidOperationException($"The chest is already opened!");
+
+            if (_view.IsActive == false)
+                throw new InvalidOperationException($"The view is destroyed! You can't open this chest!");
+
             IsOpen = true;
             _reward.Receive();
             _view.Open();

@@ -1,4 +1,3 @@
-using HumansVsAliens.Networking;
 using HumansVsAliens.View;
 using Photon.Pun;
 using UnityEngine;
@@ -17,14 +16,11 @@ namespace HumansVsAliens.Gameplay
         public ICharacter Create(out IInvulnerability invulnerability)
         {
             Character character = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<Character>();
-            IBladedWeapon weapon = _weaponFactory.Create(character.transform);
+            IBladedWeapon weapon = _weaponFactory.Create(character.WeaponPositionTransform);
             IBladedWeaponsCollection weaponsCollection = new BladedWeaponsCollection(weapon, _bladedWeaponsCollectionView);
             _bladedWeaponsCollectionView.SwitchWeapon(weapon);
             invulnerability = null;
-            PhotonView photonView = PhotonView.Get(character);
-            photonView.RPC(nameof(character.Init), RpcTarget.AllBuffered, 100);
-            _healthView.Init(character.Animations);
-            character.InitLocal(weaponsCollection, _healthView);
+            character.Init(weaponsCollection, 100, _healthView);
             return character;
         }
     }

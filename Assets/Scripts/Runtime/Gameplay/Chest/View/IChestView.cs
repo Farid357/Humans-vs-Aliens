@@ -1,9 +1,7 @@
 namespace HumansVsAliens.View
 {
-    public interface IChestView
+    public interface IChestView : IOnlyDestroyChestView
     {
         void Open();
-
-        void Destroy();
     }
 }

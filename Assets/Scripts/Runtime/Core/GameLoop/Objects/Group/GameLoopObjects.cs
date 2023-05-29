@@ -18,14 +18,18 @@ namespace HumansVsAliens.GameLoop
 
         public void Add(IGameLoopObject loopObject)
         {
+            if (loopObject == null)
+                throw new ArgumentNullException(nameof(loopObject));
+            
             _loopObjects.Add(loopObject);
         }
 
         public void Update(float deltaTime)
         {
-            foreach (IGameLoopObject gameLoopObject in _loopObjects)
+            for (int i = 0; i < _loopObjects.Count; i++)
             {
-                gameLoopObject.Update(deltaTime);
+                IGameLoopObject loopObject = _loopObjects[i];
+                loopObject.Update(deltaTime);
             }
         }
     }

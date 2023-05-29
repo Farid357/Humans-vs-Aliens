@@ -4,6 +4,6 @@ namespace HumansVsAliens.Gameplay
 {
     public interface IBladedWeaponFactory
     {
-        IBladedWeapon Create(Transform parent);
+        IBladedWeapon Create(Transform spawnPoint);
     }
 }

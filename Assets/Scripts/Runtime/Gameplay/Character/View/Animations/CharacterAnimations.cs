@@ -30,5 +30,10 @@ namespace HumansVsAliens.View
             string randomAttack = _attacks.GetRandom();
             _animator.Play(randomAttack);
         }
+
+        public void SwitchWeapon()
+        {
+            //TODO Animation
+        }
     }
 }

@@ -7,9 +7,8 @@ namespace HumansVsAliens.Gameplay
     {
         [SerializeField] private CharacterHealthView _healthView;
 
-        public IHealth Create(IHealthAnimations animations)
+        public IHealth Create()
         {
-            _healthView.Init(animations);
             return new HealthWithHealClamp(new HealthWithView(new Health(100), _healthView));
         }
     }

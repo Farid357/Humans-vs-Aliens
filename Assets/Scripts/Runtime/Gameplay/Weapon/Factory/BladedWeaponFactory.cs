@@ -8,18 +8,17 @@ namespace HumansVsAliens.Gameplay
     public sealed class BladedWeaponFactory : MonoBehaviour, IBladedWeaponFactory
     {
         [SerializeField] private BladedWeaponView _prefab;
-        [SerializeField] private Transform _spawnPoint;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private int _damage = 10;
         [SerializeField] private float _attackRadius = 2.25f;
 
-        public IBladedWeapon Create(Transform parent)
+        public IBladedWeapon Create(Transform spawnPoint)
         {
-            if (parent == null)
-                throw new ArgumentNullException(nameof(parent));
+            if (spawnPoint == null)
+                throw new ArgumentNullException(nameof(spawnPoint));
             
-            BladedWeaponView view = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<BladedWeaponView>();
-            view.transform.SetParent(parent);
+            BladedWeaponView view = PhotonNetwork.Instantiate(_prefab.name, spawnPoint.position, _prefab.transform.rotation).GetComponent<BladedWeaponView>();
+            view.transform.SetParent(spawnPoint);
             return new BladedWeapon(view, _damage, _attackRadius, _layerMask);
         }
     }

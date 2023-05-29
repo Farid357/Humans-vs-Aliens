@@ -38,10 +38,10 @@ namespace HumansVsAliens.Core
             _healBonusFactory.Init(character.Health);
             IWavesLoop wavesLoop = new WavesLoop(_wavesFactory.Create(), timerBetweenWaves);
             IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
-            IChestLoop chestLoop = new ChestLoop(wavesLoop, _chestFactory);
+            IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
             IGameLoopObject autoHeal = new AutoHeal(wavesLoop, character.Health);
             
-            IBonusLoop bonusLoop = new BonusLoop(new List<IBonusFactory>
+            IBonusesLoop bonusesLoop = new BonusesLoop(new List<IBonusFactory>
             {
                 _healBonusFactory
             });
@@ -49,12 +49,12 @@ namespace HumansVsAliens.Core
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>
             {
                 player,
-                wavesLoop,
                 enemyCounter,
                 killsStreak,
-                chestLoop,
                 autoHeal,
-                bonusLoop
+                wavesLoop,
+                chestsLoop,
+                bonusesLoop
             }));
 
             if (network.IsMasterClient)
