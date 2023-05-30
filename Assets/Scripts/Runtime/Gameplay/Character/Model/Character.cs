@@ -25,7 +25,7 @@ namespace HumansVsAliens.Gameplay
         }
 
         [PunRPC]
-        private void InitRpc(int health) => Health = new Health(health);
+        private void InitRpc(int health) => Health = new HealthWithHealClamp(new Health(health));
 
         public bool IsAlive => Health.IsAlive;
 

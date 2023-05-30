@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace HumansVsAliens.Tools
 {
@@ -30,6 +31,14 @@ namespace HumansVsAliens.Tools
                 throw new ArgumentOutOfRangeException(nameof(number));
 
             return number;
+        }
+
+        public static float ToAudioVolume(this float value)
+        {
+            if (value > 1 || value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value));
+
+            return Mathf.Lerp(-25, 20, value);
         }
     }
 }
