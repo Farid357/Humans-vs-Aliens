@@ -16,7 +16,7 @@ namespace HumansVsAliens.Tools
             {
                 float anotherDistance = (convertedTransforms[i].position - to.position).sqrMagnitude;
                 float distanceToClosest = (closest.position - to.position).sqrMagnitude;
-              
+
                 if (distanceToClosest > anotherDistance)
                 {
                     closest = convertedTransforms[i];

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HumansVsAliens.Gameplay;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -12,6 +13,7 @@ namespace HumansVsAliens.UI
     [RequireComponent(typeof(Button))]
     public class CreateRoomButton : MonoBehaviour
     {
+        [SerializeField] private GameConfiguration _gameConfiguration;
         [SerializeField] private PlayersToggle _toggle;
         [SerializeField] private RoomNameField _nameField;
         [SerializeField] private TMP_Text _errorText;
@@ -40,6 +42,7 @@ namespace HumansVsAliens.UI
             
             var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount };
             _isPressed = true;
+            _gameConfiguration.Save();
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
         }
 

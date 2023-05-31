@@ -4,21 +4,22 @@ using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class KillReward : IGameLoopObject
+    public class RewardForMurder : IGameLoopObject
     {
-        private readonly IHealth _health;
+        private readonly IHealth _target;
         private readonly IReward _reward;
+        
         private bool _isRewardApplied;
 
-        public KillReward(IHealth health, IReward reward)
+        public RewardForMurder(IHealth target, IReward reward)
         {
-            _health = health ?? throw new ArgumentNullException(nameof(health));
+            _target = target ?? throw new ArgumentNullException(nameof(target));
             _reward = reward ?? throw new ArgumentNullException(nameof(reward));
         }
 
         public void Update(float deltaTime)
         {
-            if (_health.IsDied() && !_isRewardApplied)
+            if (_target.IsDied() && !_isRewardApplied)
             {
                 _isRewardApplied = true;
                 _reward.Receive();

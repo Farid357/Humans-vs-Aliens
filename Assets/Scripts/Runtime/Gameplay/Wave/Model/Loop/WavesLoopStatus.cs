@@ -4,6 +4,7 @@ namespace HumansVsAliens.Gameplay
     {
         WaitFirstWave,
         WaitNextWave,
-        WaveIsGoing
+        WaveIsGoing,
+        Ended
     }
 }

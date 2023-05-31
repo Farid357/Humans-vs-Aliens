@@ -5,21 +5,22 @@ namespace HumansVsAliens.Gameplay
     public sealed class WavesLoop : IWavesLoop
     {
         private readonly IWavesQueue _wavesQueue;
+        private readonly IWavesCounter _wavesCounter;
         private readonly ITimerBetweenWaves _timer;
 
         private IWave _wave;
         private bool _wasStarted;
 
-        public WavesLoop(IWavesQueue wavesQueue, ITimerBetweenWaves timer)
+        public WavesLoop(IWavesQueue wavesQueue, IWavesCounter wavesCounter, ITimerBetweenWaves timer)
         {
             _wavesQueue = wavesQueue ?? throw new ArgumentNullException(nameof(wavesQueue));
+            _wavesCounter = wavesCounter ?? throw new ArgumentNullException(nameof(wavesCounter));
             _timer = timer ?? throw new ArgumentNullException(nameof(timer));
-            Status = WavesLoopStatus.WaitFirstWave;
         }
 
         public bool IsEnded => false;
 
-        public WavesLoopStatus Status { get; private set; }
+        public WavesLoopStatus Status { get; private set; } = WavesLoopStatus.WaitFirstWave;
 
         public void Start()
         {
@@ -47,6 +48,7 @@ namespace HumansVsAliens.Gameplay
             _wave = _wavesQueue.GetWave();
             _timer.Stop();
             _wave.Start();
+            _wavesCounter.Increase();
             Status = WavesLoopStatus.WaveIsGoing;
         }
     }

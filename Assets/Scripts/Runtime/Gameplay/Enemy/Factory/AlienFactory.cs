@@ -25,7 +25,7 @@ namespace HumansVsAliens.Gameplay
             PhotonView photonView = PhotonView.Get(alien);
             photonView.RPC(nameof(alien.Init), RpcTarget.AllBuffered, _health);
             IReward reward = _rewardFactory.Create();
-            IGameLoopObject killReward = new KillReward(alien.Health, reward);
+            IGameLoopObject killReward = new RewardForMurder(alien.Health, reward);
             _gameLoop.Add(killReward);
             return alien;
         }

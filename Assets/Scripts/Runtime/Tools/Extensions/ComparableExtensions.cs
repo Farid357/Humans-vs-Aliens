@@ -33,6 +33,12 @@ namespace HumansVsAliens.Tools
             return number;
         }
 
+        public static int ToInt(this string text)
+        {
+            text = text.DeleteWhiteSpaces();
+            return Convert.ToInt32(text);
+        }
+
         public static float ToAudioVolume(this float value)
         {
             if (value > 1 || value < 0)
