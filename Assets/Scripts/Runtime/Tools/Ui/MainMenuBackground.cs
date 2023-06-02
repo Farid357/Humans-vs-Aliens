@@ -27,13 +27,13 @@ namespace HumansVsAliens
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(_delayBetweenIcons), cancellationToken: cancellationToken);
 
-                if (enabled == false)
+                if (cancellationToken.IsCancellationRequested == false)
                     return;
 
                 _background.DOColor(Color.black, _fadeDuration);
                 await UniTask.Delay(TimeSpan.FromSeconds(_fadeDuration), cancellationToken: cancellationToken);
 
-                if (enabled == false)
+                if (cancellationToken.IsCancellationRequested == false)
                     return;
 
                 iconIndex++;

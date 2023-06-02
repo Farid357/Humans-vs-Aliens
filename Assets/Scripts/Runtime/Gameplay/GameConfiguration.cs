@@ -1,5 +1,4 @@
 using HumansVsAliens.Tools;
-using SaveSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,26 +12,24 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private Toggle _autoHealToggle;
         [SerializeField] private TMP_InputField _wavesCountText;
 
-        private ISaveStorage<GameConfigurationSave> _saveStorage;
-        
-        private void Awake()
+        public GameConfigurationSave Save
         {
-            _saveStorage = SaveStorages.GameConfiguration;
-        }
+            get
+            {
+                GameConfigurationSave save;
 
-        public void Save()
-        {
-            if (_wavesInfiniteToggle.isOn)
-            {
-                var save = new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
-                _saveStorage.Save(save);
-            }
-            
-            else
-            {
-                int wavesCount = _wavesCountText.text.ToInt();
-                var save = new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
-                _saveStorage.Save(save);
+                if (_wavesInfiniteToggle.isOn)
+                {
+                    save = new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
+                }
+
+                else
+                {
+                    int wavesCount = _wavesCountText.text.ToInt();
+                    save = new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
+                }
+
+                return save;
             }
         }
     }

@@ -1,13 +1,17 @@
 using System;
 using HumansVsAliens.Tools;
 
-namespace HumansVsAliens.Gameplay
+namespace HumansVsAliens
 {
-    [Serializable]
-    public struct GameConfigurationSave
+    public sealed class GameConfigurationSave : ISaveObject, IGameConfigurationSave
     {
         private int _wavesCount;
 
+        public GameConfigurationSave()
+        {
+            
+        }
+        
         public GameConfigurationSave(int wavesCount, bool cheatsAreEnabled, bool autoHealIsOn)
         {
             _wavesCount = wavesCount.ThrowIfLessThanOrEqualsToZeroException();
@@ -24,11 +28,11 @@ namespace HumansVsAliens.Gameplay
             WavesAreInfinite = true;
         }
 
-        public bool WavesAreInfinite { get; }
+        public bool WavesAreInfinite { get; private set; }
 
-        public bool CheatsAreEnabled { get; }
+        public bool CheatsAreEnabled { get; private set; }
         
-        public bool AutoHealIsOn { get; }
+        public bool AutoHealIsOn { get; private set; }
 
         public int WavesCount
         {
@@ -39,6 +43,22 @@ namespace HumansVsAliens.Gameplay
 
                 return _wavesCount;
             }
+        }
+
+        public void Serialize(ISaveHandle saveHandle)
+        {
+            saveHandle.WriteBool(AutoHealIsOn);
+            saveHandle.WriteBool(CheatsAreEnabled);
+            saveHandle.WriteBool(WavesAreInfinite);
+            saveHandle.WriteInt(_wavesCount);
+        }
+
+        public void Deserialize(ISaveHandle saveHandle)
+        {
+           AutoHealIsOn =  saveHandle.ReadBool();
+           CheatsAreEnabled = saveHandle.ReadBool();
+           WavesAreInfinite = saveHandle.ReadBool();
+           _wavesCount = saveHandle.ReadInt();
         }
     }
 }

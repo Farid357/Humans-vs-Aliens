@@ -1,7 +1,9 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using ExitGames.Client.Photon;
 using HumansVsAliens.Gameplay;
+using HumansVsAliens.Tools;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -39,10 +41,10 @@ namespace HumansVsAliens.UI
 
             if (_isPressed)
                 return;
-            
-            var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount };
+
             _isPressed = true;
-            _gameConfiguration.Save();
+            var properties = new Hashtable() {{CustomProperties.GameConfiguration, _gameConfiguration.Save}};
+            var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties =  properties};
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
         }
 
