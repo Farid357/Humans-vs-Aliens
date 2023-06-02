@@ -16,20 +16,16 @@ namespace HumansVsAliens.Gameplay
         {
             get
             {
-                GameConfigurationSave save;
-
                 if (_wavesInfiniteToggle.isOn)
                 {
-                    save = new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
+                    return new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
                 }
 
                 else
                 {
                     int wavesCount = _wavesCountText.text.ToInt();
-                    save = new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
+                    return new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
                 }
-
-                return save;
             }
         }
     }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1100731769218629347}
   - component: {fileID: 468683169662637219}
   - component: {fileID: 3772357429687671157}
+  - component: {fileID: 8985928185969495811}
+  - component: {fileID: 1319736398500774294}
   m_Layer: 0
   m_Name: PurpleChest
   m_TagString: Untagged
@@ -148,6 +150,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8985928185969495811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004989271517063636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7075a4871a534b7c9486687f5ac5f314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 468683169662637219}
+--- !u!65 &1319736398500774294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004989271517063636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1260378, y: 3.6325138, z: 3.3343384}
+  m_Center: {x: 9.2852115e-12, y: 1.7115337, z: 0.017959356}
 --- !u!1 &5704976065824846201
 GameObject:
   m_ObjectHideFlags: 0

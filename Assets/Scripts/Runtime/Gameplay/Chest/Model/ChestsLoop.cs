@@ -8,7 +8,7 @@ namespace HumansVsAliens.Gameplay
         private readonly IReadOnlyWavesLoop _wavesLoop;
         private readonly IChestFactory _chestFactory;
         
-        private IOnlyDestroyChestView _lastCreatedChest;
+        private IChestWithView _lastCreatedChest;
         private bool _createdChest;
 
         public ChestsLoop(IReadOnlyWavesLoop wavesLoop, IChestFactory chestFactory)
@@ -21,7 +21,7 @@ namespace HumansVsAliens.Gameplay
         {
             if (_wavesLoop.Status == WavesLoopStatus.WaitNextWave && !_createdChest)
             {
-                _lastCreatedChest = _chestFactory.Create().View;
+                _lastCreatedChest = _chestFactory.Create();
                 _createdChest = true;
             }
 

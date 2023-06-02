@@ -1904,8 +1904,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279900874
-  m_fontColor: {r: 0.7924528, g: 0.10017798, b: 0.10017798, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4809,7 +4809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1942314234}
   - component: {fileID: 1942314236}
-  - component: {fileID: 1942314235}
   m_Layer: 0
   m_Name: ChestFactory
   m_TagString: Untagged
@@ -4832,18 +4831,6 @@ Transform:
   m_Father: {fileID: 1669834146}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1942314235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942314233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c22e515a52a439d8c57ee258401288a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1942314236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4857,10 +4844,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chestPrefabs:
-  - {fileID: 6638749329280213729, guid: 33dcdfbc105b1a746932742af1eb3d20, type: 3}
-  - {fileID: 468683169662637219, guid: 706af47135a94bc40bd4c833a573c7c3, type: 3}
+  - {fileID: 8596289077782961023, guid: 33dcdfbc105b1a746932742af1eb3d20, type: 3}
+  - {fileID: 8985928185969495811, guid: 706af47135a94bc40bd4c833a573c7c3, type: 3}
   _centerOfMap: {fileID: 355638635}
-  _chestRewardFactory: {fileID: 1942314235}
 --- !u!1 &1977182274
 GameObject:
   m_ObjectHideFlags: 0

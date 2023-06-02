@@ -1,4 +1,5 @@
 using System;
+using HumansVsAliens.Tools;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
@@ -24,20 +25,19 @@ namespace HumansVsAliens.Gameplay
             _character.Movement.Move(new Vector3(moveDirection.x, 0, moveDirection.y));
 
             if (_input.Movement.Jump.WasPerformedThisFrame() && _character.Movement.OnGround)
-            {
                 _character.Movement.Jump();
-            }
 
             if (_input.Fighting.Attack.WasPerformedThisFrame() && _character.CanAttack)
-            {
                 _character.Attack();
-            }
 
             if (_input.Camera.ZoomIn.IsPressed() && !_character.Camera.IsInFullZoomIn)
                 _character.Camera.ZoomIn();
 
             if (!_input.Camera.ZoomIn.IsPressed() && !_character.Camera.IsInFullZoomOut)
                 _character.Camera.ZoomOut();
+
+            if (_input.Interaction.ChestOpening.IsPressed() && _character.CanOpenChest())
+                _character.Chest().Open();
         }
     }
 }

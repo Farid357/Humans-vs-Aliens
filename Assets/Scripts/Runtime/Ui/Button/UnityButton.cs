@@ -18,7 +18,8 @@ namespace HumansVsAliens.UI
 
         public void OnDestroy()
         {
-            _unityButton.onClick.RemoveListener(_button.Press);
+            if (_button != null)
+                _unityButton.onClick.RemoveListener(_button.Press);
         }
     }
 }

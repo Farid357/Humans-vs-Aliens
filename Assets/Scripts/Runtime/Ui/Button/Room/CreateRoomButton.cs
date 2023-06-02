@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using ExitGames.Client.Photon;
 using HumansVsAliens.Gameplay;
 using HumansVsAliens.Tools;
 using Photon.Pun;
@@ -31,11 +30,11 @@ namespace HumansVsAliens.UI
             _button.onClick.AddListener(Press);
         }
 
-        private async void Press()
+        private void Press()
         {
             if (!_nameField.IsValid)
             {
-                await ShowNameFieldError();
+                ShowNameFieldError().Forget();
                 return;
             }
 
@@ -43,12 +42,11 @@ namespace HumansVsAliens.UI
                 return;
 
             _isPressed = true;
-            var properties = new Hashtable() {{CustomProperties.GameConfiguration, _gameConfiguration.Save}};
-            var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties =  properties};
+            var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties = _gameConfiguration.Save.ToRoomProperties() };
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
         }
 
-        private async UniTask ShowNameFieldError()
+        private async UniTaskVoid ShowNameFieldError()
         {
             _errorText.text = "Can't create room because it's name is invalid!!";
             await UniTask.Delay(TimeSpan.FromSeconds(0.75f), cancellationToken: _cancellationToken);

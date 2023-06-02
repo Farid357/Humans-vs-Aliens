@@ -1,9 +1,9 @@
+using Network = HumansVsAliens.Networking.Network;
 using System.Collections.Generic;
 using HumansVsAliens.Gameplay;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Networking;
 using HumansVsAliens.Tools;
-using Network = HumansVsAliens.Networking.Network;
 using HumansVsAliens.View;
 using UnityEngine;
 
@@ -26,7 +26,6 @@ namespace HumansVsAliens.Core
 
         private void Start()
         {
-            IGameGeneralData data = new GameGeneralData();
             INetwork network = new Network();
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
             ICharacter character = _characterFactory.Create(out IInvulnerability invulnerability);
@@ -36,7 +35,8 @@ namespace HumansVsAliens.Core
             _enemyFactories.Init(_gameLoop, statistics);
             _wavesLoopFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);
-            IGameConfigurationSave gameConfiguration = data.GameConfiguration;
+            _chestFactory.Init(new ChestRewardFactory(statistics));
+            IGameConfigurationSave gameConfiguration = network.GameConfiguration();
             IWavesLoop wavesLoop = gameConfiguration.WavesAreInfinite ? _wavesLoopFactory.Create() : _wavesLoopFactory.CreateTemporary(gameConfiguration.WavesCount);
             IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
