@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b166fb85e40c434d8336bfdd7666576e, type: 3}
   m_Name: Kill All Enemies
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Wavy
+  <Name>k__BackingField: Scull
   <Description>k__BackingField: Kills All Enemies
   <Price>k__BackingField: 100

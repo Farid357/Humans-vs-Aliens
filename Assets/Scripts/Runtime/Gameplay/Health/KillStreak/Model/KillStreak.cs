@@ -1,21 +1,20 @@
 using System;
 using System.Collections.Generic;
-using HumansVsAliens.GameLoop;
 using HumansVsAliens.Tools;
 using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class KillsStreak : IGameLoopObject, IKillsStreak
+    public class KillsStreak : IGameLoopObjectKillsStreak
     {
         private readonly IReadOnlyEnemiesWorld _enemiesWorld;
         private readonly IKillsStreakView _view;
-        private readonly IHealth _health;
+        private readonly IReadOnlyHealth _health;
         private readonly IList<IEnemy> _alreadyKilledEnemies;
 
         private int _lastHealthValue;
 
-        public KillsStreak(IReadOnlyEnemiesWorld enemiesWorld, IKillsStreakView view, IHealth characterHealth)
+        public KillsStreak(IReadOnlyEnemiesWorld enemiesWorld, IKillsStreakView view, IReadOnlyHealth characterHealth)
         {
             _enemiesWorld = enemiesWorld ?? throw new ArgumentNullException(nameof(enemiesWorld));
             _view = view ?? throw new ArgumentNullException(nameof(view));
@@ -34,7 +33,7 @@ namespace HumansVsAliens.Gameplay
                 Reset();
         }
 
-        private void Reset()
+        public void Reset()
         {
             Factor = 0;
             _lastHealthValue = _health.Value;

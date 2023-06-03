@@ -5,7 +5,7 @@ namespace HumansVsAliens.Tools
 {
     public static class HealthExtensions
     {
-        public static bool IsDied(this IHealth health)
+        public static bool IsDied(this IReadOnlyHealth health)
         {
             return health.IsAlive == false;
         }

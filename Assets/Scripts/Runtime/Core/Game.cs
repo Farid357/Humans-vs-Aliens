@@ -32,7 +32,7 @@ namespace HumansVsAliens.Core
             ICharacter character = _characterFactory.Create(out IInvulnerability invulnerability);
             ICharacterStatistics statistics = _statisticsFactory.Create();
             IPlayer player = new Player(character);
-            IGameLoopObject killsStreak = new KillsStreak(enemiesWorld, _killsStreakView, character.Health);
+            IGameLoopObject killsStreak = new TemporaryKillStreak(new KillsStreak(enemiesWorld, _killsStreakView, character.Health));
             _enemyFactories.Init(_gameLoop, statistics);
             _wavesLoopFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);

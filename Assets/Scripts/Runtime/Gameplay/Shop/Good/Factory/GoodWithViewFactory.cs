@@ -11,7 +11,7 @@ namespace HumansVsAliens.Gameplay
         {
             GoodWithView goodWithView = Instantiate(_prefab, _content);
             goodWithView.Init(good);
-            return good;
+            return goodWithView;
         }
     }
 }

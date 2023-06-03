@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Gameplay;
 using HumansVsAliens.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HumansVsAliens.Core
 {
@@ -11,15 +13,17 @@ namespace HumansVsAliens.Core
         [SerializeField] private UnityButton _buyButton;
         [SerializeField] private ClientView _clientView;
         [SerializeField] private GoodsFactory _goodsFactory;
-
+        [SerializeField] private GraphicRaycaster _physicsRaycaster;
+        
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
         public IShop Create(IWallet wallet, IReadOnlyCharacter character, IReadOnlyEnemiesWorld enemiesWorld)
         {
             _goodsFactory.Init(character, enemiesWorld);
-            IShop shop = new Shop(_goodsFactory.Create());
+            Dictionary<IGood,IGoodData> goods = _goodsFactory.Create();
+            IShop shop = new Shop(goods);
             IClient client = new Client(_clientView, shop, wallet);
-            var userInput = new UserInput();
+            var userInput = new UserInput(_physicsRaycaster);
             IGameLoopObject user = new User(userInput, client);
 
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>()
@@ -29,6 +33,7 @@ namespace HumansVsAliens.Core
             }));
 
             _buyButton.Init(new BuyButton(client));
+            client.SelectGood(goods.Keys.First());
             return shop;
         }
 

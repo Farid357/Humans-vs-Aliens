@@ -18,8 +18,8 @@ namespace HumansVsAliens.Gameplay
         public (IGood, IGoodData) Create()
         {
             IGood good = new HealGood(_health, _data.Heal);
-            _viewFactory.CreateFor(good);
-            return (good, _data);
+            IGood goodWithView = _viewFactory.CreateFor(good);
+            return (goodWithView, _data);
         }
     }
 }

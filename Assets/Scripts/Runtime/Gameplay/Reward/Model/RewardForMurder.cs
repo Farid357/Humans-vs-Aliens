@@ -6,12 +6,12 @@ namespace HumansVsAliens.Gameplay
 {
     public class RewardForMurder : IGameLoopObject
     {
-        private readonly IHealth _target;
+        private readonly IReadOnlyHealth _target;
         private readonly IReward _reward;
         
         private bool _isRewardApplied;
 
-        public RewardForMurder(IHealth target, IReward reward)
+        public RewardForMurder(IReadOnlyHealth target, IReward reward)
         {
             _target = target ?? throw new ArgumentNullException(nameof(target));
             _reward = reward ?? throw new ArgumentNullException(nameof(reward));

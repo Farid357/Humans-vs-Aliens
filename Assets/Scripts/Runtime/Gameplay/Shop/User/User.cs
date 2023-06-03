@@ -18,7 +18,7 @@ namespace HumansVsAliens.Gameplay
 
         public void Update(float deltaTime)
         {
-            if (_input.HasGood)
+            if (_input.HasGood && _lastSelectedGood != _input.Good)
             {
                 _lastSelectedGood = _input.Good;
                 _client.SelectGood(_lastSelectedGood);
