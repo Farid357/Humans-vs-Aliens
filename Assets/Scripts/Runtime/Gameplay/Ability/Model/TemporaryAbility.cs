@@ -25,6 +25,9 @@ namespace HumansVsAliens.Gameplay
             _ability.Activate();
             await Task.Delay(TimeSpan.FromSeconds(_seconds), _cancellationTokenSource.Token);
 
+            if(_cancellationTokenSource.IsCancellationRequested)
+                return;
+            
             if (IsActive)
                 Deactivate();
         }

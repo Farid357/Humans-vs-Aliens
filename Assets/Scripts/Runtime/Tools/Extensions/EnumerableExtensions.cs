@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HumansVsAliens.Gameplay;
 
 namespace HumansVsAliens.Tools
 {
@@ -24,6 +25,11 @@ namespace HumansVsAliens.Tools
             {
                 action.Invoke(element);
             }
+        }
+
+        public static void Add(this Dictionary<IGood, IGoodData> goods, (IGood model, IGoodData data) good)
+        {
+            goods.Add(good.model, good.data);
         }
     }
 }

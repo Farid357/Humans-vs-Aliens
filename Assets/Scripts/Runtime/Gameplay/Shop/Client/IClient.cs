@@ -1,9 +1,9 @@
 namespace HumansVsAliens.Gameplay
 {
-    public interface IClient
+    public interface IClient : IReadOnlyClient
     {
-        bool HasEnoughMoney { get; }
-
+        void SelectGood(IGood good);
+        
         void BuyGood();
     }
 }

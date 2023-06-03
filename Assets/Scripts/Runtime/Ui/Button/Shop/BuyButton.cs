@@ -14,9 +14,9 @@ namespace HumansVsAliens.UI
 
         public void Press()
         {
-            if(!_client.HasEnoughMoney)
+            if (!_client.HasEnoughMoney)
                 return;
-            
+
             _client.BuyGood();
         }
     }

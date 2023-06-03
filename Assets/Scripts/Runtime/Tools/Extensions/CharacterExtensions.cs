@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HumansVsAliens.Tools
 {
-    public static class PlayerExtensions
+    public static class CharacterExtensions
     {
         private static readonly Collider[] _colliders = new Collider[50];
         private static IChest _chest;

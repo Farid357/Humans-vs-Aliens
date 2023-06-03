@@ -1,7 +1,9 @@
 namespace HumansVsAliens.Gameplay
 {
-    public interface IReadOnlyShoppingCart
+    public interface IUserInput
     {
+        bool HasGood { get; }
+        
         IGood Good { get; }
     }
 }

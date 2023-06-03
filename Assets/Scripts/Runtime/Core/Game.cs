@@ -21,7 +21,8 @@ namespace HumansVsAliens.Core
         [SerializeField] private ChestFactory _chestFactory;
         [SerializeField] private WavesLoopFactory _wavesLoopFactory;
         [SerializeField] private VictoryView _victoryView;
-
+        [SerializeField] private ShopFactory _shopFactory;
+        
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
         private void Start()
@@ -63,6 +64,8 @@ namespace HumansVsAliens.Core
             
             if (network.IsMasterClient)
                 new PrepareGameCommand(wavesLoop, _wavesView).Execute();
+
+            _shopFactory.Create(statistics.Wallet, character, enemiesWorld);
         }
 
         private void Update()

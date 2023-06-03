@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +8,13 @@ namespace HumansVsAliens.View
     {
         [SerializeField] private Image _image;
         [SerializeField] private Color _boughtColor = Color.gray;
-        [SerializeField] private Image _boughtImage;
-        
-        public void Buy()
+
+        public async void Buy()
         {
+            Color startColor = _image.color;
             _image.color = _boughtColor;
-            _boughtImage.gameObject.SetActive(true);
+            await UniTask.Delay(1500);
+            _image.color = startColor;
         }
     }
 }

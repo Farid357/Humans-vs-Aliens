@@ -10,5 +10,14 @@ namespace HumansVsAliens.Tools
         {
             return enemiesWorld.Enemies.Keys.Where(enemy => enemy.Health.IsDied()).ToList();
         }
+
+        public static void KillAllEnemies(this IReadOnlyEnemiesWorld enemiesWorld)
+        {
+            foreach (IEnemy enemy in enemiesWorld.Enemies.Keys)
+            {
+                if(enemy.Health.IsAlive)
+                    enemy.Health.Kill();
+            }
+        }
     }
 }
