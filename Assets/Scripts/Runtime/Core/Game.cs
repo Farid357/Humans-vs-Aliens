@@ -22,6 +22,7 @@ namespace HumansVsAliens.Core
         [SerializeField] private WavesLoopFactory _wavesLoopFactory;
         [SerializeField] private VictoryView _victoryView;
         [SerializeField] private ShopFactory _shopFactory;
+        [SerializeField] private CheatsConsoleFactory _cheatsConsoleFactory;
         
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
@@ -61,11 +62,14 @@ namespace HumansVsAliens.Core
 
             if(gameConfiguration.AutoHealIsOn)
                 _gameLoop.Add(new AutoHeal(wavesLoop, character.Health));
+
+            if (gameConfiguration.CheatsAreEnabled)
+                _cheatsConsoleFactory.Create(character, statistics);
             
             if (network.IsMasterClient)
                 new PrepareGameCommand(wavesLoop, _wavesView).Execute();
 
-            _shopFactory.Create(statistics.Wallet, character, enemiesWorld);
+            _shopFactory.Create(statistics.Wallet, character, enemiesWorld, wavesLoop);
         }
 
         private void Update()

@@ -2,8 +2,8 @@ namespace HumansVsAliens.Gameplay
 {
     public interface IClientView
     {
-        void BuyGood(IGoodData goodData);
+        void BuyGood(IGoodViewData goodData);
         
-        void SelectGood(IGoodData goodData);
+        void SelectGood(IGoodViewData goodData, int price);
     }
 }

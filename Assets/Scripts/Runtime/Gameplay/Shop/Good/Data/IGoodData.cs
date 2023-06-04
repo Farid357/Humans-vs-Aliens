@@ -1,13 +1,7 @@
 namespace HumansVsAliens.Gameplay
 {
-    public interface IGoodData
+    public interface IGoodData : IGoodViewData
     {
-        string Name { get; }
-        
-        string Description { get; }
-
         int Price { get; }
-
-        void SetPrice(int newPrice);
     }
 }

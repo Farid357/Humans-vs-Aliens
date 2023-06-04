@@ -4,12 +4,13 @@ namespace HumansVsAliens.Tests.Shop
 {
     public class DummyClientView : IClientView
     {
-        public void BuyGood(IGoodData goodData)
+        public void BuyGood(IGoodViewData goodData)
         {
         }
 
-        public void SelectGood(IGoodData goodData)
+        public void SelectGood(IGoodViewData goodData, int price)
         {
+            
         }
     }
 }

@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using HumansVsAliens.GameLoop;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class UserInput : IUserInput, IGameLoopObject
+    public class UserInput : IUserInput
     {
         private readonly GraphicRaycaster _physicsRaycaster;
         private IGood _good;
@@ -17,23 +16,12 @@ namespace HumansVsAliens.Gameplay
             _physicsRaycaster = physicsRaycaster;
         }
 
-        public bool HasGood => _good != null;
+        public IGood Good => _good ?? throw new InvalidOperationException(nameof(ClickedOnGood));
 
-        public IGood Good
-        {
-            get
-            {
-                if (!HasGood)
-                    throw new InvalidOperationException(nameof(HasGood));
-
-                return _good;
-            }
-        }
-
-        public void Update(float deltaTime)
+        public bool ClickedOnGood()
         {
             if (!Mouse.current.leftButton.isPressed)
-                return;
+                return false;
 
             var results = new List<RaycastResult>();
             var pointerEventData = new PointerEventData(null);
@@ -43,8 +31,13 @@ namespace HumansVsAliens.Gameplay
             foreach (var result in results)
             {
                 if (result.gameObject.TryGetComponent(out IGood good))
+                {
                     _good = good;
+                    return true;
+                }
             }
+
+            return false;
         }
     }
 }

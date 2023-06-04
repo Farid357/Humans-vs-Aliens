@@ -1,12 +1,16 @@
+using System.Collections.Generic;
 using HumansVsAliens.Gameplay;
 
 namespace HumansVsAliens.Tools
 {
     public static class ShopExtensions
     {
-        public static int GetPrice(this IShop shop, IGood good)
+        public static void Add(this IShop shop, IDictionary<IGood, IGoodData> goods)
         {
-            return shop.Goods[good].Price;
+            foreach ((IGood good, IGoodData goodData) in goods)
+            {
+                shop.Add(good, goodData);
+            }
         }
     }
 }

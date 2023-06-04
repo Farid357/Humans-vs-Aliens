@@ -14,10 +14,5 @@ namespace HumansVsAliens.Tests.Shop
         public string Description { get; }
         
         public int Price { get; }
-        
-        public void SetPrice(int newPrice)
-        {
-            
-        }
     }
 }

@@ -34,7 +34,7 @@ namespace HumansVsAliens.UI
         {
             if (!_nameField.IsValid)
             {
-                ShowNameFieldError().Forget();
+                ShowError("Can't create room because it's name is invalid!!").Forget();
                 return;
             }
 
@@ -42,14 +42,21 @@ namespace HumansVsAliens.UI
                 return;
 
             _isPressed = true;
+
+            if (_gameConfiguration.CanGetSave == false)
+            {
+                ShowError("Can't create room because it's waves count is invalid!!").Forget();
+                return;
+            }
+
             var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties = _gameConfiguration.Save.ToRoomProperties() };
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
         }
 
-        private async UniTaskVoid ShowNameFieldError()
+        private async UniTaskVoid ShowError(string text)
         {
-            _errorText.text = "Can't create room because it's name is invalid!!";
-            await UniTask.Delay(TimeSpan.FromSeconds(0.75f), cancellationToken: _cancellationToken);
+            _errorText.text = text;
+            await UniTask.Delay(TimeSpan.FromSeconds(1.2f), cancellationToken: _cancellationToken);
             _errorText.text = string.Empty;
         }
 

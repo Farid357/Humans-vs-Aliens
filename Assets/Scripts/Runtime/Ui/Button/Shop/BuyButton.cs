@@ -17,7 +17,7 @@ namespace HumansVsAliens.UI
             if (!_client.HasEnoughMoney)
                 return;
 
-            _client.BuyGood();
+            _client.BuySelectedGood();
         }
     }
 }

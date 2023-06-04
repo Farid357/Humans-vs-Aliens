@@ -4,6 +4,6 @@ namespace HumansVsAliens.Gameplay
     {
         void SelectGood(IGood good);
         
-        void BuyGood();
+        void BuySelectedGood();
     }
 }
