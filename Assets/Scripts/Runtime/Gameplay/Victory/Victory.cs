@@ -8,10 +8,12 @@ namespace HumansVsAliens.Gameplay
     {
         private readonly IReadOnlyWavesLoop _wavesLoop;
         private readonly IVictoryView _view;
+        private readonly ILeaderboard _leaderboard;
 
-        public Victory(IReadOnlyWavesLoop wavesLoop, IVictoryView view)
+        public Victory(IReadOnlyWavesLoop wavesLoop, ILeaderboard leaderboard, IVictoryView view)
         {
             _wavesLoop = wavesLoop ?? throw new ArgumentNullException(nameof(wavesLoop));
+            _leaderboard = leaderboard ?? throw new ArgumentNullException(nameof(leaderboard));
             _view = view ?? throw new ArgumentNullException(nameof(view));
         }
 
@@ -25,6 +27,7 @@ namespace HumansVsAliens.Gameplay
             if (_wavesLoop.Status == WavesLoopStatus.Ended)
             {
                 IsActive = true;
+                _leaderboard.Show();
                 _view.ShowVictory();
             }
         }

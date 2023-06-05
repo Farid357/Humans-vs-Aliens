@@ -1,55 +1,37 @@
 using System;
+using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.Gameplay
 {
     public sealed class WavesLoop : IWavesLoop
     {
-        private readonly IWavesQueue _wavesQueue;
-        private readonly IWavesCounter _wavesCounter;
-        private readonly ITimerBetweenWaves _timer;
+        private readonly IReadOnlyWavesCounter _wavesCounter;
+        private readonly IWavesLoop _wavesLoop;
 
-        private IWave _wave;
-        private bool _wasStarted;
+        private readonly int _wavesCount;
 
-        public WavesLoop(IWavesQueue wavesQueue, IWavesCounter wavesCounter, ITimerBetweenWaves timer)
+        public WavesLoop(IWavesLoop wavesLoop, IReadOnlyWavesCounter wavesCounter, int wavesCount)
         {
-            _wavesQueue = wavesQueue ?? throw new ArgumentNullException(nameof(wavesQueue));
+            _wavesLoop = wavesLoop ?? throw new ArgumentNullException(nameof(wavesLoop));
             _wavesCounter = wavesCounter ?? throw new ArgumentNullException(nameof(wavesCounter));
-            _timer = timer ?? throw new ArgumentNullException(nameof(timer));
+            _wavesCount = wavesCount.ThrowIfLessThanOrEqualsToZeroException();
         }
 
-        public bool IsEnded => false;
+        public bool IsEnded => _wavesCounter.PastWavesCount == _wavesCount && _wavesLoop.Status == WavesLoopStatus.WaitNextWave;
 
-        public WavesLoopStatus Status { get; private set; } = WavesLoopStatus.WaitFirstWave;
+        public WavesLoopStatus Status => IsEnded ? WavesLoopStatus.Ended : _wavesLoop.Status;
 
         public void Start()
         {
-            _wasStarted = true;
-            StartNextWave();
+            _wavesLoop.Start();
         }
 
         public void Update(float deltaTime)
         {
-            if (!_wasStarted)
+            if (IsEnded)
                 return;
 
-            if (_wave.IsEnded && !_timer.IsStarted)
-            {
-                _timer.Start();
-                Status = WavesLoopStatus.WaitNextWave;
-            }
-
-            if (_timer.IsEnded && _wave.IsEnded)
-                StartNextWave();
-        }
-
-        private void StartNextWave()
-        {
-            _wave = _wavesQueue.GetWave();
-            _timer.Stop();
-            _wave.Start();
-            _wavesCounter.Increase();
-            Status = WavesLoopStatus.WaveIsGoing;
+            _wavesLoop.Update(deltaTime);
         }
     }
 }

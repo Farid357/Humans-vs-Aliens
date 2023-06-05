@@ -1,9 +1,9 @@
-using HumansVsAliens.Gameplay;
+using HumansVsAliens.Networking;
 
 namespace HumansVsAliens.Gameplay
 {
     public interface IScoreFactory
     {
-        IScore Create();
+        IScore Create(IReadOnlyNetwork network);
     }
 }

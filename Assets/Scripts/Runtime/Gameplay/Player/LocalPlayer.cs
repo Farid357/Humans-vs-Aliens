@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class Player : IPlayer
+    public sealed class LocalPlayer : IPlayer
     {
         private readonly ICharacter _character;
         private readonly PlayerInput _input;
 
-        public Player(ICharacter character)
+        public LocalPlayer(ICharacter character)
         {
             _character = character ?? throw new ArgumentNullException(nameof(character));
             _input = new PlayerInput();

@@ -1,11 +1,7 @@
 namespace HumansVsAliens.Networking
 {
-    public interface INetwork
+    public interface INetwork : IReadOnlyNetwork
     {
-        bool IsMasterClient { get; }
-        
-        bool IsConnected { get; }
-        
         void Connect();
     }
 }

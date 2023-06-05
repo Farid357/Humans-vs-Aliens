@@ -1,20 +1,19 @@
 using ExitGames.Client.Photon;
 using HumansVsAliens.Networking;
 using Photon.Pun;
-using Photon.Realtime;
 
 namespace HumansVsAliens.Tools
 {
-    public static class PhotonExtensions
+    public static class NetworkExtensions
     {
-        public static void SetScore(this Player player, int count)
+        public static void SetScore(this INetworkPlayer player, int count)
         {
-            player.SetCustomProperties(new Hashtable() { { CustomProperties.Score, count } });
+            player.SetCustomData(CustomProperties.Score, count);
         }
 
-        public static int GetScore(this Player player)
+        public static int GetScore(this IReadOnlyNetworkPlayer player)
         {
-            return (int)player.CustomProperties[CustomProperties.Score];
+            return (int)player.GetCustomData(CustomProperties.Score);
         }
 
         public static Hashtable ToRoomProperties(this IGameConfigurationSave save)

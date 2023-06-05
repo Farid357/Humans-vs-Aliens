@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Statistic">
+    <option name="fileTypesIncluded" value="cs" />
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Art" />
+        <option value="$PROJECT_DIR$/Assets/Data" />
+        <option value="$PROJECT_DIR$/Assets/Plugins" />
+        <option value="$PROJECT_DIR$/Assets/Resources" />
+        <option value="$PROJECT_DIR$/Assets/Scenes" />
+        <option value="$PROJECT_DIR$/Library" />
+        <option value="$PROJECT_DIR$/Logs" />
+        <option value="$PROJECT_DIR$/obj" />
+        <option value="$PROJECT_DIR$/Packages" />
+        <option value="$PROJECT_DIR$/ProjectSettings" />
+        <option value="$PROJECT_DIR$/Temp" />
+        <option value="$PROJECT_DIR$/UserSettings" />
+      </list>
+    </option>
+  </component>
+</project>

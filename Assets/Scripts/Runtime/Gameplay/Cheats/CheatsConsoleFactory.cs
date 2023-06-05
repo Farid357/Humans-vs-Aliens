@@ -5,13 +5,13 @@ namespace HumansVsAliens.Gameplay
 {
     public sealed class CheatsConsoleFactory : MonoBehaviour
     {
-        [SerializeField] private Window cheatsWindow;
+        [SerializeField] private Window _cheatsWindow;
         [SerializeField] private UnityButton _activateCheatButton;
         [SerializeField] private InputField _cheatsInputField;
         
         public ICheatsConsole Create(IReadOnlyCharacter character, ICharacterStatistics statistics)
         {
-            cheatsWindow.Open();
+            _cheatsWindow.Open();
             ICheatsConsole console = new CheatsConsole();
             
             console.AddCommand(new HealCommand(character.Health, 25), "HealCharacter");

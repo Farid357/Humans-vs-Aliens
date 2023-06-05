@@ -41,8 +41,6 @@ namespace HumansVsAliens.UI
             if (_isPressed)
                 return;
 
-            _isPressed = true;
-
             if (_gameConfiguration.CanGetSave == false)
             {
                 ShowError("Can't create room because it's waves count is invalid!!").Forget();
@@ -51,6 +49,7 @@ namespace HumansVsAliens.UI
 
             var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties = _gameConfiguration.Save.ToRoomProperties() };
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
+            _isPressed = true;
         }
 
         private async UniTaskVoid ShowError(string text)

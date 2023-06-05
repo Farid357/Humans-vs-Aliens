@@ -18,17 +18,12 @@ namespace HumansVsAliens.Gameplay
             {
                 if (CanGetSave == false)
                     throw new ArgumentOutOfRangeException(nameof(CanGetSave));
-                
-                if (_wavesInfiniteToggle.isOn)
-                {
-                    return new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
-                }
 
-                else
-                {
-                    int wavesCount = _wavesField.Count;
-                    return new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
-                }
+                if (_wavesInfiniteToggle.isOn)
+                    return new GameConfigurationSave(cheatsAreEnabled: _cheatsToggle.isOn, autoHealIsOn: _autoHealToggle.isOn);
+
+                int wavesCount = _wavesField.Count;
+                return new GameConfigurationSave(wavesCount: wavesCount, cheatsAreEnabled: _cheatsToggle.isOn, _autoHealToggle.isOn);
             }
         }
 

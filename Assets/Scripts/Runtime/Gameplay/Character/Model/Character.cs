@@ -11,17 +11,15 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private CharacterView _view;
         [SerializeField] private CharacterControllerMovement _movement;
         [SerializeField] private CharacterCamera _camera;
-        [SerializeField] private Transform _weaponPositionTransformTransform;
+        [SerializeField] private BladedWeaponFactory _weaponFactory;
 
-        public Transform WeaponPositionTransform => _weaponPositionTransformTransform;
-        
         private IBladedWeaponsCollection _weaponsCollection;
         
-        public void Init(IBladedWeaponsCollection weaponsCollection, int health, IHealthView healthView)
+        public void Init(IBladedWeaponsCollectionView weaponsCollectionView, int health, IHealthView healthView)
         {
             GetComponent<PhotonView>().RPC(nameof(InitRpc), RpcTarget.All, health);
             Health = new HealthWithView(Health, new HealthViewWithAnimations(healthView, _view.Animations));
-            _weaponsCollection = weaponsCollection ?? throw new ArgumentNullException(nameof(weaponsCollection));
+            _weaponsCollection = new BladedWeaponsCollection(_weaponFactory.Create(), weaponsCollectionView);
         }
 
         [PunRPC]

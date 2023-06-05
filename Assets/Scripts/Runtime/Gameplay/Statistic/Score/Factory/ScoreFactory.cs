@@ -1,3 +1,4 @@
+using HumansVsAliens.Networking;
 using HumansVsAliens.View;
 using UnityEngine;
 
@@ -7,9 +8,9 @@ namespace HumansVsAliens.Gameplay
     {
         [SerializeField] private ScoreView _scoreView;
 
-        public IScore Create()
+        public IScore Create(IReadOnlyNetwork network)
         {
-            IScore score = new ScoreSynchronization(new Score(_scoreView));
+            IScore score = new NetworkScore(new Score(_scoreView), network);
             return score;
         }
     }

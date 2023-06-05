@@ -12,7 +12,7 @@ namespace HumansVsAliens.Tests
         {
             IVictoryView view = new FakeVictoryView();
             var wavesLoop = new FakeWavesLoop();
-            var victory = new Victory(wavesLoop, view);
+            var victory = new Victory(wavesLoop, new DummyLeaderBoard(), view);
             
             victory.Update(0.2f);
             Assert.False(victory.IsActive);

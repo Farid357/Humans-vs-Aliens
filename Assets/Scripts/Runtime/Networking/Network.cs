@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine;
 
 namespace HumansVsAliens.Networking
 {
@@ -10,29 +10,36 @@ namespace HumansVsAliens.Networking
     {
         public Network()
         {
+            Player = new NetworkPlayer(PhotonNetwork.LocalPlayer.NickName);
             PhotonNetwork.AddCallbackTarget(this);
         }
 
+        public INetworkPlayer Player { get; }
+
         public bool IsConnected => PhotonNetwork.IsConnected;
-        
+
         public bool IsMasterClient => PhotonNetwork.IsMasterClient;
-        
+
+        public IReadOnlyList<IReadOnlyNetworkPlayer> AllPlayers =>
+            PhotonNetwork.PlayerList.Select(player => new NetworkPlayer(player.NickName)).ToList();
+
+        public IReadOnlyList<IReadOnlyNetworkPlayer> InRoomPlayers => PhotonNetwork.CurrentRoom.Players
+            .Select(player => new NetworkPlayer(player.Value.NickName)).ToList();
+
         public void Connect()
         {
             if (IsConnected)
                 throw new InvalidOperationException($"Network is already connected!");
-            
+
             PhotonNetwork.ConnectUsingSettings();
         }
 
         public void OnConnected()
         {
-            Debug.Log("Connected!");
         }
 
         public void OnConnectedToMaster()
         {
-            Debug.Log("Connected to master!");
             PhotonNetwork.JoinLobby();
         }
 
@@ -40,10 +47,9 @@ namespace HumansVsAliens.Networking
         {
             PhotonNetwork.RemoveCallbackTarget(this);
         }
-        
+
         public void OnDisconnected(DisconnectCause cause)
         {
-            Debug.Log($"Disconnected {cause}!");
         }
 
         public void OnRegionListReceived(RegionHandler regionHandler)

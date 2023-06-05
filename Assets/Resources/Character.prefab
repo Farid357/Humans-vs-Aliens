@@ -2286,6 +2286,7 @@ GameObject:
   - component: {fileID: 540800140707452913}
   - component: {fileID: 1571415286938329552}
   - component: {fileID: 1084969860330155395}
+  - component: {fileID: 2044414443077979063}
   m_Layer: 7
   m_Name: Character
   m_TagString: Untagged
@@ -2375,7 +2376,7 @@ MonoBehaviour:
   _view: {fileID: 1571415286938329552}
   _movement: {fileID: 3634348700266075120}
   _camera: {fileID: 4044149812696227078}
-  _weaponPositionTransformTransform: {fileID: 5944084776808075180}
+  _weaponFactory: {fileID: 2044414443077979063}
 --- !u!114 &5501406791602881285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2589,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2044414443077979063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438810162810825780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26419e44a316479eb4fb86293b20439d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 2849710584949491621, guid: d2f8781a5fd8ef54e840ead0a3214333, type: 3}
+  _spawnPoint: {fileID: 5944084776808075180}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _damage: 10
+  _attackRadius: 3.2
 --- !u!1 &7630713795265155875
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ namespace HumansVsAliens.UI
 
         public string Text => _inputField.text;
         
-        public bool IsValid => Text.Length >= 4 && Text.Length <= 12;
+        public bool IsValid => Text.Length >= 4;
         
         private void Start()
         {

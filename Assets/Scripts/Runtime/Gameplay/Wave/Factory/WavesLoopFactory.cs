@@ -19,16 +19,16 @@ namespace HumansVsAliens.Core
             _wavesFactory.Init(enemiesWorld, enemyFactories);
         }
         
-        public IWavesLoop Create()
+        public IWavesLoop CreateInfinite()
         {
             ITimerBetweenWaves timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
-            return new WavesLoop(_wavesFactory.Create(), _wavesCounter, timerBetweenWaves);
+            return new InfiniteWavesLoop(_wavesFactory.Create(), _wavesCounter, timerBetweenWaves);
         }
         
-        public IWavesLoop CreateTemporary(int wavesCount)
+        public IWavesLoop Create(int wavesCount)
         {
-            IWavesLoop wavesLoop = Create();
-            return new TemporaryWavesLoop(wavesLoop, _wavesCounter, wavesCount);
+            IWavesLoop wavesLoop = CreateInfinite();
+            return new WavesLoop(wavesLoop, _wavesCounter, wavesCount);
         }
     }
 }

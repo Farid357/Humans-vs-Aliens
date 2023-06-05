@@ -11,6 +11,7 @@ namespace HumansVsAliens.Gameplay
         {
             Weapon = weapon ?? throw new ArgumentNullException(nameof(weapon));
             _view = view ?? throw new ArgumentNullException(nameof(view));
+            _view.SwitchWeapon(Weapon);
         }
 
         public IShield Shield { get; }
