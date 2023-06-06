@@ -17,7 +17,7 @@ namespace HumansVsAliens.Gameplay
         
         public void Init(IBladedWeaponsCollectionView weaponsCollectionView, int health, IHealthView healthView)
         {
-            GetComponent<PhotonView>().RPC(nameof(InitRpc), RpcTarget.All, health);
+            GetComponent<PhotonView>().RPC(nameof(InitRpc), RpcTarget.AllBuffered, health);
             Health = new HealthWithView(Health, new HealthViewWithAnimations(healthView, _view.Animations));
             _weaponsCollection = new BladedWeaponsCollection(_weaponFactory.Create(), weaponsCollectionView);
         }

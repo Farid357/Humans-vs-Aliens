@@ -6,36 +6,42 @@ namespace HumansVsAliens.Gameplay
 {
     public class CheatsConsole : ICheatsConsole
     {
-        private readonly IDictionary<string, ICommand> _commands;
+        private readonly IDictionary<string, ICheat> _commands;
 
-        public CheatsConsole(IDictionary<string, ICommand> commands)
+        public CheatsConsole(IDictionary<string, ICheat> commands)
         {
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
         }
 
-        public CheatsConsole() : this(new Dictionary<string, ICommand>())
+        public CheatsConsole() : this(new Dictionary<string, ICheat>())
         {
         }
 
-        public ICommand GetCommand(string name)
+        public IEnumerable<string> CheatNames => _commands.Keys;
+        
+        public void ActivateCheat(string name)
         {
-            return _commands[name.DeleteWhiteSpaces()];
+            if (ContainsCheat(name) == false)
+                throw new InvalidOperationException(nameof(ContainsCheat));
+            
+            _commands[name.DeleteWhiteSpaces()].Activate();
         }
 
-        public bool ContainsCommand(string name)
+
+        public bool ContainsCheat(string name)
         {
             return _commands.ContainsKey(name.DeleteWhiteSpaces());
         }
 
-        public void AddCommand(ICommand command, string name)
+        public void AddCheat(ICheat cheat, string name)
         {
-            if (command == null)
-                throw new ArgumentNullException(nameof(command));
+            if (cheat == null)
+                throw new ArgumentNullException(nameof(cheat));
             
             if (name == null) 
                 throw new ArgumentNullException(nameof(name));
             
-            _commands.Add(name.DeleteWhiteSpaces(), command);
+            _commands.Add(name.DeleteWhiteSpaces(), cheat);
         }
     }
 }

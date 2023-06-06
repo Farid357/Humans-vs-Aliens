@@ -16,6 +16,7 @@ namespace HumansVsAliens.Core
         [SerializeField] private EnemyCounterView _enemyCounterView;
         [SerializeField] private WavesView _wavesView;
         [SerializeField] private HealBonusFactory _healBonusFactory;
+        [SerializeField] private ChestBonusFactory _chestBonusFactory;
         [SerializeField] private EnemyFactories _enemyFactories;
         [SerializeField] private KillsStreakView _killsStreakView;
         [SerializeField] private ChestFactory _chestFactory;
@@ -24,7 +25,7 @@ namespace HumansVsAliens.Core
         [SerializeField] private ShopFactory _shopFactory;
         [SerializeField] private CheatsConsoleFactory _cheatsConsoleFactory;
         [SerializeField] private Leaderboard _leaderboard;
-        
+     
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
         private void Start()
@@ -33,25 +34,28 @@ namespace HumansVsAliens.Core
             QualitySettings.vSyncCount = 0;
             
             INetwork network = new Network();
-            _leaderboard.Init(network);
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
-            ICharacter character = _characterFactory.Create(out IInvulnerability invulnerability);
+            ICharacter character = _characterFactory.Create();
             ICharacterStatistics statistics = _statisticsFactory.Create(network);
             IPlayer player = new LocalPlayer(character);
             IGameLoopObject killsStreak = new TemporaryKillStreak(new KillsStreak(enemiesWorld, _killsStreakView, character.Health));
+          
+            _leaderboard.Init(network);
+            _chestFactory.Init(new ChestRewardFactory(statistics));
             _enemyFactories.Init(_gameLoop, statistics);
             _wavesLoopFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);
-            _chestFactory.Init(new ChestRewardFactory(statistics));
+            
             IGameConfigurationSave gameConfiguration = network.GameConfiguration();
             IWavesLoop wavesLoop = gameConfiguration.WavesAreInfinite ? _wavesLoopFactory.CreateInfinite() : _wavesLoopFactory.Create(gameConfiguration.WavesCount);
-            IGameLoopObject enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
+            IEnemyCounter enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
-            IGameLoopObject victory = new Victory(wavesLoop, _leaderboard, _victoryView);
+            IVictory victory = new Victory(wavesLoop, _leaderboard, _victoryView);
             
             IBonusesLoop bonusesLoop = new BonusesLoop(new List<IBonusFactory>
             {
-                _healBonusFactory
+                _healBonusFactory,
+                _chestBonusFactory
             });
 
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>

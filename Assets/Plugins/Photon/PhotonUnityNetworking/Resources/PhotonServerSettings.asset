@@ -42,6 +42,7 @@ MonoBehaviour:
   - SendCommandRpc
   - Init
   - InitRpc
+  - DestroySelf
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

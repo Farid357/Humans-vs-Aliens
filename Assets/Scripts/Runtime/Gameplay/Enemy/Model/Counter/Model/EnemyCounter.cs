@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using HumansVsAliens.GameLoop;
 using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class EnemyCounter : IGameLoopObject
+    public sealed class EnemyCounter : IEnemyCounter
     {
         private readonly IReadOnlyEnemiesWorld _enemiesWorld;
         private readonly IEnemyCounterView _view;

@@ -12,10 +12,9 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private InvulnerabilityFactory _invulnerabilityFactory;
         [SerializeField] private CharacterHealthView _healthView;
         
-        public ICharacter Create(out IInvulnerability invulnerability)
+        public ICharacter Create()
         {
             Character character = PhotonNetwork.Instantiate(_prefab.name, _spawnPoint.position, Quaternion.identity).GetComponent<Character>();
-            invulnerability = null;
             character.Init(_bladedWeaponsCollectionView, 100, _healthView);
             return character;
         }

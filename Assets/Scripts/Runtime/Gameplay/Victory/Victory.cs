@@ -1,10 +1,9 @@
 using System;
-using HumansVsAliens.GameLoop;
 using HumansVsAliens.View;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class Victory : IVictory, IGameLoopObject
+    public class Victory : IVictory
     {
         private readonly IReadOnlyWavesLoop _wavesLoop;
         private readonly IVictoryView _view;

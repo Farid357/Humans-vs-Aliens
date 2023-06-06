@@ -1,11 +1,9 @@
 namespace HumansVsAliens.Gameplay
 {
-    public interface ICheatsConsole
+    public interface ICheatsConsole : IReadOnlyCheatsConsole
     {
-        ICommand GetCommand(string name);
-       
-        bool ContainsCommand(string name);
-        
-        void AddCommand(ICommand command, string name);
+        void ActivateCheat(string name);
+
+        void AddCheat(ICheat cheat, string name);
     }
 }

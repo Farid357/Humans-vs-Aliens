@@ -3,18 +3,18 @@ using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.Gameplay
 {
-    public class HealCommand : ICommand
+    public class HealCheat : ICheat
     {
         private readonly IHealth _health;
         private readonly int _heal;
 
-        public HealCommand(IHealth health, int heal)
+        public HealCheat(IHealth health, int heal)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
             _heal = heal.ThrowIfLessThanOrEqualsToZeroException();
         }
 
-        public void Execute()
+        public void Activate()
         {
             _health.Heal(_heal);
         }

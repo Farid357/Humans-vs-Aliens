@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1687336545517660821}
   - component: {fileID: 4101328953824531646}
   m_Layer: 0
-  m_Name: FirstAidKit_White
+  m_Name: Heal Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
