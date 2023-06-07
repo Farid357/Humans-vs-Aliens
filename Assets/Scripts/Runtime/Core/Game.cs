@@ -50,7 +50,6 @@ namespace HumansVsAliens.Core
             IWavesLoop wavesLoop = gameConfiguration.WavesAreInfinite ? _wavesLoopFactory.CreateInfinite() : _wavesLoopFactory.Create(gameConfiguration.WavesCount);
             IEnemyCounter enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
-            IVictory victory = new Victory(wavesLoop, _leaderboard, _victoryView);
             
             IBonusesLoop bonusesLoop = new BonusesLoop(new List<IBonusFactory>
             {
@@ -63,7 +62,6 @@ namespace HumansVsAliens.Core
                 player,
                 enemyCounter,
                 killsStreak,
-                victory,
                 wavesLoop,
                 chestsLoop,
                 bonusesLoop
@@ -74,11 +72,15 @@ namespace HumansVsAliens.Core
 
             if (gameConfiguration.CheatsAreEnabled)
                 _cheatsConsoleFactory.Create(character, statistics);
-            
-            if (network.IsMasterClient)
-                new PrepareGameCommand(wavesLoop, _wavesView).Execute();
 
             _shopFactory.Create(statistics.Wallet, character, enemiesWorld, wavesLoop);
+         
+            if (network.IsMasterClient)
+            {
+                _gameLoop.Add(new Victory(wavesLoop, _leaderboard, _victoryView));
+                IMasterClient masterClient = new MasterClient(_wavesView, wavesLoop);
+                masterClient.StartGame();
+            }
         }
 
         private void Update()

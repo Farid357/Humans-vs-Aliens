@@ -26,8 +26,7 @@ namespace HumansVsAliens.Gameplay
             
             _commands[name.DeleteWhiteSpaces()].Activate();
         }
-
-
+        
         public bool ContainsCheat(string name)
         {
             return _commands.ContainsKey(name.DeleteWhiteSpaces());
@@ -40,6 +39,9 @@ namespace HumansVsAliens.Gameplay
             
             if (name == null) 
                 throw new ArgumentNullException(nameof(name));
+            
+            if (ContainsCheat(name))
+                throw new InvalidOperationException($"Console already contains cheat with name: {name}");
             
             _commands.Add(name.DeleteWhiteSpaces(), cheat);
         }
