@@ -6,12 +6,15 @@ namespace HumansVsAliens.Networking
     {
         bool IsMasterClient { get; }
         
+        bool IsConnected { get; }
+        
+        IReadOnlyList<IRoom> Rooms { get; }
+
         IReadOnlyList<IReadOnlyNetworkPlayer> AllPlayers { get; }
         
         IReadOnlyList<IReadOnlyNetworkPlayer> InRoomPlayers { get; }
         
         INetworkPlayer Player { get; }
         
-        bool IsConnected { get; }
     }
 }

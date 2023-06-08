@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using HumansVsAliens.SceneManagement;
 using HumansVsAliens.UI;
 using UnityEngine;
+using Network = HumansVsAliens.Networking.Network;
 
 namespace HumansVsAliens.Core
 {
@@ -15,7 +16,7 @@ namespace HumansVsAliens.Core
             _menuButton.Init(new Buttons(new List<IButton>
             {
                 new LoadSceneButton(_menuScene),
-                new LeaveRoomButton()
+                new LeaveRoomButton(new Network())
             }));
         }
     }

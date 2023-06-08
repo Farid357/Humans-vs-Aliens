@@ -1,7 +1,9 @@
-namespace HumansVsAliens
+namespace HumansVsAliens.Networking
 {
-    public interface IRoomData
+    public interface IReadOnlyRoom
     {
+        bool IsPlayerIn { get; }
+        
         int CurrentPlayersCount { get; }
         
         int MaxPlayersCount { get; }

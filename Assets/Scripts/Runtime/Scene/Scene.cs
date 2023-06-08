@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -6,20 +7,18 @@ using UnityEngine;
 namespace HumansVsAliens.SceneManagement
 {
     [CreateAssetMenu(fileName = "Scene", menuName = "Create/Scene Data")]
-    public class Scene : ScriptableObject, IScene, ISceneData, ISerializationCallbackReceiver
+    public class Scene : ScriptableObject, IScene, ISerializationCallbackReceiver
     {
 #if UNITY_EDITOR
         [SerializeField] private SceneAsset _scene;
 #endif
         [field: SerializeField, ReadOnly] public string Name { get; private set; }
 
-        private void Awake()
+        public async void Load()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-        }
+            while (!PhotonNetwork.InRoom)
+                await UniTask.Yield();
 
-        public void Load()
-        {
             PhotonNetwork.LoadLevel(Name);
         }
 

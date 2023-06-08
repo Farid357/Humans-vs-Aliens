@@ -39,12 +39,12 @@ namespace HumansVsAliens.Tools
             return int.Parse(text);
         }
 
-        public static bool CanConvertToInt(this string text)
+        public static float ToFloat(this string text)
         {
             text = text.DeleteWhiteSpaces();
-            return int.TryParse(text, out int result);
+            return float.Parse(text);
         }
-        
+
         public static float ToAudioVolume(this float value)
         {
             if (value > 1 || value < 0)

@@ -23,7 +23,7 @@ namespace HumansVsAliens.Gameplay
         {
             IHealth health = new Health(healthValue);
             _healthSynchronization.Init(health);
-            Health = new HealthWithView(health, _healthView);
+            Health = new HealthWithView(_healthSynchronization, _healthView);
             ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]

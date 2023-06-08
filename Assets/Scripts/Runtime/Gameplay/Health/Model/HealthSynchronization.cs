@@ -5,47 +5,41 @@ using UnityEngine;
 namespace HumansVsAliens.Gameplay
 {
     [RequireComponent(typeof(PhotonView))]
-    public class HealthSynchronization : MonoBehaviourPun, IHealth, IPunObservable
+    public class HealthSynchronization : MonoBehaviour, IHealth
     {
+        private PhotonView _photonView;
         private IHealth _health;
 
         public void Init(IHealth health)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
+            _photonView = GetComponent<PhotonView>();
         }
 
         public bool IsAlive => _health.IsAlive;
 
         public int Value => _health.Value;
 
-        public void TakeDamage(int damage) => _health.TakeDamage(damage);
-
-        public void Heal(int heal) => _health.Heal(heal);
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        public void TakeDamage(int damage)
         {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(_health.Value);
-            }
-            
-            else
-            {
-                int health = (int)stream.ReceiveNext();
+            _photonView.RPC(nameof(TakeDamageRpc), RpcTarget.All, damage);
+        }
 
-                if (_health.Value == health)
-                    return;
-                
-                if (_health.Value > health)
-                {
-                    _health.TakeDamage(_health.Value - health);
-                }
+        public void Heal(int heal)
+        {
+            _photonView.RPC(nameof(HealRpc), RpcTarget.All, heal);
+        }
 
-                else
-                {
-                    _health.Heal(health - _health.Value);
-                }
-            }
+        [PunRPC]
+        private void TakeDamageRpc(int damage)
+        {
+            _health.TakeDamage(damage);
+        }
+
+        [PunRPC]
+        private void HealRpc(int heal)
+        {
+            _health.Heal(heal);
         }
     }
 }

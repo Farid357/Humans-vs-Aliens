@@ -7,8 +7,6 @@ namespace HumansVsAliens.Gameplay
         private readonly IBonus _bonus;
         private readonly IChestFactory _chestFactory;
       
-        private IChestWithView _lastChest;
-
         public ChestBonus(IBonus bonus, IChestFactory chestFactory)
         {
             _bonus = bonus ?? throw new ArgumentNullException(nameof(bonus));
@@ -19,10 +17,7 @@ namespace HumansVsAliens.Gameplay
 
         public void PickUp()
         {
-            if (_lastChest != null && _lastChest.IsActive)
-                _lastChest.Destroy();
-            
-            _lastChest = _chestFactory.Create();
+            _chestFactory.CreateLocal();
             _bonus.PickUp();
         }
     }

@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 307196647}
   - component: {fileID: 307196646}
   - component: {fileID: 307196645}
+  - component: {fileID: 307196648}
   m_Layer: 5
   m_Name: Rooms List Window
   m_TagString: Untagged
@@ -661,6 +662,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307196643}
   m_CullTransparentMesh: 1
+--- !u!114 &307196648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307196643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110a27f5e6864d80838684738b938318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content: {fileID: 1736733241}
+  _roomScrollItem: {fileID: 389193174739485748, guid: 73302ab2d65d39644b90e154893c3e5e,
+    type: 3}
 --- !u!1 &322712838
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,9 +848,9 @@ RectTransform:
   m_Father: {fileID: 6824753}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 201, y: -225.88}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &368261951
@@ -978,9 +994,9 @@ RectTransform:
   m_Father: {fileID: 6824753}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 201, y: -493.64}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425759481
@@ -1783,6 +1799,8 @@ MonoBehaviour:
   _game: {fileID: 11400000, guid: db94579bf9416f74db819e01aee21bb4, type: 2}
   _sceneLoadingView: {fileID: 525778247}
   _joinRoomButton: {fileID: 368261954}
+  _createRoomButton: {fileID: 1137066547}
+  _roomsList: {fileID: 307196648}
 --- !u!114 &525778252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4077,6 +4095,7 @@ GameObject:
   - component: {fileID: 1137066545}
   - component: {fileID: 1137066544}
   - component: {fileID: 1137066543}
+  - component: {fileID: 1137066547}
   m_Layer: 5
   m_Name: Create Room Button (1)
   m_TagString: Untagged
@@ -4215,6 +4234,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137066541}
   m_CullTransparentMesh: 1
+--- !u!114 &1137066547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137066541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12ce58074364579867dd41f17bc70ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1176216605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,7 +6023,6 @@ GameObject:
   - component: {fileID: 1555494413}
   - component: {fileID: 1555494412}
   - component: {fileID: 1555494411}
-  - component: {fileID: 1555494414}
   m_Layer: 5
   m_Name: Rooms List Button
   m_TagString: Untagged
@@ -6016,9 +6046,9 @@ RectTransform:
   m_Father: {fileID: 6824753}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 201, y: -359.76}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1555494411
@@ -6115,21 +6145,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555494409}
   m_CullTransparentMesh: 1
---- !u!114 &1555494414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555494409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 110a27f5e6864d80838684738b938318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _content: {fileID: 1736733241}
-  _roomScrollItem: {fileID: 389193174739485748, guid: 73302ab2d65d39644b90e154893c3e5e,
-    type: 3}
 --- !u!1 &1590570239
 GameObject:
   m_ObjectHideFlags: 0
@@ -9145,7 +9160,7 @@ PrefabInstance:
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
@@ -9155,7 +9170,7 @@ PrefabInstance:
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
@@ -9205,12 +9220,12 @@ PrefabInstance:
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -92
       objectReference: {fileID: 0}
     - target: {fileID: 4343528704201382752, guid: 5897adf3976171b43b69407f8efaa1b2,
         type: 3}

@@ -1,53 +1,37 @@
 using System;
-using System.Collections.Generic;
-using HumansVsAliens.SceneManagement;
+using HumansVsAliens.Tools;
 using Photon.Pun;
-using Photon.Realtime;
 
 namespace HumansVsAliens.Networking
 {
-    public class Room : IRoom, IMatchmakingCallbacks, IDisposable
+    public class Room : IRoom
     {
-        private readonly IScene _scene;
-
-        public Room(IScene scene)
+        public Room(int currentPlayersCount, int maxPlayersCount, string name)
         {
-            _scene = scene ?? throw new ArgumentNullException(nameof(scene));
-            PhotonNetwork.AddCallbackTarget(this);
+            CurrentPlayersCount = currentPlayersCount.ThrowIfLessThanZeroException();
+            MaxPlayersCount = maxPlayersCount.ThrowIfLessThanOrEqualsToZeroException();
+            Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
-        public void OnFriendListUpdate(List<FriendInfo> friendList)
+        public bool IsPlayerIn => PhotonNetwork.InRoom;
+        
+        public int CurrentPlayersCount { get; }
+        
+        public int MaxPlayersCount { get; }
+        
+        public string Name { get; }
+
+        public void Join()
         {
+            PhotonNetwork.JoinRoom(Name);
         }
 
-        public void OnCreatedRoom()
+        public void Leave()
         {
-        }
-
-        public void OnCreateRoomFailed(short returnCode, string message)
-        {
-        }
-
-        public void OnJoinedRoom()
-        {
-            _scene.Load();
-        }
-
-        public void OnJoinRoomFailed(short returnCode, string message)
-        {
-        }
-
-        public void OnJoinRandomFailed(short returnCode, string message)
-        {
-        }
-
-        public void OnLeftRoom()
-        {
-        }
-
-        public void Dispose()
-        {
-            PhotonNetwork.RemoveCallbackTarget(this);
+            if (!IsPlayerIn)
+                throw new InvalidOperationException($"Player is not in room!");
+            
+            PhotonNetwork.LeaveRoom();
         }
     }
 }

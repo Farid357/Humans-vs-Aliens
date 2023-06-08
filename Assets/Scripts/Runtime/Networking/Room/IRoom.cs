@@ -1,7 +1,9 @@
 namespace HumansVsAliens.Networking
 {
-    public interface IRoom
+    public interface IRoom : IReadOnlyRoom
     {
+        void Join();
 
+        void Leave();
     }
 }

@@ -49,6 +49,8 @@ MonoBehaviour:
   - ShowRpc
   - Clear
   - ShowTime
+  - HealRpc
+  - TakeDamageRpc
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

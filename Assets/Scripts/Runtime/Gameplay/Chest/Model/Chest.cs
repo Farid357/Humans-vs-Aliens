@@ -5,7 +5,6 @@ namespace HumansVsAliens.Gameplay
 {
     public class Chest : IChest
     {
-        private readonly IChestView _view;
         private readonly IReward _reward;
 
         public Chest(IReward reward)
@@ -22,11 +21,6 @@ namespace HumansVsAliens.Gameplay
 
             IsOpen = true;
             _reward.Receive();
-        }
-
-        public void Destroy()
-        {
-            _view.Destroy();
         }
     }
 }

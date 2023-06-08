@@ -1,3 +1,4 @@
+using System.Linq;
 using ExitGames.Client.Photon;
 using HumansVsAliens.Networking;
 using Photon.Pun;
@@ -27,7 +28,7 @@ namespace HumansVsAliens.Tools
             };
         }
 
-        public static IGameConfigurationSave GameConfiguration(this INetwork network)
+        public static IGameConfigurationSave GameConfiguration(this IReadOnlyNetwork network)
         {
             Hashtable properties = PhotonNetwork.CurrentRoom.CustomProperties;
             bool cheatsAreEnabled = (bool)properties[CustomProperties.CheatsAreEnabled];
@@ -42,6 +43,17 @@ namespace HumansVsAliens.Tools
             {
                 return new GameConfigurationSave((int)properties[CustomProperties.WavesCount], cheatsAreEnabled, autoHealIsOn);
             }
+        }
+
+        public static bool IsNotFull(this IReadOnlyRoom room)
+        {
+            return room.CurrentPlayersCount != room.MaxPlayersCount;
+        }
+
+        public static void LeaveRoom(this INetwork network)
+        {
+            IRoom room = network.Rooms.First(room => room.IsPlayerIn);
+            room?.Leave();
         }
     }
 }

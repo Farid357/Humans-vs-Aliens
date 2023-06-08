@@ -1,33 +1,33 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace HumansVsAliens.SceneManagement
 {
     public sealed class AsyncScene : IAsyncScene
     {
-        private readonly string _name;
+        private readonly IScene _scene;
         
         public float LoadingProgress { get; private set; }
 
-        public AsyncScene(ISceneData sceneData)
+        public AsyncScene(IScene scene)
         {
-            _name = sceneData.Name;
+            _scene = scene ?? throw new ArgumentNullException(nameof(scene));
         }
 
         public async Task Load()
         {
-            AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(_name);
-            loadSceneOperation.allowSceneActivation = false;
-
             while (!Mathf.Approximately(LoadingProgress, 0.9f))
             {
-                LoadingProgress = loadSceneOperation.progress;
+                LoadingProgress += 0.1f;
+                
+                if(Mathf.Approximately(LoadingProgress, 0.5f))
+                    _scene.Load();
+
                 await Task.Yield();
             }
 
             LoadingProgress = 1f;
-            loadSceneOperation.allowSceneActivation = true;
         }
     }
 }

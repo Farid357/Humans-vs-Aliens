@@ -1,4 +1,5 @@
 using System.Globalization;
+using HumansVsAliens.Tools;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace HumansVsAliens.SceneManagement
             if (!_loadingWindow.IsActive)
                 _loadingWindow.Open();
 
+            string text = loadingProgress.ToString();
+            loadingProgress = text.Length >= 3 ? text[..3].ToFloat() : loadingProgress;
             loadingProgress *= 100f;
             string progressText = loadingProgress.ToString(CultureInfo.InvariantCulture);
             _progressText.text = $"{progressText}%";

@@ -3057,7 +3057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alienPrefab: {fileID: 2416878759100590371, guid: ab8623a6658fab542ae984d85e1eb524,
     type: 3}
-  _health: 30
+  _health: 20
 --- !u!1 &786745026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,7 +5328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alienPrefab: {fileID: 4191114923340187176, guid: 6c3a62f48a7affb45a4310006538a167,
     type: 3}
-  _health: 20
+  _health: 10
 --- !u!4 &1286781790
 Transform:
   m_ObjectHideFlags: 0
@@ -7803,6 +7803,9 @@ MonoBehaviour:
   _chestPrefabs:
   - {fileID: 8596289077782961023, guid: 33dcdfbc105b1a746932742af1eb3d20, type: 3}
   - {fileID: 8985928185969495811, guid: 706af47135a94bc40bd4c833a573c7c3, type: 3}
+  _networkChestPrefabs:
+  - {fileID: 8985928185969495811, guid: f1783e69cb607df4ca4d42cb3388081c, type: 3}
+  - {fileID: 8596289077782961023, guid: 2e41f6112acf6314a8571296ac9c29d5, type: 3}
   _centerOfMap: {fileID: 355638635}
 --- !u!1 &1977182274
 GameObject:
