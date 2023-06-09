@@ -12,7 +12,7 @@ namespace HumansVsAliens.Gameplay
             _enemiesWorld = enemiesWorld ?? throw new ArgumentNullException(nameof(enemiesWorld));
         }
 
-        public void Buy()
+        public void Use()
         {
             _enemiesWorld.KillAllEnemies();
         }

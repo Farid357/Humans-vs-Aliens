@@ -15,9 +15,9 @@ namespace HumansVsAliens.Gameplay
             _good = good ?? throw new ArgumentNullException(nameof(good));
         }
         
-        public void Buy()
+        public void Use()
         {
-            _good.Buy();
+            _good.Use();
             _view.Buy();
         }
     }

@@ -11,7 +11,7 @@ namespace HumansVsAliens.Gameplay
             _ability = ability ?? throw new ArgumentNullException(nameof(ability));
         }
 
-        public void Buy()
+        public void Use()
         {
             if (_ability.IsActive)
                 _ability.Deactivate();

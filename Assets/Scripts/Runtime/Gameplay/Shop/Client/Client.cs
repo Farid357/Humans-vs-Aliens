@@ -39,7 +39,7 @@ namespace HumansVsAliens.Gameplay
                 throw new InvalidOperationException(nameof(HasGood));
 
             _wallet.Take(_shop.CalculatePrice(_good));
-            _good.Buy();
+            _good.Use();
             _view.BuyGood(_shop.GetData(_good));
         }
     }

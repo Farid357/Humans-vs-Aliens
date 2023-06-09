@@ -14,7 +14,7 @@ namespace HumansVsAliens.Gameplay
             _heal = heal.ThrowIfLessThanOrEqualsToZeroException();
         }
 
-        public void Buy()
+        public void Use()
         {
             _health.Heal(_heal);
         }
