@@ -9,11 +9,9 @@ namespace HumansVsAliens.Gameplay
     public sealed class Alien : MonoBehaviour, IEnemy
     {
         [SerializeField] private AlienHealthView _healthView;
-        [SerializeField] private Movement _movement;
-        [SerializeField] private HealthSynchronization _healthSynchronization;
+        [SerializeField] private AlienData _data;
         [SerializeField] private int _attackDamage = 10;
-        [SerializeField] private float _distanceToAttack = 5f;
-        
+
         private BehaviorNode _behaviorTree;
 
         public IHealth Health { get; private set; }
@@ -22,15 +20,15 @@ namespace HumansVsAliens.Gameplay
         public void Init(int healthValue)
         {
             IHealth health = new Health(healthValue);
-            _healthSynchronization.Init(health);
-            Health = new HealthWithView(_healthSynchronization, _healthView);
-            ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _distanceToAttack);
+            _data.HealthSynchronization.Init(health);
+            Health = new HealthWithView(_data.HealthSynchronization, _healthView);
+            ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _data.DistanceToAttack);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
             {
                 new SequenceNode(new IBehaviorNode[]
                 {
-                    new MoveToClosestCharacterNode(_movement, new CharacterSearcher(transform, 50), 1.2f),
+                    new MoveToClosestCharacterNode(_data.Movement, new CharacterSearcher(transform, 50), 1.2f),
                 }),
 
                 new SequenceNode(new IBehaviorNode[]
@@ -48,7 +46,7 @@ namespace HumansVsAliens.Gameplay
             if (_behaviorTree.Finished)
                 _behaviorTree.Reset();
 
-            _behaviorTree?.Execute((long)(Time.time * 1000));
+            _behaviorTree.Execute((long)(Time.time * 1000));
         }
     }
 }

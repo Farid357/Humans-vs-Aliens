@@ -9,14 +9,16 @@ namespace HumansVsAliens.Networking
     {
         private readonly Player _player;
 
-        public NetworkPlayer(string name)
+        public NetworkPlayer(Player player)
         {
-            _player = PhotonNetwork.LocalPlayer;
-            string number = _player.ActorNumber > 0 ? _player.ActorNumber.ToString() : "";
-            Name = string.IsNullOrWhiteSpace(name) ? $"Guest{number}" : name;
+            _player = player ?? throw new ArgumentNullException(nameof(player));
         }
 
-        public string Name { get; }
+        public NetworkPlayer() : this(PhotonNetwork.LocalPlayer)
+        {
+        }
+
+        public string Name => _player.NickName;
 
         public object GetCustomData(string key)
         {
@@ -30,6 +32,11 @@ namespace HumansVsAliens.Networking
         {
             var hashtable = new Hashtable { { key, data } };
             _player.SetCustomProperties(hashtable);
+        }
+
+        public void SwitchName(string newName)
+        {
+            _player.NickName = newName;
         }
     }
 }

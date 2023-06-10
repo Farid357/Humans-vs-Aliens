@@ -26,7 +26,7 @@ namespace HumansVsAliens.Gameplay
             if (_characterSearcher.HasFoundCharacter)
             {
                 IReadOnlyCharacter character = _characterSearcher.FoundCharacter;
-                Vector3 difference = character.Movement.Transform.position - _movement.Transform.position;
+                Vector3 difference = character.Movement.Position - _movement.Position;
 
                 if (difference.sqrMagnitude >= _distanceToStopMovement * _distanceToStopMovement)
                 {

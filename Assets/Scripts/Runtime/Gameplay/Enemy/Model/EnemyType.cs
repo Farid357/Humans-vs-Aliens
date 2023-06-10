@@ -4,6 +4,7 @@ namespace HumansVsAliens.Gameplay
     {
         Alien,
         RedAlien,
-        GrayAlien
+        GrayAlien,
+        Shooter
     }
 }

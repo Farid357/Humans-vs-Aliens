@@ -9,13 +9,12 @@ namespace HumansVsAliens.Gameplay
     {
         private readonly int _damage;
         private readonly float _hitRadius;
-        private readonly LayerMask _layerMask;
+
         private Collider[] _hits = new Collider[40];
 
-        public BladedWeapon(IBladedWeaponView view, int damage, float hitRadius, LayerMask layerMask)
+        public BladedWeapon(IBladedWeaponView view, int damage, float hitRadius)
         {
             View = view ?? throw new ArgumentNullException(nameof(view));
-            _layerMask = layerMask;
             _damage = damage.ThrowIfLessThanOrEqualsToZeroException();
             _hitRadius = hitRadius.ThrowIfLessOrEqualsToZeroException();
         }
@@ -29,7 +28,7 @@ namespace HumansVsAliens.Gameplay
             if (CanHit == false)
                 throw new InvalidOperationException($"View is not active! You can't hit!");
 
-            Physics.OverlapSphereNonAlloc(View.Position, _hitRadius, _hits, _layerMask);
+            Physics.OverlapSphereNonAlloc(View.Position, _hitRadius, _hits, LayerMask.GetMask("Enemy"));
 
             foreach (Collider hit in _hits)
             {

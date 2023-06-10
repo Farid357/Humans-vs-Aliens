@@ -12,7 +12,7 @@ namespace HumansVsAliens.Networking
         
         public Network()
         {
-            Player = new NetworkPlayer(PhotonNetwork.LocalPlayer.NickName);
+            Player = new NetworkPlayerWithNameSave();
             PhotonNetwork.AddCallbackTarget(this);
         }
 
@@ -25,10 +25,10 @@ namespace HumansVsAliens.Networking
         public IReadOnlyList<IRoom> Rooms => _rooms;
 
         public IReadOnlyList<IReadOnlyNetworkPlayer> AllPlayers =>
-            PhotonNetwork.PlayerList.Select(player => new NetworkPlayer(player.NickName)).ToList();
+            PhotonNetwork.PlayerList.Select(player => new NetworkPlayer(player)).ToList();
 
         public IReadOnlyList<IReadOnlyNetworkPlayer> InRoomPlayers => PhotonNetwork.CurrentRoom.Players
-            .Select(player => new NetworkPlayer(player.Value.NickName)).ToList();
+            .Select(player => new NetworkPlayer(player.Value)).ToList();
 
         public void Connect()
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HumansVsAliens.Networking;
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     public sealed class RoomsList : MonoBehaviour
     {

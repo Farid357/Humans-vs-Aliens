@@ -2437,10 +2437,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthView: {fileID: 1984057080966091433}
-  _movement: {fileID: 6819906260720412682}
-  _healthSynchronization: {fileID: 6325467296896649230}
+  _data:
+    <HealthView>k__BackingField: {fileID: 1984057080966091433}
+    <Movement>k__BackingField: {fileID: 6819906260720412682}
+    <HealthSynchronization>k__BackingField: {fileID: 6325467296896649230}
+    <DistanceToAttack>k__BackingField: 2.5
   _attackDamage: 10
-  _distanceToAttack: 3.5
 --- !u!114 &6819906260720412682
 MonoBehaviour:
   m_ObjectHideFlags: 0

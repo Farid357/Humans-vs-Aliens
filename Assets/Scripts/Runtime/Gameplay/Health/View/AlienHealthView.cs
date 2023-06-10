@@ -19,13 +19,13 @@ namespace HumansVsAliens.View
 
         public void Die()
         {
-            _photonView.RPC(nameof(DestroySelf), RpcTarget.All);
+            _photonView.RPC(nameof(DisableSelf), RpcTarget.All);
         }
 
         [PunRPC]
-        private void DestroySelf()
+        private void DisableSelf()
         {
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

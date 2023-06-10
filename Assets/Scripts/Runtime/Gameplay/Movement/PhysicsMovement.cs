@@ -10,7 +10,7 @@ namespace HumansVsAliens.Gameplay
 
         private Rigidbody _rigidbody;
         
-        public override Transform Transform => transform;
+        public override Vector3 Position => _rigidbody.position;
      
         private void OnEnable()
         {
@@ -20,7 +20,7 @@ namespace HumansVsAliens.Gameplay
         public override void Move(Vector3 direction)
         {
             Vector3 offset = direction * Time.fixedDeltaTime * _speed;
-            _rigidbody.MovePosition(_rigidbody.position + offset);
+            _rigidbody.MovePosition(Position + offset);
             _animations.PlayMove(direction.normalized);
         }
     }

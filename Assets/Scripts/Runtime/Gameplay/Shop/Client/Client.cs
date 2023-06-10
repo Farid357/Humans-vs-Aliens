@@ -23,9 +23,6 @@ namespace HumansVsAliens.Gameplay
 
         public void SelectGood(IGood good)
         {
-            if (_good == good)
-                throw new ArgumentOutOfRangeException(nameof(good));
-
             _good = good ?? throw new ArgumentNullException(nameof(good));
             _view.SelectGood(_shop.GetData(good), _shop.CalculatePrice(good));
         }

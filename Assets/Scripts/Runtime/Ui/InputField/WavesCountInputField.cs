@@ -12,7 +12,7 @@ namespace HumansVsAliens.UI
 
         public string Text => _inputField.text;
 
-        public bool IsValid => Text.ToInt() > 0;
+        public bool IsValid => !string.IsNullOrEmpty(Text) && Text.ToInt() > 0;
 
         public int Count => IsValid ? _inputField.text.ToInt() : throw new InvalidOperationException(nameof(IsValid));
 

@@ -9,10 +9,15 @@ namespace HumansVsAliens.Tools
     {
         private static readonly Collider[] _colliders = new Collider[50];
         private static IChest _chest;
+
+        public static Vector3 Position(this IReadOnlyCharacter character)
+        {
+            return character.Movement.Position;
+        }
         
         public static bool ChestIsNear(this IReadOnlyCharacter character)
         {
-            Physics.OverlapSphereNonAlloc(character.Movement.Transform.position, 1.75f, _colliders);
+            Physics.OverlapSphereNonAlloc(character.Movement.Position, 1.75f, _colliders);
             return _colliders.Any(collider => collider != null && collider.TryGetComponent(out _chest));
         }
 

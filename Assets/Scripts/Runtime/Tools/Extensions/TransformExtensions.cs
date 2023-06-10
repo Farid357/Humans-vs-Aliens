@@ -7,29 +7,24 @@ namespace HumansVsAliens.Tools
 {
     public static class TransformExtensions
     {
-        public static Transform FindClosestTo(this IEnumerable<Transform> transforms, Transform to)
+        public static IReadOnlyCharacter FindClosest(this IEnumerable<IReadOnlyCharacter> characters, Transform to)
         {
-            var convertedTransforms = transforms as Transform[] ?? transforms.ToArray();
-            Transform closest = convertedTransforms[0];
+            IReadOnlyCharacter[] readOnlyCharacters = characters as IReadOnlyCharacter[] ?? characters.ToArray();
+            Vector3[] convertedTPositions = readOnlyCharacters.Select(character => character.Movement.Position).ToArray();
+            Vector3 closest = convertedTPositions[0];
 
-            for (int i = 1; i < convertedTransforms.Length; i++)
+            for (int i = 1; i < convertedTPositions.Length; i++)
             {
-                float anotherDistance = (convertedTransforms[i].position - to.position).sqrMagnitude;
-                float distanceToClosest = (closest.position - to.position).sqrMagnitude;
+                float anotherDistance = (convertedTPositions[i] - to.position).sqrMagnitude;
+                float distanceToClosest = (closest - to.position).sqrMagnitude;
 
                 if (distanceToClosest > anotherDistance)
                 {
-                    closest = convertedTransforms[i];
+                    closest = convertedTPositions[i];
                 }
             }
 
-            return closest;
-        }
-
-        public static IReadOnlyCharacter FindClosest(this IEnumerable<IReadOnlyCharacter> characters, Transform to)
-        {
-            return FindClosestTo(characters.Select(character => character.Movement.Transform), to)
-                .GetComponent<IReadOnlyCharacter>();
+            return readOnlyCharacters.First(character => character.Position() == closest);
         }
     }
 }

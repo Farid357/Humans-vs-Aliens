@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HumansVsAliens.Gameplay;
+using HumansVsAliens.SceneManagement;
 using HumansVsAliens.Tools;
 using Photon.Pun;
 using Photon.Realtime;
@@ -19,12 +20,14 @@ namespace HumansVsAliens.UI
         [SerializeField] private RoomNameField _nameField;
         [SerializeField] private TMP_Text _errorText;
 
+        private IScene _gameScene;
         private bool _isPressed;
         private CancellationToken _cancellationToken;
         private Button _button;
-
-        private void Awake()
+        
+        public void Init(IScene gameScene)
         {
+            _gameScene = gameScene ?? throw new ArgumentNullException(nameof(gameScene));
             _cancellationToken = this.GetCancellationTokenOnDestroy();
             _button = GetComponent<Button>();
             _button.onClick.AddListener(Press);
@@ -49,6 +52,7 @@ namespace HumansVsAliens.UI
 
             var roomOptions = new RoomOptions { MaxPlayers = _toggle.SelectedPlayersCount, CustomRoomProperties = _gameConfiguration.Save.ToRoomProperties() };
             PhotonNetwork.CreateRoom(_nameField.Text, roomOptions, TypedLobby.Default);
+            _gameScene.Load();
             _isPressed = true;
         }
 

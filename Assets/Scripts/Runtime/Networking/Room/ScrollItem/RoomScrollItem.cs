@@ -1,9 +1,8 @@
 using System;
-using HumansVsAliens.Networking;
 using TMPro;
 using UnityEngine;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.Networking
 {
     public class RoomScrollItem : MonoBehaviour
     {

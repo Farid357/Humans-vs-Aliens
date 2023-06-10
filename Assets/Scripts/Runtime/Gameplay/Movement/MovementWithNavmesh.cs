@@ -9,11 +9,11 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private MovementAnimations _animations;
         [SerializeField] private float _speed = 2f;
         
-        public override Transform Transform => _agent.transform;
+        public override Vector3 Position => _agent.transform.position;
 
         public override void Move(Vector3 direction)
         {
-            _agent.SetDestination(Transform.position + direction * _speed);
+            _agent.SetDestination(Position + direction * _speed);
             _animations.PlayMove(direction);
         }
     }

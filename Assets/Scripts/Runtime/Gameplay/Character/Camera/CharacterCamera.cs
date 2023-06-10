@@ -10,8 +10,8 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private PhotonView _photonView;
         [SerializeField, Min(10)] private float _maxZoomIn = 45;
 
-        private float _maxZoomOut;
         private Camera _camera;
+        private float _maxZoomOut;
 
         public bool IsInFullZoomIn => _camera.fieldOfView <= _maxZoomIn;
 
@@ -22,7 +22,7 @@ namespace HumansVsAliens.Gameplay
             _camera = GetComponent<Camera>();
             _maxZoomOut = _camera.fieldOfView;
 
-            if(!_photonView.IsMine)
+            if (!_photonView.IsMine)
                 Destroy(_camera.gameObject);
         }
 

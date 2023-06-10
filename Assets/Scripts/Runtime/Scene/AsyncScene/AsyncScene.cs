@@ -17,14 +17,12 @@ namespace HumansVsAliens.SceneManagement
 
         public async Task Load()
         {
+            _scene.Load();
+            
             while (!Mathf.Approximately(LoadingProgress, 0.9f))
             {
                 LoadingProgress += 0.1f;
-                
-                if(Mathf.Approximately(LoadingProgress, 0.5f))
-                    _scene.Load();
-
-                await Task.Yield();
+                await Task.Delay(100);
             }
 
             LoadingProgress = 1f;

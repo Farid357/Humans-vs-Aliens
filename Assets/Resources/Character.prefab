@@ -2090,6 +2090,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _photonView: {fileID: 5141331418661910864}
   _maxZoomIn: 45
+  _sensitivity: 10
+  _maxYAngle: 80
 --- !u!114 &5141331418661910864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2572,9 +2574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2849710584949491621, guid: d2f8781a5fd8ef54e840ead0a3214333, type: 3}
   _spawnPoint: {fileID: 5944084776808075180}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
   _damage: 10
   _attackRadius: 3.2
 --- !u!114 &306564957702027487

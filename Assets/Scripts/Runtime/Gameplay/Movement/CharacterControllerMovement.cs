@@ -13,7 +13,7 @@ namespace HumansVsAliens.Gameplay
         private CharacterController _controller;
         private float _velocity;
 
-        public Transform Transform => transform;
+        public Vector3 Position => transform.position;
         
         public bool OnGround => Physics.Raycast(transform.position, Vector3.down, 0.9f);
 

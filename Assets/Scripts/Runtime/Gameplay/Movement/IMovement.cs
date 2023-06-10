@@ -4,7 +4,7 @@ namespace HumansVsAliens.Gameplay
 {
     public interface IMovement
     {
-        Transform Transform { get; }
+        Vector3 Position { get; }
 
         void Move(Vector3 direction);
     }

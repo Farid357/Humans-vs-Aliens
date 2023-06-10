@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using HumansVsAliens.Tools;
 using TMPro;
@@ -10,8 +11,13 @@ namespace HumansVsAliens.SceneManagement
         [SerializeField] private TMP_Text _progressText;
         [SerializeField] private Window _loadingWindow;
         
+        private bool _isDestroyed;
+
         public void Visualize(float loadingProgress)
         {
+            if (_isDestroyed)
+                return;
+            
             if (!_loadingWindow.IsActive)
                 _loadingWindow.Open();
 
@@ -20,6 +26,11 @@ namespace HumansVsAliens.SceneManagement
             loadingProgress *= 100f;
             string progressText = loadingProgress.ToString(CultureInfo.InvariantCulture);
             _progressText.text = $"{progressText}%";
+        }
+
+        private void OnDestroy()
+        {
+            _isDestroyed = true;
         }
     }
 }

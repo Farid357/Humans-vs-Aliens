@@ -11,9 +11,10 @@ namespace HumansVsAliens.Core
         [SerializeField] private Scene _game;
         [SerializeField] private SceneLoadingView _sceneLoadingView;
         [SerializeField] private UnityButton _joinRoomButton;
-        [SerializeField] private UnityButton _createRoomButton;
+        [SerializeField] private CreateRoomButton _createRoomButton;
         [SerializeField] private RoomsList _roomsList;
-
+        [SerializeField] private NickNameField _nickNameField;
+        
         private void Awake()
         {
             INetwork network = new Network();
@@ -21,8 +22,9 @@ namespace HumansVsAliens.Core
 
             _roomsList.Init(network);
             _joinRoomButton.Init(new JoinRandomRoomButton(network));
-            _createRoomButton.Init(new LoadSceneButton(gameScene));
-
+            _createRoomButton.Init(gameScene);
+            _nickNameField.Init(network.Player);
+            
             if (!network.IsConnected)
                 network.Connect();
         }

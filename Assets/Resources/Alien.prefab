@@ -233,7 +233,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5215051464643759463}
   - {fileID: 3344791950453283793}
-  - {fileID: 5455770367184088262}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -283,10 +282,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthView: {fileID: 3712595975391971999}
-  _movement: {fileID: 2965239783422449257}
-  _healthSynchronization: {fileID: 5455770367184088262}
+  _data:
+    <HealthView>k__BackingField: {fileID: 3712595975391971999}
+    <Movement>k__BackingField: {fileID: 2965239783422449257}
+    <HealthSynchronization>k__BackingField: {fileID: 5455770367184088262}
+    <DistanceToAttack>k__BackingField: 2.5
   _attackDamage: 10
-  _distanceToAttack: 5
 --- !u!114 &2965239783422449257
 MonoBehaviour:
   m_ObjectHideFlags: 0

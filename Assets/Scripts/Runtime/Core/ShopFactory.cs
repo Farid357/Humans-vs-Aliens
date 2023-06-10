@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace HumansVsAliens.Core
 {
-    public class ShopFactory : MonoBehaviour
+    public sealed class ShopFactory : MonoBehaviour
     {
         [SerializeField] private UnityButton _buyButton;
         [SerializeField] private ClientView _clientView;

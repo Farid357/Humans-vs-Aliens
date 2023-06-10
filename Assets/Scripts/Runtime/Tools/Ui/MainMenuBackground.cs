@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace HumansVsAliens
+namespace HumansVsAliens.UI
 {
     public class MainMenuBackground : MonoBehaviour
     {
