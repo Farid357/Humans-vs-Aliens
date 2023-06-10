@@ -2088,10 +2088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108628fa4650464aa7ffdffee185b54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photonView: {fileID: 5141331418661910864}
   _maxZoomIn: 45
-  _sensitivity: 10
-  _maxYAngle: 80
+  _minAngle: -70
+  _maxAngle: 80
 --- !u!114 &5141331418661910864
 MonoBehaviour:
   m_ObjectHideFlags: 0

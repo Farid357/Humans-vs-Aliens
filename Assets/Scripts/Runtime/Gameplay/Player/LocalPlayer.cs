@@ -18,11 +18,14 @@ namespace HumansVsAliens.Gameplay
 
         public void Update(float deltaTime)
         {
-            if(!_character.IsAlive)
+            if (!_character.IsAlive)
                 return;
-            
+
             Vector2 moveDirection = _input.Movement.Move.ReadValue<Vector2>();
+            Vector2 rotationDelta = _input.Camera.RotationDelta.ReadValue<Vector2>();
+
             _character.Movement.Move(new Vector3(moveDirection.x, 0, moveDirection.y));
+            _character.Camera.Rotate(rotationDelta);
 
             if (_input.Movement.Jump.WasPerformedThisFrame() && _character.Movement.OnGround)
                 _character.Movement.Jump();

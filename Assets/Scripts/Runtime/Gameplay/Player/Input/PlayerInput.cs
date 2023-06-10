@@ -254,6 +254,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotationDelta"",
+                    ""type"": ""Value"",
+                    ""id"": ""47428e5e-1a3a-41c4-ae30-b4d74c4a06f3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -287,6 +296,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2f15e0a-da49-442d-ac73-dcebf99cb997"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edec800c-0592-4e9c-aca9-3ab19057d8f6"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -361,6 +392,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_ZoomIn = m_Camera.FindAction("ZoomIn", throwIfNotFound: true);
+        m_Camera_RotationDelta = m_Camera.FindAction("RotationDelta", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_ChestOpening = m_Interaction.FindAction("ChestOpening", throwIfNotFound: true);
@@ -498,11 +530,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Camera;
     private ICameraActions m_CameraActionsCallbackInterface;
     private readonly InputAction m_Camera_ZoomIn;
+    private readonly InputAction m_Camera_RotationDelta;
     public struct CameraActions
     {
         private @PlayerInput m_Wrapper;
         public CameraActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ZoomIn => m_Wrapper.m_Camera_ZoomIn;
+        public InputAction @RotationDelta => m_Wrapper.m_Camera_RotationDelta;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -515,6 +549,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ZoomIn.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoomIn;
                 @ZoomIn.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoomIn;
                 @ZoomIn.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoomIn;
+                @RotationDelta.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotationDelta;
+                @RotationDelta.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotationDelta;
+                @RotationDelta.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotationDelta;
             }
             m_Wrapper.m_CameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -522,6 +559,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ZoomIn.started += instance.OnZoomIn;
                 @ZoomIn.performed += instance.OnZoomIn;
                 @ZoomIn.canceled += instance.OnZoomIn;
+                @RotationDelta.started += instance.OnRotationDelta;
+                @RotationDelta.performed += instance.OnRotationDelta;
+                @RotationDelta.canceled += instance.OnRotationDelta;
             }
         }
     }
@@ -580,6 +620,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface ICameraActions
     {
         void OnZoomIn(InputAction.CallbackContext context);
+        void OnRotationDelta(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {

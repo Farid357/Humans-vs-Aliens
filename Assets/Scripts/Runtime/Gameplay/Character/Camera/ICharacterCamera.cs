@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace HumansVsAliens.Gameplay
 {
     public interface ICharacterCamera
@@ -9,5 +11,7 @@ namespace HumansVsAliens.Gameplay
         void ZoomIn();
         
         void ZoomOut();
+
+        void Rotate(Vector2 delta);
     }
 }

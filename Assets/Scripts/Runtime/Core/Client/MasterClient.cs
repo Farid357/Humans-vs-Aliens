@@ -4,7 +4,7 @@ using HumansVsAliens.Gameplay;
 
 namespace HumansVsAliens.Core
 {
-    public sealed class MasterClient : IMasterClient, IGameLoopObject
+    public sealed class MasterClient : IMasterClient
     {
         private readonly IWavesView _wavesView;
         private readonly IWavesLoop _wavesLoop;
@@ -19,11 +19,6 @@ namespace HumansVsAliens.Core
         {
             await _wavesView.StartWave();
             _wavesLoop.Start();
-        }
-
-        public void Update(float deltaTime)
-        {
-            throw new NotImplementedException();
         }
     }
 }
