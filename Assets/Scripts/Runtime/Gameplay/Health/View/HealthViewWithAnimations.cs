@@ -5,24 +5,34 @@ namespace HumansVsAliens.View
     public sealed class HealthViewWithAnimations : IHealthView
     {
         private readonly IHealthView _view;
-        private readonly IHealthAnimations _healthAnimations;
+        private readonly IHealthAnimations _animations;
 
-        public HealthViewWithAnimations(IHealthView view, IHealthAnimations healthAnimations)
+        private float _lastShowedHealth;
+
+        public HealthViewWithAnimations(IHealthView view, IHealthAnimations animations)
         {
             _view = view ?? throw new ArgumentNullException(nameof(view));
-            _healthAnimations = healthAnimations ?? throw new ArgumentNullException(nameof(healthAnimations));
+            _animations = animations ?? throw new ArgumentNullException(nameof(animations));
+        }
+
+        public HealthViewWithAnimations(IHealthAnimations healthAnimations) : this(new FakeHealthView(), healthAnimations)
+        {
         }
 
         public void Visualize(int health)
         {
             _view.Visualize(health);
-            _healthAnimations.PlayTakeDamage();
+
+            if (_lastShowedHealth > health)
+                _animations.PlayTakeDamage();
+            
+            _lastShowedHealth = health;
         }
 
         public void Die()
         {
             _view.Die();
-            _healthAnimations.PlayDeath();
+            _animations.PlayDeath();
         }
     }
 }

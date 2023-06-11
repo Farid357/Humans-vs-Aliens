@@ -6,6 +6,7 @@ namespace HumansVsAliens.View
     [RequireComponent(typeof(Animator))]
     public sealed class CharacterAnimations : MonoBehaviour, ICharacterAnimations
     {
+        [SerializeField] private HealthAnimations _healthAnimations;
         [SerializeField] private string[] _attacks;
 
         private Animator _animator;
@@ -17,12 +18,12 @@ namespace HumansVsAliens.View
 
         public void PlayDeath()
         {
-            _animator.Play("Death");
+            _healthAnimations.PlayDeath();
         }
 
         public void PlayTakeDamage()
         {
-            _animator.Play("Get Hit");
+            _healthAnimations.PlayTakeDamage();
         }
 
         public void PlayAttack()

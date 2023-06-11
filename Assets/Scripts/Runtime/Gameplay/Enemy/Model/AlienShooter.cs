@@ -11,15 +11,13 @@ namespace HumansVsAliens.Gameplay
         
         private BehaviorNode _behaviorTree;
 
-        public IHealth Health { get; private set; }
+        public IHealth Health => _data.Health;
         
         [PunRPC]
         public void Init(int healthValue)
         {
             IWeapon weapon = _weaponFactory.Create(new EnemyWeaponAim(transform, _data.DistanceToAttack));
-            IHealth health = new Health(healthValue);
-            _data.HealthSynchronization.Init(health);
-            Health = new HealthWithView(_data.HealthSynchronization, _data.HealthView);
+            _data.Init(healthValue);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
             {

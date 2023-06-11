@@ -7,16 +7,18 @@ namespace HumansVsAliens.Gameplay
 {
     public sealed class BladedWeapon : IBladedWeapon
     {
+        private readonly Collider[] _hits = new Collider[40];
+        private readonly LayerMask _layerMask;
+       
         private readonly int _damage;
         private readonly float _hitRadius;
 
-        private Collider[] _hits = new Collider[40];
-
-        public BladedWeapon(IBladedWeaponView view, int damage, float hitRadius)
+        public BladedWeapon(IBladedWeaponView view, int damage, float hitRadius, LayerMask layerMask)
         {
             View = view ?? throw new ArgumentNullException(nameof(view));
             _damage = damage.ThrowIfLessThanOrEqualsToZeroException();
             _hitRadius = hitRadius.ThrowIfLessOrEqualsToZeroException();
+            _layerMask = layerMask;
         }
 
         public bool CanHit => View.IsActive;
@@ -28,17 +30,15 @@ namespace HumansVsAliens.Gameplay
             if (CanHit == false)
                 throw new InvalidOperationException($"View is not active! You can't hit!");
 
-            Physics.OverlapSphereNonAlloc(View.Position, _hitRadius, _hits, LayerMask.GetMask("Enemy"));
+            int overlaps = Physics.OverlapSphereNonAlloc(View.Position, _hitRadius, _hits, _layerMask);
 
-            foreach (Collider hit in _hits)
+            for (int i = 0; i < overlaps; i++)
             {
-                if (hit != null && hit.TryGetComponent(out IEnemy enemy) && enemy.Health.IsAlive)
+                if (_hits[i].TryGetComponent(out IEnemy enemy) && enemy.Health.IsAlive)
                 {
                     enemy.Health.TakeDamage(_damage);
                 }
             }
-
-            _hits = new Collider[40];
         }
     }
 }

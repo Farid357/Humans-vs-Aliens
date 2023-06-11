@@ -14,8 +14,6 @@ namespace HumansVsAliens.Gameplay
             _view.SwitchWeapon(Weapon);
         }
 
-        public IShield Shield { get; }
-        
         public IBladedWeapon Weapon { get; private set; }
         
         public void SwitchWeapon(IBladedWeapon weapon)

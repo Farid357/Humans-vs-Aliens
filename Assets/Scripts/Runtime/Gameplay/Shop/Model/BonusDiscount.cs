@@ -33,11 +33,10 @@ namespace HumansVsAliens.Gameplay
             if (_wavesLoop.Status == WavesLoopStatus.WaitNextWave && !_receivedDiscount)
             {
                 double chance = _random.NextDouble();
+                _receivedDiscount = true;
 
                 if (chance <= 0.25f)
                     _shop.SetDiscount(_discountPercents.GetRandom());
-
-                _receivedDiscount = true;
             }
 
             if (_wavesLoop.Status == WavesLoopStatus.WaveIsGoing)

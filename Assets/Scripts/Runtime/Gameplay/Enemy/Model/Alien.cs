@@ -1,5 +1,4 @@
 using BananaParty.BehaviorTree;
-using HumansVsAliens.View;
 using Photon.Pun;
 using UnityEngine;
 
@@ -8,20 +7,17 @@ namespace HumansVsAliens.Gameplay
     [RequireComponent(typeof(PhotonView))]
     public sealed class Alien : MonoBehaviour, IEnemy
     {
-        [SerializeField] private AlienHealthView _healthView;
         [SerializeField] private AlienData _data;
         [SerializeField] private int _attackDamage = 10;
 
         private BehaviorNode _behaviorTree;
 
-        public IHealth Health { get; private set; }
+        public IHealth Health => _data.Health;
         
         [PunRPC]
         public void Init(int healthValue)
         {
-            IHealth health = new Health(healthValue);
-            _data.HealthSynchronization.Init(health);
-            Health = new HealthWithView(_data.HealthSynchronization, _healthView);
+            _data.Init(healthValue);
             ICharacterSearcher forAttackCharacterSearcher = new CharacterSearcher(transform, _data.DistanceToAttack);
          
             _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]

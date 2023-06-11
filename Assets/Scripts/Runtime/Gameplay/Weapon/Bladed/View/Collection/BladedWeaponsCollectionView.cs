@@ -12,7 +12,7 @@ namespace HumansVsAliens.View
         [SerializeField] private TMP_Text _weaponName;
 
         private IBladedWeapon _lastWeapon;
-
+        
         public void SwitchWeapon(IBladedWeapon weapon)
         {
             _lastWeapon?.View?.Disable();

@@ -2400,6 +2400,8 @@ GameObject:
   - component: {fileID: 4184210678978810722}
   - component: {fileID: 6325467296896649230}
   - component: {fileID: 1984057080966091433}
+  - component: {fileID: 6035209762762789431}
+  - component: {fileID: 3650362320006226531}
   m_Layer: 6
   m_Name: Gray Alien
   m_TagString: Untagged
@@ -2436,11 +2438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb81e466cb8a4208b4a27a9b7756d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthView: {fileID: 1984057080966091433}
   _data:
-    <HealthView>k__BackingField: {fileID: 1984057080966091433}
-    <Movement>k__BackingField: {fileID: 6819906260720412682}
-    <HealthSynchronization>k__BackingField: {fileID: 6325467296896649230}
+    _healthView: {fileID: 1984057080966091433}
+    _movement: {fileID: 6819906260720412682}
+    _healthSynchronization: {fileID: 6325467296896649230}
     <DistanceToAttack>k__BackingField: 2.5
   _attackDamage: 10
 --- !u!114 &6819906260720412682
@@ -2583,6 +2584,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46ee0fd072c940ecbc05db13068b88fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animations: {fileID: 3650362320006226531}
+--- !u!95 &6035209762762789431
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096720086522951078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d87f398977045a47aea1f1f913646a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3650362320006226531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096720086522951078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c4adcb40b24164a5f5d14be3f5f6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9153184067391356146

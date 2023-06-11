@@ -4,6 +4,6 @@ namespace HumansVsAliens.Networking
     {
         void SendMessage(string text);
 
-        void SendPrivateMessage(string text, IReadOnlyNetworkPlayer player);
+        void SendPrivateMessageTo(string text, IReadOnlyNetworkPlayer player);
     }
 }

@@ -17,8 +17,15 @@ namespace HumansVsAliens.Tools
         
         public static bool ChestIsNear(this IReadOnlyCharacter character)
         {
-            Physics.OverlapSphereNonAlloc(character.Movement.Position, 1.75f, _colliders);
-            return _colliders.Any(collider => collider != null && collider.TryGetComponent(out _chest));
+            int overlaps = Physics.OverlapSphereNonAlloc(character.Movement.Position, 1.75f, _colliders);
+
+            for (int i = 0; i < overlaps; i++)
+            {
+                if (_colliders[i].TryGetComponent(out _chest))
+                    return true;
+            }
+
+            return false;
         }
 
         public static IChest Chest(this IReadOnlyCharacter character)

@@ -27,7 +27,7 @@ namespace HumansVsAliens.Networking
             _chatClient.PublishMessage(ChannelName, text);
         }
 
-        public void SendPrivateMessage(string text, IReadOnlyNetworkPlayer player)
+        public void SendPrivateMessageTo(string text, IReadOnlyNetworkPlayer player)
         {
             _chatClient.SendPrivateMessage(player.Name, text);
         }

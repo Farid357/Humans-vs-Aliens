@@ -784,8 +784,9 @@ GameObject:
   - component: {fileID: 7046817220470952560}
   - component: {fileID: 5908974972627459925}
   - component: {fileID: 8812693797341653860}
+  - component: {fileID: 1341929027279137860}
   m_Layer: 6
-  m_Name: Red Monster
+  m_Name: Red Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,11 +821,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb81e466cb8a4208b4a27a9b7756d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthView: {fileID: 1343763893837537029}
   _data:
-    <HealthView>k__BackingField: {fileID: 1343763893837537029}
-    <Movement>k__BackingField: {fileID: 5244318573171161623}
-    <HealthSynchronization>k__BackingField: {fileID: 815655519837250707}
+    _healthView: {fileID: 1343763893837537029}
+    _movement: {fileID: 5244318573171161623}
+    _healthSynchronization: {fileID: 815655519837250707}
     <DistanceToAttack>k__BackingField: 2.5
   _attackDamage: 5
 --- !u!114 &5380312013070188710
@@ -908,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ee0fd072c940ecbc05db13068b88fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animations: {fileID: 1341929027279137860}
 --- !u!114 &5244318573171161623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,6 +1009,18 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
+--- !u!114 &1341929027279137860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835158714671227276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c4adcb40b24164a5f5d14be3f5f6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &849743116877790044
 GameObject:
   m_ObjectHideFlags: 0
