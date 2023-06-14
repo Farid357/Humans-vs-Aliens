@@ -1,48 +1,31 @@
 using BananaParty.BehaviorTree;
-using Photon.Pun;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class AlienShooter : MonoBehaviour, IEnemy
+    public sealed class AlienShooter : Enemy
     {
         [SerializeField] private WeaponFactory _weaponFactory;
-        [SerializeField] private AlienData _data;
-        
-        private BehaviorNode _behaviorTree;
 
-        public IHealth Health => _data.Health;
-        
-        [PunRPC]
-        public void Init(int healthValue)
+        protected override IBehaviorNode CreateBehaviourTree()
         {
-            IWeapon weapon = _weaponFactory.Create(new EnemyWeaponAim(transform, _data.DistanceToAttack));
-            _data.Init(healthValue);
+            IWeapon weapon = _weaponFactory.Create(new EnemyWeaponAim(transform, DistanceToAttack));
          
-            _behaviorTree = new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
+            return new RepeatNode(new ParallelSequenceNode(new IBehaviorNode[]
             {
                 new SequenceNode(new IBehaviorNode[]
                 {
                     new IsCharacterNearNode(new CharacterSearcher(transform, 3.5f)),
-                    new RetreatNode(_data.Movement),
+                    new RetreatNode(Movement),
                 }),
 
                 new SequenceNode(new IBehaviorNode[]
                 {
-                    new IsCharacterNearNode(new CharacterSearcher(transform, _data.DistanceToAttack)),
-                    new WaitNode(0.45f),
-                    new WeaponAttackNode(weapon),
                     new WaitNode(1.2f),
+                    new IsCharacterNearNode(new CharacterSearcher(transform, DistanceToAttack)),
+                    new WeaponAttackNode(weapon),
                 })
             }));
-        }
-
-        private void Update()
-        {
-            if (_behaviorTree.Finished)
-                _behaviorTree.Reset();
-
-            _behaviorTree.Execute((long)(Time.time * 1000));
         }
     }
 }

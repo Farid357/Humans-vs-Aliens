@@ -7,9 +7,9 @@ namespace HumansVsAliens.Gameplay
 {
     public class EnemyFactories : MonoBehaviour
     {
-        [SerializeField] private AlienFactory _alienFactory;
-        [SerializeField] private AlienFactory _redAlienFactory;
-        [SerializeField] private AlienFactory _grayAlienFactory;
+        [SerializeField] private EnemyFactory _alienFactory;
+        [SerializeField] private EnemyFactory _redAlienFactory;
+        [SerializeField] private EnemyFactory _grayAlienFactory;
 
         private IGameLoopObjectsGroup _gameLoop;
         private ICharacterStatistics _statistics;

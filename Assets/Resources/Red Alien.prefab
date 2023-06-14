@@ -785,6 +785,7 @@ GameObject:
   - component: {fileID: 5908974972627459925}
   - component: {fileID: 8812693797341653860}
   - component: {fileID: 1341929027279137860}
+  - component: {fileID: 68225925482894353}
   m_Layer: 6
   m_Name: Red Alien
   m_TagString: Untagged
@@ -821,12 +822,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb81e466cb8a4208b4a27a9b7756d9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data:
-    _healthView: {fileID: 1343763893837537029}
-    _movement: {fileID: 5244318573171161623}
-    _healthSynchronization: {fileID: 815655519837250707}
-    <DistanceToAttack>k__BackingField: 2.5
+  _healthView: {fileID: 1343763893837537029}
+  _healthSynchronization: {fileID: 815655519837250707}
+  _movement: {fileID: 5244318573171161623}
+  _distanceToAttack: 2.5
   _attackDamage: 5
+  _animations: {fileID: 68225925482894353}
 --- !u!114 &5380312013070188710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,6 +1022,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c4adcb40b24164a5f5d14be3f5f6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &68225925482894353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835158714671227276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165f451a272a480b8e4648948d0fb8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 500526412065831663}
+  _attacks:
+  - Attack
 --- !u!1 &849743116877790044
 GameObject:
   m_ObjectHideFlags: 0

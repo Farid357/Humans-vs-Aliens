@@ -3158,7 +3158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alienPrefab: {fileID: 6519361428343014561, guid: 354904a96a0c6f247b67bb959ca55b86,
+  _enemyPrefab: {fileID: 6519361428343014561, guid: 354904a96a0c6f247b67bb959ca55b86,
     type: 3}
   _health: 20
 --- !u!1 &786745026
@@ -5460,7 +5460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alienPrefab: {fileID: 4191114923340187176, guid: 6c3a62f48a7affb45a4310006538a167,
+  _enemyPrefab: {fileID: 4191114923340187176, guid: 6c3a62f48a7affb45a4310006538a167,
     type: 3}
   _health: 10
 --- !u!4 &1286781790
@@ -7708,7 +7708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alienPrefab: {fileID: 5830063095503735815, guid: 74a75cbd5eeed724d98785906dfd08ab,
+  _enemyPrefab: {fileID: 5830063095503735815, guid: 74a75cbd5eeed724d98785906dfd08ab,
     type: 3}
   _health: 25
 --- !u!1001 &1937328551

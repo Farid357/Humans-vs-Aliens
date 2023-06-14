@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HumansVsAliens.View
 {
     [RequireComponent(typeof(PhotonView))]
-    public class AlienHealthView : MonoBehaviour, IHealthView
+    public class EnemyHealthView : MonoBehaviour, IHealthView
     {
         [SerializeField] private HealthAnimations _animations;
 
