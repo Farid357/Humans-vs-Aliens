@@ -31,7 +31,7 @@ namespace HumansVsAliens.Gameplay
         
         public IHealth Health { get; private set; }
 
-        public IMovementWithJump Movement => _movement;
+        public ICharacterMovement Movement => _movement;
 
         public ICharacterCamera Camera => _camera;
         

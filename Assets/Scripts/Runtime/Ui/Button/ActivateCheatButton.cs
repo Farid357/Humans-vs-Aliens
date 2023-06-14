@@ -1,4 +1,5 @@
 using System;
+using HumansVsAliens.Tools;
 using HumansVsAliens.UI;
 using HumansVsAliens.View;
 
@@ -26,7 +27,7 @@ namespace HumansVsAliens.Gameplay
                 _cheatsConsole.ActivateCheat(commandName);
             }
             
-            else if(commandName == "/")
+            else if(commandName.DeleteWhiteSpaces() == "/")
             {
                 _cheatsConsoleView.Show(_cheatsConsole.CheatNames);
             }

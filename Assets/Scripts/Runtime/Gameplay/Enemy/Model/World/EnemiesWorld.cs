@@ -15,9 +15,14 @@ namespace HumansVsAliens.Gameplay
             _enemies = new Dictionary<IEnemy, EnemyType>();
         }
 
-        public IReadOnlyDictionary<IEnemy, EnemyType> Enemies => _enemies;
+        public IReadOnlyList<IEnemy> Enemies => _enemies.Keys.ToList();
 
         public bool EverybodyDied => _enemies.Keys.All(enemy => enemy.Health.IsDied());
+       
+        public EnemyType GetType(IEnemy enemy)
+        {
+            return _enemies[enemy];
+        }
 
         public void Add(IEnemy enemy, EnemyType type)
         {

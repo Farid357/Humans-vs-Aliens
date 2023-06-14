@@ -37,7 +37,7 @@ namespace HumansVsAliens.Core
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
             ICharacter character = _characterFactory.Create();
             ICharacterStatistics statistics = _statisticsFactory.Create(network);
-            IPlayer player = new LocalPlayer(character);
+            IPlayer player = new Player(character);
             IGameLoopObject killsStreak = new TemporaryKillStreak(new KillsStreak(enemiesWorld, _killsStreakView, character.Health));
           
             _leaderboard.Init(network);

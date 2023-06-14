@@ -8,9 +8,7 @@ namespace HumansVsAliens.Gameplay
     public class CharacterCamera : MonoBehaviour, ICharacterCamera
     {
         [SerializeField, Min(10)] private float _maxZoomIn = 45;
-        [SerializeField] private float _minAngle = -70f;
-        [SerializeField] private float _maxAngle = 80f;
-
+        
         private Camera _camera;
         private float _maxZoomOut;
         
@@ -42,11 +40,6 @@ namespace HumansVsAliens.Gameplay
                 throw new InvalidOperationException(nameof(ZoomOut));
 
             _camera.fieldOfView += 1f;
-        }
-
-        public void Rotate(Vector2 delta)
-        {
-            
         }
     }
 }

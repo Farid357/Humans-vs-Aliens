@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class LocalPlayer : IPlayer
+    public sealed class Player : IPlayer
     {
         private readonly ICharacter _character;
         private readonly PlayerInput _input;
 
-        public LocalPlayer(ICharacter character)
+        public Player(ICharacter character)
         {
             _character = character ?? throw new ArgumentNullException(nameof(character));
             _input = new PlayerInput();
@@ -22,10 +22,7 @@ namespace HumansVsAliens.Gameplay
                 return;
 
             Vector2 moveDirection = _input.Movement.Move.ReadValue<Vector2>();
-            Vector2 rotationDelta = _input.Camera.RotationDelta.ReadValue<Vector2>();
-
             _character.Movement.Move(new Vector3(moveDirection.x, 0, moveDirection.y));
-            _character.Camera.Rotate(rotationDelta);
 
             if (_input.Movement.Jump.WasPerformedThisFrame() && _character.Movement.OnGround)
                 _character.Movement.Jump();

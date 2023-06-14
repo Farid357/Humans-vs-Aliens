@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HumansVsAliens.Gameplay
 {
     [RequireComponent(typeof(CharacterController))]
-    public sealed class CharacterControllerMovement : MonoBehaviour, IMovementWithJump
+    public sealed class CharacterControllerMovement : MonoBehaviour, ICharacterMovement
     {
         [SerializeField] private float _jumpForce = 10f;
         [SerializeField] private float _speed = 1.5f;
@@ -21,6 +21,7 @@ namespace HumansVsAliens.Gameplay
 
         public void Move(Vector3 direction)
         {
+            direction = (transform.right * direction.x + transform.forward * direction.z).normalized;
             _controller.Move(direction * _speed);
             _animations.PlayMove(direction);
         }

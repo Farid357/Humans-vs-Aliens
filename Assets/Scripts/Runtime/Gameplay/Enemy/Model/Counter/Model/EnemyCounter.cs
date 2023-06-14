@@ -8,6 +8,7 @@ namespace HumansVsAliens.Gameplay
     {
         private readonly IReadOnlyEnemiesWorld _enemiesWorld;
         private readonly IEnemyCounterView _view;
+       
         private int _lastShowedCount;
 
         public EnemyCounter(IReadOnlyEnemiesWorld enemiesWorld, IEnemyCounterView view)
@@ -18,7 +19,7 @@ namespace HumansVsAliens.Gameplay
 
         public void Update(float deltaTime)
         {
-            int currentEnemiesCount = _enemiesWorld.Enemies.Count(enemy => enemy.Key.Health.IsAlive);
+            int currentEnemiesCount = _enemiesWorld.Enemies.Count(enemy => enemy.Health.IsAlive);
 
             if (_lastShowedCount != currentEnemiesCount)
             {

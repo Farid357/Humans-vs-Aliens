@@ -1,6 +1,6 @@
 namespace HumansVsAliens.Gameplay
 {
-    public interface IMovementWithJump : IMovement
+    public interface ICharacterMovement : IMovement
     {
         bool OnGround { get; }
 

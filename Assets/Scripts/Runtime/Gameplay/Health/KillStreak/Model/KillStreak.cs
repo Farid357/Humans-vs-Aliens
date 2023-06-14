@@ -42,7 +42,7 @@ namespace HumansVsAliens.Gameplay
 
         private void TryIncrease()
         {
-            foreach (IEnemy enemy in _enemiesWorld.Enemies.Keys)
+            foreach (IEnemy enemy in _enemiesWorld.Enemies)
             {
                 if (enemy.Health.IsDied() && _alreadyKilledEnemies.Contains(enemy) == false)
                 {
