@@ -31,8 +31,7 @@ namespace HumansVsAliens.Core
         private void Start()
         {
             Application.targetFrameRate = 60;
-            QualitySettings.vSyncCount = 0;
-            
+
             INetwork network = new Network();
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
             ICharacter character = _characterFactory.Create();
@@ -50,7 +49,15 @@ namespace HumansVsAliens.Core
             IWavesLoop wavesLoop = gameConfiguration.WavesAreInfinite ? _wavesLoopFactory.CreateInfinite() : _wavesLoopFactory.Create(gameConfiguration.WavesCount);
             IEnemyCounter enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
-            
+
+            if (gameConfiguration.AutoHealIsOn)
+                _gameLoop.Add(new AutoHeal(wavesLoop, character.Health));
+
+            if (gameConfiguration.CheatsAreEnabled)
+                _cheatsConsoleFactory.Create(character, statistics);
+
+            _shopFactory.Create(statistics.Wallet, character, enemiesWorld, wavesLoop);
+
             IBonusesLoop bonusesLoop = new BonusesLoop(new List<IBonusFactory>
             {
                 _healBonusFactory,
@@ -67,14 +74,6 @@ namespace HumansVsAliens.Core
                 bonusesLoop
             }));
 
-            if(gameConfiguration.AutoHealIsOn)
-                _gameLoop.Add(new AutoHeal(wavesLoop, character.Health));
-
-            if (gameConfiguration.CheatsAreEnabled)
-                _cheatsConsoleFactory.Create(character, statistics);
-
-            _shopFactory.Create(statistics.Wallet, character, enemiesWorld, wavesLoop);
-         
             if (network.IsMasterClient)
             {
                 _gameLoop.Add(new Victory(wavesLoop, _leaderboard, _victoryView));

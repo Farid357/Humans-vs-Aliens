@@ -17,7 +17,7 @@ namespace HumansVsAliens.Gameplay
 
         public void PickUp()
         {
-            _chestFactory.CreateLocal();
+            _chestFactory.Create();
             _bonus.PickUp();
         }
     }

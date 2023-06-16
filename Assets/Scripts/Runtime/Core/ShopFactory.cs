@@ -18,7 +18,7 @@ namespace HumansVsAliens.Core
         
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
-        public IShop Create(IWallet wallet, IReadOnlyCharacter character, IReadOnlyEnemiesWorld enemiesWorld, IReadOnlyWavesLoop wavesLoop)
+        public IShopWithDiscounts Create(IWallet wallet, IReadOnlyCharacter character, IReadOnlyEnemiesWorld enemiesWorld, IReadOnlyWavesLoop wavesLoop)
         {
             _goodsFactory.Init(character, enemiesWorld);
             IDictionary<IGood,IGoodData> goods = _goodsFactory.Create();

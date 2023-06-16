@@ -14,6 +14,11 @@ namespace HumansVsAliens.Gameplay
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
         }
+
+        public void Init(int money)
+        {
+            _chest = new Chest(new FakeReward());
+        }
         
         public bool IsOpen => _chest.IsOpen;
 

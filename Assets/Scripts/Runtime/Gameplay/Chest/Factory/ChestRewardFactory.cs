@@ -6,7 +6,6 @@ namespace HumansVsAliens.Gameplay
     public sealed class ChestRewardFactory : IRewardFactory
     {
         private readonly ICharacterStatistics _statistics;
-        private readonly IAbility[] _abilities;
 
         private int _money;
 
@@ -17,10 +16,8 @@ namespace HumansVsAliens.Gameplay
 
         public IReward Create()
         {
-            // IAbility ability = _abilities.GetRandom();
-            // return new AbilityReward(ability);
-
             _money += 50;
+         
             return new Rewards(new List<IReward>
             {
                 new MoneyReward(_statistics.Wallet, _money),

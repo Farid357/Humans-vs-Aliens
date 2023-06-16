@@ -9,7 +9,7 @@ namespace HumansVsAliens.View
         [SerializeField] private Image _image;
         [SerializeField] private Color _boughtColor = Color.gray;
 
-        public async void Buy()
+        public async void Use()
         {
             Color startColor = _image.color;
             _image.color = _boughtColor;

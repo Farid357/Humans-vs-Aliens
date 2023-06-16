@@ -21,6 +21,8 @@ namespace HumansVsAliens.Gameplay
         public bool IsEnded => false;
 
         public WavesLoopStatus Status { get; private set; } = WavesLoopStatus.WaitFirstWave;
+       
+        public void SetStatus(WavesLoopStatus status) => Status = status;
 
         public void Start()
         {

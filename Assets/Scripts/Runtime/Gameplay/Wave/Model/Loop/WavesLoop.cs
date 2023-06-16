@@ -20,6 +20,11 @@ namespace HumansVsAliens.Gameplay
         public bool IsEnded => _wavesCounter.PastWavesCount == _wavesCount && _wavesLoop.Status == WavesLoopStatus.WaitNextWave;
 
         public WavesLoopStatus Status => IsEnded ? WavesLoopStatus.Ended : _wavesLoop.Status;
+     
+        public void SetStatus(WavesLoopStatus status)
+        {
+            _wavesLoop.SetStatus(status);
+        }
 
         public void Start()
         {

@@ -18,7 +18,7 @@ namespace HumansVsAliens.Gameplay
         public void Use()
         {
             _good.Use();
-            _view.Buy();
+            _view.Use();
         }
     }
 }

@@ -10,7 +10,8 @@ namespace HumansVsAliens.Core
         [SerializeField] private WavesFactory _wavesFactory;
         [SerializeField] private WavesCounterView _wavesCounterView;
         [SerializeField] private TimerBetweenWavesView _timerBetweenWavesView;
-
+        [SerializeField] private WavesLoopSynchronization _loopSynchronization;
+        
         private IWavesCounter _wavesCounter;
         
         public void Init(IEnemiesWorld enemiesWorld, IReadOnlyDictionary<EnemyType,IEnemyFactory> enemyFactories)
@@ -22,13 +23,17 @@ namespace HumansVsAliens.Core
         public IWavesLoop CreateInfinite()
         {
             ITimerBetweenWaves timerBetweenWaves = new TimerBetweenWaves(_timerBetweenWavesView);
-            return new InfiniteWavesLoop(_wavesFactory.Create(), _wavesCounter, timerBetweenWaves);
+            IWavesLoop wavesLoop = new InfiniteWavesLoop(_wavesFactory.Create(), _wavesCounter, timerBetweenWaves);
+            _loopSynchronization.Init(wavesLoop);
+            return wavesLoop;
         }
         
         public IWavesLoop Create(int wavesCount)
         {
-            IWavesLoop wavesLoop = CreateInfinite();
-            return new WavesLoop(wavesLoop, _wavesCounter, wavesCount);
+            IWavesLoop infiniteWavesLoop = CreateInfinite();
+            IWavesLoop wavesLoop = new WavesLoop(infiniteWavesLoop, _wavesCounter, wavesCount);
+            _loopSynchronization.Init(wavesLoop);
+            return wavesLoop;
         }
     }
 }

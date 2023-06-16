@@ -1319,12 +1319,12 @@ GameObject:
   - component: {fileID: 6683415571886077432}
   - component: {fileID: 2146721358853200701}
   - component: {fileID: 7221169461503409302}
-  - component: {fileID: 8048118262847897491}
   - component: {fileID: 467369911615347104}
   - component: {fileID: 3644772928501922060}
   - component: {fileID: 1097732573291438443}
   - component: {fileID: 7878018192176394933}
   - component: {fileID: 983670937298950869}
+  - component: {fileID: 8474960312785334974}
   m_Layer: 6
   m_Name: Alien
   m_TagString: Untagged
@@ -1474,20 +1474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 2146721358853200701}
-  _animations: {fileID: 8048118262847897491}
+  _animations: {fileID: 8474960312785334974}
   _speed: 2
---- !u!114 &8048118262847897491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7998850642857400685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d47b8c54de29b45b65606fea149d9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &467369911615347104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,6 +1562,18 @@ MonoBehaviour:
   _animator: {fileID: 3650831876629076397}
   _attacks:
   - Attack
+--- !u!114 &8474960312785334974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998850642857400685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef6fe3d668a9af4598a9e44f269b588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8166636710094296017
 GameObject:
   m_ObjectHideFlags: 0

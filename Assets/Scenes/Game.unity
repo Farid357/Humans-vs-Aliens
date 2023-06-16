@@ -644,6 +644,8 @@ GameObject:
   - component: {fileID: 144319587}
   - component: {fileID: 144319586}
   - component: {fileID: 144319588}
+  - component: {fileID: 144319589}
+  - component: {fileID: 144319590}
   m_Layer: 0
   m_Name: Waves
   m_TagString: Untagged
@@ -711,6 +713,42 @@ MonoBehaviour:
   _wavesFactory: {fileID: 144319586}
   _wavesCounterView: {fileID: 1025744047}
   _timerBetweenWavesView: {fileID: 810996715}
+  _loopSynchronization: {fileID: 144319589}
+--- !u!114 &144319589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144319585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be441618aef74690bbc0561f4eaa0bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &144319590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144319585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 144319589}
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &152856128
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,7 +7746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0c89bf31548e0a0daeb43bf49f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 5830063095503735815, guid: 74a75cbd5eeed724d98785906dfd08ab,
+  _enemyPrefab: {fileID: 1478335968280301143, guid: d2c30d0fec64d1e43bad0c1f7ebe79ed,
     type: 3}
   _health: 25
 --- !u!1001 &1937328551
@@ -7938,9 +7976,6 @@ MonoBehaviour:
   _chestPrefabs:
   - {fileID: 8596289077782961023, guid: 33dcdfbc105b1a746932742af1eb3d20, type: 3}
   - {fileID: 8985928185969495811, guid: 706af47135a94bc40bd4c833a573c7c3, type: 3}
-  _networkChestPrefabs:
-  - {fileID: 8985928185969495811, guid: f1783e69cb607df4ca4d42cb3388081c, type: 3}
-  - {fileID: 8596289077782961023, guid: 2e41f6112acf6314a8571296ac9c29d5, type: 3}
   _centerOfMap: {fileID: 355638635}
 --- !u!1 &1977182274
 GameObject:
