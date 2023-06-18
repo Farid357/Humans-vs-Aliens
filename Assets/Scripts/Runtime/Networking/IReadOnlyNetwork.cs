@@ -1,20 +1,10 @@
-using System.Collections.Generic;
-
 namespace HumansVsAliens.Networking
 {
-    public interface IReadOnlyNetwork
+    public interface IReadOnlyNetwork : IPlayersCollection, IRoomsCollection
     {
         bool IsMasterClient { get; }
-        
-        bool IsConnected { get; }
-        
-        IReadOnlyList<IRoom> Rooms { get; }
 
-        IReadOnlyList<IReadOnlyNetworkPlayer> AllPlayers { get; }
-        
-        IReadOnlyList<IReadOnlyNetworkPlayer> InRoomPlayers { get; }
-        
-        INetworkPlayer Player { get; }
-        
+        bool IsConnected { get; }
+
     }
 }

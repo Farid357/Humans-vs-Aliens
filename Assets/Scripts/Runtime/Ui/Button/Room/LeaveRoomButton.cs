@@ -6,16 +6,16 @@ namespace HumansVsAliens.UI
 {
     public class LeaveRoomButton : IButton
     {
-        private readonly INetwork _network;
+        private readonly IRoom _room;
 
-        public LeaveRoomButton(INetwork network)
+        public LeaveRoomButton(IRoom room)
         {
-            _network = network ?? throw new ArgumentNullException(nameof(network));
+            _room = room ?? throw new ArgumentNullException(nameof(room));
         }
 
         public void Press()
         {
-            _network.LeaveRoom();
+            _room.Leave();
         }
     }
 }

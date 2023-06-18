@@ -13,7 +13,7 @@ namespace HumansVsAliens.Gameplay
         {
             _score = score ?? throw new ArgumentNullException(nameof(score));
             _network = network ?? throw new ArgumentNullException(nameof(network));
-            _network.Player.SetScore(0);
+            _network.LocalPlayer.SetScore(0);
         }
 
         public int Count => _score.Count;
@@ -21,7 +21,7 @@ namespace HumansVsAliens.Gameplay
         public void Add(int count)
         {
             _score.Add(count);
-            _network.Player.SetScore(_score.Count);
+            _network.LocalPlayer.SetScore(_score.Count);
         }
     }
 }

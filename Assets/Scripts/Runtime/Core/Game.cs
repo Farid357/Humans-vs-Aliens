@@ -46,7 +46,7 @@ namespace HumansVsAliens.Core
             _healBonusFactory.Init(character.Health);
             
             IGameConfigurationSave gameConfiguration = network.GameConfiguration();
-            IWavesLoop wavesLoop = gameConfiguration.WavesAreInfinite ? _wavesLoopFactory.CreateInfinite() : _wavesLoopFactory.Create(gameConfiguration.WavesCount);
+            IWavesLoop wavesLoop = _wavesLoopFactory.Create(gameConfiguration);
             IEnemyCounter enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
 
@@ -76,8 +76,8 @@ namespace HumansVsAliens.Core
 
             if (network.IsMasterClient)
             {
-                _gameLoop.Add(new Victory(wavesLoop, _leaderboard, _victoryView));
-                IMasterClient masterClient = new MasterClient(_wavesView, wavesLoop);
+                IMasterClient masterClient = new MasterClient(_wavesView, wavesLoop, network);
+                _gameLoop.Add(new Victory(wavesLoop, _leaderboard, _victoryView, masterClient));
                 masterClient.StartGame();
             }
         }

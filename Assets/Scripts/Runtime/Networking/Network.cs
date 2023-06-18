@@ -9,18 +9,21 @@ namespace HumansVsAliens.Networking
     public class Network : INetwork, IConnectionCallbacks, ILobbyCallbacks, IDisposable
     {
         private readonly List<IRoom> _rooms = new();
-        
+
         public Network()
         {
-            Player = new NetworkPlayerWithNameSave();
+            LocalPlayer = new NetworkPlayerWithNameSave();
             PhotonNetwork.AddCallbackTarget(this);
         }
 
         public bool IsConnected => PhotonNetwork.IsConnected;
-     
+
         public bool IsMasterClient => PhotonNetwork.IsMasterClient;
-     
-        public INetworkPlayer Player { get; }
+
+        public INetworkPlayer LocalPlayer { get; }
+
+        public IRoom CurrentRoom => new Room(PhotonNetwork.CurrentRoom.PlayerCount,
+            PhotonNetwork.CurrentRoom.MaxPlayers, PhotonNetwork.CurrentRoom.Name);
 
         public IReadOnlyList<IRoom> Rooms => _rooms;
 
@@ -36,6 +39,7 @@ namespace HumansVsAliens.Networking
                 throw new InvalidOperationException($"Network is already connected!");
 
             PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.EnableCloseConnection = true;
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 

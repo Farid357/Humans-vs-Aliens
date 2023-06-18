@@ -20,7 +20,7 @@ namespace HumansVsAliens.Core
             _menuButton.Init(new Buttons(new List<IButton>
             {
                 new LoadSceneButton(_menuScene),
-                new LeaveRoomButton(new Network())
+                new LeaveRoomButton(new Network().CurrentRoom)
             }));
 
             var chat = new Chat();

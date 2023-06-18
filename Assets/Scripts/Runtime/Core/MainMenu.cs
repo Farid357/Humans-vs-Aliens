@@ -23,7 +23,7 @@ namespace HumansVsAliens.Core
             _roomsList.Init(network);
             _joinRoomButton.Init(new JoinRandomRoomButton(network));
             _createRoomButton.Init(gameScene);
-            _nickNameField.Init(network.Player);
+            _nickNameField.Init(network.LocalPlayer);
             
             if (!network.IsConnected)
                 network.Connect();
