@@ -2581,6 +2581,7 @@ MonoBehaviour:
   _attacks:
   - Attack_01
   - Attack_02
+  - Attack_03
 --- !u!114 &3634348700266075120
 MonoBehaviour:
   m_ObjectHideFlags: 0

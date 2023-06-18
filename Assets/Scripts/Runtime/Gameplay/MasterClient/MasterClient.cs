@@ -18,7 +18,7 @@ namespace HumansVsAliens.Gameplay
 
         public async void StartGame()
         {
-            await _wavesView.StartWave();
+            await _wavesView.StartFirstWave();
             _wavesLoop.Start();
         }
 

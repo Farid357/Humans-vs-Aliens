@@ -17,13 +17,13 @@ namespace HumansVsAliens.Networking
         }
 
         public bool IsConnected => PhotonNetwork.IsConnected;
+        public bool PlayerInRoom => PhotonNetwork.InRoom;
 
         public bool IsMasterClient => PhotonNetwork.IsMasterClient;
 
         public INetworkPlayer LocalPlayer { get; }
 
-        public IRoom CurrentRoom => new Room(PhotonNetwork.CurrentRoom.PlayerCount,
-            PhotonNetwork.CurrentRoom.MaxPlayers, PhotonNetwork.CurrentRoom.Name);
+        public IRoom CurrentRoom => new Room(PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers, PhotonNetwork.CurrentRoom.Name);
 
         public IReadOnlyList<IRoom> Rooms => _rooms;
 

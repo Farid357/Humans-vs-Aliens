@@ -1,6 +1,5 @@
 ﻿using System;
 using HumansVsAliens.Networking;
-using HumansVsAliens.Tools;
 
 namespace HumansVsAliens.UI
 {

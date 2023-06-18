@@ -29,6 +29,7 @@ namespace HumansVsAliens.View
         [PunRPC]
         private void VisualizeRpc(int time)
         {
+            _text.color = time <= 10 ? Color.red : Color.white;
             _text.text = time.ToString();
         }
         

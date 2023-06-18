@@ -6,5 +6,6 @@ namespace HumansVsAliens.Networking
 
         bool IsConnected { get; }
 
+        bool PlayerInRoom { get; }
     }
 }

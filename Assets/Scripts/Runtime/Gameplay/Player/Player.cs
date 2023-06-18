@@ -27,7 +27,7 @@ namespace HumansVsAliens.Gameplay
             if (_input.Movement.Jump.WasPerformedThisFrame() && _character.Movement.OnGround)
                 _character.Movement.Jump();
 
-            if (_input.Fighting.Attack.WasPerformedThisFrame() && _character.CanAttack)
+            if (_input.Fighting.Attack.WasPerformedThisFrame() && moveDirection == Vector2.zero && _character.CanAttack)
                 _character.Attack();
 
             if (_input.Camera.ZoomIn.IsPressed() && !_character.Camera.IsInFullZoomIn)

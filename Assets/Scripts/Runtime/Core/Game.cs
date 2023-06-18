@@ -25,27 +25,30 @@ namespace HumansVsAliens.Core
         [SerializeField] private ShopFactory _shopFactory;
         [SerializeField] private CheatsConsoleFactory _cheatsConsoleFactory;
         [SerializeField] private Leaderboard _leaderboard;
-     
-        private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
+
+        private IGameLoopObjects _gameLoop;
+        private INetwork _network;
 
         private void Start()
         {
             Application.targetFrameRate = 60;
 
-            INetwork network = new Network();
+            _gameLoop = new GameLoopObjects();
+            _network = new Network();
+            
             IEnemiesWorld enemiesWorld = new EnemiesWorld();
             ICharacter character = _characterFactory.Create();
-            ICharacterStatistics statistics = _statisticsFactory.Create(network);
+            ICharacterStatistics statistics = _statisticsFactory.Create(_network);
             IPlayer player = new Player(character);
             IGameLoopObject killsStreak = new TemporaryKillStreak(new KillsStreak(enemiesWorld, _killsStreakView, character.Health));
           
-            _leaderboard.Init(network);
+            _leaderboard.Init(_network);
             _chestFactory.Init(new ChestRewardFactory(statistics));
             _enemyFactories.Init(_gameLoop, statistics);
             _wavesLoopFactory.Init(enemiesWorld, _enemyFactories.Create());
             _healBonusFactory.Init(character.Health);
             
-            IGameConfigurationSave gameConfiguration = network.GameConfiguration();
+            IGameConfigurationSave gameConfiguration = _network.GameConfiguration();
             IWavesLoop wavesLoop = _wavesLoopFactory.Create(gameConfiguration);
             IEnemyCounter enemyCounter = new EnemyCounter(enemiesWorld, _enemyCounterView);
             IChestsLoop chestsLoop = new ChestsLoop(wavesLoop, _chestFactory);
@@ -74,9 +77,9 @@ namespace HumansVsAliens.Core
                 bonusesLoop
             }));
 
-            if (network.IsMasterClient)
+            if (_network.IsMasterClient)
             {
-                IMasterClient masterClient = new MasterClient(_wavesView, wavesLoop, network);
+                IMasterClient masterClient = new MasterClient(_wavesView, wavesLoop, _network);
                 _gameLoop.Add(new Victory(wavesLoop, _leaderboard, _victoryView, masterClient));
                 masterClient.StartGame();
             }
@@ -84,7 +87,8 @@ namespace HumansVsAliens.Core
 
         private void Update()
         {
-            _gameLoop.Update(Time.deltaTime);
+            if (_network.PlayerInRoom)
+                _gameLoop.Update(Time.deltaTime);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
@@ -12,15 +12,10 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private TMP_Text _timer;
 
         private PhotonView _photonView;
-        private Color _startTimerColor;
 
-        private void Awake()
-        {
-            _photonView = GetComponent<PhotonView>();
-            _startTimerColor = _timer.color;
-        }
+        private void Awake() => _photonView = GetComponent<PhotonView>();
 
-        public async Task StartWave()
+        public async UniTask StartFirstWave()
         {
             float time = _timeToStartWave;
 
@@ -28,7 +23,7 @@ namespace HumansVsAliens.Gameplay
             {
                 time -= Time.deltaTime;
                 _photonView.RPC(nameof(ShowTime), RpcTarget.All, time);
-                await Task.Yield();
+                await UniTask.Yield();
             }
 
             _photonView.RPC(nameof(Clear), RpcTarget.All);
@@ -46,7 +41,7 @@ namespace HumansVsAliens.Gameplay
         [PunRPC]
         private void Clear()
         {
-            _timer.color = _startTimerColor;
+            _timer.color = Color.white;
             _timer.text = string.Empty;
         }
     }

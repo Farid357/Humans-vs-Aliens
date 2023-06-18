@@ -7,7 +7,7 @@ namespace HumansVsAliens.View
     {
         [SerializeField] private HealthBar _bar;
         [SerializeField] private TMP_Text _healthText;
-        [SerializeField] private Window _loseWindow;
+        [SerializeField] private LoseWindow _loseWindow;
         
         public void Visualize(int health)
         {
