@@ -780,12 +780,12 @@ GameObject:
   - component: {fileID: 815655519837250707}
   - component: {fileID: 1343763893837537029}
   - component: {fileID: 5244318573171161623}
-  - component: {fileID: 5280713533614262348}
   - component: {fileID: 7046817220470952560}
   - component: {fileID: 5908974972627459925}
   - component: {fileID: 8812693797341653860}
   - component: {fileID: 1341929027279137860}
   - component: {fileID: 68225925482894353}
+  - component: {fileID: 147915387140429533}
   m_Layer: 6
   m_Name: Red Alien
   m_TagString: Untagged
@@ -923,20 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 7046817220470952560}
-  _animations: {fileID: 5280713533614262348}
+  _animations: {fileID: 147915387140429533}
   _speed: 2
---- !u!114 &5280713533614262348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835158714671227276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d47b8c54de29b45b65606fea149d9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &7046817220470952560
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1037,6 +1025,18 @@ MonoBehaviour:
   _animator: {fileID: 500526412065831663}
   _attacks:
   - Attack
+--- !u!114 &147915387140429533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835158714671227276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef6fe3d668a9af4598a9e44f269b588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &849743116877790044
 GameObject:
   m_ObjectHideFlags: 0

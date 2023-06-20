@@ -1,4 +1,5 @@
 using System;
+using Sirenix.Utilities.Editor;
 using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
@@ -9,19 +10,20 @@ namespace HumansVsAliens.Gameplay
         [SerializeField] private float _jumpForce = 10f;
         [SerializeField] private float _speed = 1.5f;
         [SerializeField] private CharacterMovementAnimations _animations;
-        
+        [SerializeField] private Transform _camera;
+
         private CharacterController _controller;
         private float _velocity;
 
         public Vector3 Position => transform.position;
-        
+
         public bool OnGround => Physics.Raycast(transform.position, Vector3.down, 0.9f);
 
         private void OnEnable() => _controller = GetComponent<CharacterController>();
 
         public void Move(Vector3 direction)
         {
-            direction = (transform.right * direction.x + transform.forward * direction.z).normalized;
+            direction = _camera.TransformDirection(direction);
             _controller.Move(direction * _speed);
             _animations.PlayMove(direction);
         }

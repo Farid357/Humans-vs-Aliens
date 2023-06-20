@@ -1,20 +1,19 @@
 using System;
 using HumansVsAliens.View;
-using UnityEngine;
 
 namespace HumansVsAliens.Gameplay
 {
-    public sealed class GoodWithView : MonoBehaviour, IGood
+    public sealed class GoodWithView : IGood
     {
-        [SerializeField] private GoodView _view;
-        
-        private IGood _good;
+        private readonly IGoodView _view;
+        private readonly IGood _good;
 
-        public void Init(IGood good)
+        public GoodWithView(IGood good, IGoodView view)
         {
             _good = good ?? throw new ArgumentNullException(nameof(good));
+            _view = view ?? throw new ArgumentNullException(nameof(view));
         }
-        
+
         public void Use()
         {
             _good.Use();

@@ -32,6 +32,7 @@ namespace HumansVsAliens.Core
         private void Start()
         {
             Application.targetFrameRate = 60;
+            Cursor.lockState = CursorLockMode.Locked;
 
             _gameLoop = new GameLoopObjects();
             _network = new Network();

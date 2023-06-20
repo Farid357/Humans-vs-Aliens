@@ -17,6 +17,8 @@ namespace HumansVsAliens.Core
         
         private void Awake()
         {
+            Cursor.lockState = CursorLockMode.None;
+            
             INetwork network = new Network();
             IScene gameScene = new SceneWithLoadingView(new AsyncScene(_game), _sceneLoadingView);
 

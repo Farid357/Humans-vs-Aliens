@@ -17,6 +17,7 @@ namespace HumansVsAliens.Networking
         }
 
         public bool IsConnected => PhotonNetwork.IsConnected;
+       
         public bool PlayerInRoom => PhotonNetwork.InRoom;
 
         public bool IsMasterClient => PhotonNetwork.IsMasterClient;

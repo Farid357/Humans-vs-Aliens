@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HumansVsAliens.Gameplay
 {
@@ -11,6 +12,8 @@ namespace HumansVsAliens.Gameplay
         {
             _goods = new Dictionary<IGood, IGoodData>();
         }
+
+        public IReadOnlyList<IGood> Goods => _goods.Keys.ToList();
 
         public IGoodViewData GetData(IGood good)
         {

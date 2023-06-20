@@ -15,6 +15,8 @@ namespace HumansVsAliens.Gameplay
             _prices = new Dictionary<IGood, int>();
         }
 
+        public IReadOnlyList<IGood> Goods => _shop.Goods;
+
         public IGoodViewData GetData(IGood good) => _shop.GetData(good);
 
         public int CalculatePrice(IGood good) => _prices[good];

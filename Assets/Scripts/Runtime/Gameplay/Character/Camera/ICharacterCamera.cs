@@ -11,5 +11,7 @@ namespace HumansVsAliens.Gameplay
         void ZoomIn();
         
         void ZoomOut();
+
+        void Rotate(Vector2 delta);
     }
 }

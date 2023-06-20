@@ -3,18 +3,15 @@ using System.Linq;
 using HumansVsAliens.GameLoop;
 using HumansVsAliens.Gameplay;
 using HumansVsAliens.Tools;
-using HumansVsAliens.UI;
 using UnityEngine;
-using UnityEngine.UI;
+using Network = HumansVsAliens.Networking.Network;
 
 namespace HumansVsAliens.Core
 {
     public sealed class ShopFactory : MonoBehaviour
     {
-        [SerializeField] private UnityButton _buyButton;
         [SerializeField] private ClientView _clientView;
         [SerializeField] private GoodsFactory _goodsFactory;
-        [SerializeField] private GraphicRaycaster _physicsRaycaster;
         
         private readonly IGameLoopObjects _gameLoop = new GameLoopObjects();
 
@@ -27,8 +24,7 @@ namespace HumansVsAliens.Core
 
             IGameLoopObject temporaryDiscount = new BonusDiscount(wavesLoop, shop);
             IClient client = new Client(_clientView, shop, wallet);
-            IUserInput userInput = new UserInput(_physicsRaycaster);
-            IGameLoopObject user = new User(userInput, client);
+            IGameLoopObject user = new User(client, shop, new Network());
             
             _gameLoop.Add(new GameLoopObjects(new List<IGameLoopObject>()
             {
@@ -36,7 +32,6 @@ namespace HumansVsAliens.Core
                 temporaryDiscount
             }));
             
-            _buyButton.Init(new BuyButton(client));
             client.SelectGood(goods.Keys.First());
             return shop;
         }
